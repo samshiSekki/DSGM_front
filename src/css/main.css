@@ -1,0 +1,42 @@
+.title{
+    width : 100vw;
+    height : 120px;
+    line-height: 120px;
+    background: #C4C4C4;
+}
+.tabmenuContainer{
+    margin-top: 59px;
+    width : 100vw;
+    height: 87px;
+}
+.tabButton{
+    width : 20vw;
+    height:87px;
+    float: left;
+}
+.dropdown{
+    width : 20vw;
+    float:left;
+}
+.dropButton{
+    width : 20vw;
+    height:87px;
+}
+.dropdown-content{
+    display : none;
+    position : absolute;
+    width : 20vw;
+    background-color: #f9f9f9;
+}
+.dropdown-content a{
+    display : block;
+    text-decoration : none;
+    font-size: 12px;
+    padding : 12px 20px;
+}
+.dropdown-content a:hover{
+    background-color : #ececec
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}

@@ -1,3 +1,6 @@
+body{
+    text-align: center;
+}
 .title{
     width : 100vw;
     height : 120px;
@@ -6,6 +9,7 @@
 }
 .tabmenuContainer{
     margin-top: 59px;
+    margin-bottom : 75px; 
     width : 100vw;
     height: 87px;
 }
@@ -39,4 +43,26 @@
 }
 .dropdown:hover .dropdown-content {
     display: block;
+}
+.mailTextContainer{
+    display: inline-block;
+    text-align: left;
+    width : 96vw;
+    height : auto;
+    padding : 44px 37px 27px 31px;
+    background: #EAEAEA;
+}
+.buttonContainer{
+    display: flex;
+    justify-content: space-around;
+    width : 100%;
+    height : 65px;
+}
+.buttonContainer div{
+    width : 33vw;
+    height : 65px;
+    line-height: 65px;
+    float : left;
+    background: #000000;
+    color : white;
 }

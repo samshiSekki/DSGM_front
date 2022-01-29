@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../css/main.css';
 
 function Header() {
@@ -9,8 +10,12 @@ function Header() {
       </div>
 
       <div className='tabmenuContainer'>
-        <button className='tabButton'>기본</button>
-        <button className='tabButton'>빌넣</button>
+        <Link to='/'>
+          <button className='tabButton'>기본</button>
+        </Link>
+        <Link to='/billnut'>
+          <button className='tabButton'>빌넣</button>
+        </Link>
         <button className='tabButton'>추천서</button>
         <button className='tabButton'>성적문의</button>
         <div className='dropdown'>

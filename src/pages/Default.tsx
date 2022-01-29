@@ -3,12 +3,35 @@ import Header from './Header';
 import '../css/main.css';
 
 function Default() {
+  
   const [major, setMajor] = useState('');
   const [name, setName] = useState('');
   const [firstSelect, setFirstSelect] = useState('');
+  let copiedForm: string = '';
+
+  function copyInClipboard(){
+    //console.log(copiedForm);
+    const textarea = document.createElement("textarea");
+    textarea.value = copiedForm;
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+    alert('복사되었습니다.');
+  }
+
+  function copyBtnClickHandler(){
+    if (!document.queryCommandSupported("copy"))
+      return alert("복사하기가 지원되지 않는 브라우저입니다");
+
+    copiedForm = `교수님 안녕하세요!\r\n${major}학과 ${name}입니다.\r\n비대면 어쩌구저쩌구\r\n${firstSelect}\r\nㅎㅎㅎㅎㅎㅎㅎ\r\n감사합니다`;
+    copyInClipboard();
+  }
+
   return(
   <div>
-    <Header/>
+    {/*<textarea className="copy_text"></textarea>*/}
     <div className='mailTextContainer'>
         교수님 안녕하세요! <br/>
         <input onChange={(e)=>{setMajor(e.target.value)}}/>학과 <input onChange={(e)=>{setName(e.target.value)}}/>입니다. <br/>
@@ -27,8 +50,8 @@ function Default() {
     */
     }
     <div className='buttonContainer'>
-      <div>복사하기</div>
-      <div>clear</div>
+      <div onClick={copyBtnClickHandler}>복사하기</div>
+      <div onClick={()=>{window.location.replace("/")}}>clear</div>
       <div>맞춤법 검사</div>
     </div>
   </div>);

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PostList from './PostList';
 
 function Billnut() {
   const [major, setMajor] = useState('');
@@ -7,7 +8,8 @@ function Billnut() {
   return (
   <div>
     <div className='mailTextContainer'>
-        교수님 안녕하세요! <br/>
+      <PostList/>
+       {/*  교수님 안녕하세요! <br/>
         <input onChange={(e)=>{setMajor(e.target.value)}}/>학과 <input onChange={(e)=>{setName(e.target.value)}}/>입니다. <br/>
         이 페이지는 빌넣 페이지 <br/>
         <select onChange={(e)=>{setFirstSelect(e.target.value)}}>
@@ -17,7 +19,7 @@ function Billnut() {
         </select>
         <br/>
         ㅎㅎㅎㅎㅎㅎㅎ <br/>
-        감사합니다
+        감사합니다 */}
     </div>
     <div className='buttonContainer'>
       <div>복사하기</div>

@@ -73,3 +73,11 @@ body{
     position:absolute;
     top:-9999em;
 }
+.hideTextArea{
+    display: none;
+}
+.showTextArea{
+    margin-top: 100px;
+    width: 500px;
+    height: 100px;
+}

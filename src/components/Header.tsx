@@ -6,7 +6,7 @@ function Header() {
   return(
     <div>
       <div className='title'>
-        대학생이나 돼서 설마 교수님한테 메일 보내는 법도 몰라?
+        <img src="img/dsgm_title.png" className='dsgmTitleImg'/>
       </div>
       <div className='tabmenuContainer'>
         <Link to='/'>

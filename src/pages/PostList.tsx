@@ -83,14 +83,14 @@ const PostList = ({tabType}:PostListProps) => {
             :
             <div></div>}
         <Container>
-        <div>안녕하십니까 <input placeholder='교수님 성함'></input> 교수님 </div>
-        <div>저는  <input placeholder='과 이름'></input> <input placeholder='학번'></input>  <input placeholder='학생 이름'></input>입니다.
+        <div>안녕하십니까 <InputDiv placeholder='교수님 성함'></InputDiv> 교수님 </div>
+        <div>저는  <InputDiv placeholder='과 이름'></InputDiv> <InputDiv placeholder='학번'></InputDiv>  <InputDiv placeholder='학생 이름'></InputDiv>입니다.
             
             </div>
             <div ref={myRef} style={{position:'relative'}}>
             <div onClick={()=>setState(!state)} style={{fontWeight:'bold'}}>{firstState}</div>
             {state && <Scroll isFirst={true} ment = {firstMent} state = {firstState} setState={setFirstState} type= {type} setType={setType}/>}
-            {tabType === '' ? <input></input>
+            {tabType === '' ? <>다름이 아니라, <InputDiv></InputDiv></>
             : tabType==='please' ?<BillnutContent num = {num} setNum={setNum}/> 
             : tabType === 'recommend' ? <RecommendContent num = {num} setNum={setNum}/>
             : tabType === 'grade' ? <GradeContent num = {num} setNum={setNum}/>
@@ -120,10 +120,11 @@ const TabBox = styled.div`
     height:50px;
     display:flex;
     flex-direction:row;
+    margin-bottom:20px;
     
 `;
 const Tab = styled.div`
-background-color:#fff111;
+background-color:#EAEAEA;
 width: 25%;
 height:100%;
 color:black;
@@ -131,5 +132,19 @@ color:black;
 display:flex;
 align-items:center;
 justify-content:center;
+:hover{
+    background-color:#C4C4C4;
+}
     
 `
+const InputDiv = styled.input`
+    background: #FFFFFF;
+    border: 1px solid #E2E2E2;
+    border-radius: 13px;
+    width: 213px;
+    height: 30px;
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-right:5px;
+
+`;

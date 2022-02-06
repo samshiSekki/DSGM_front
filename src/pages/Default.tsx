@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
-import axios from 'axios';
 import '../css/main.css';
+import PostList from './PostList';
+import axios from 'axios';
 import { json } from 'stream/consumers';
 
 
@@ -63,7 +63,8 @@ function Default() {
   <div>
     {/*<textarea className="copy_text"></textarea>*/}
     <div className='mailTextContainer'>
-        교수님 안녕하세요! <br/>
+        <PostList tabType={''}/>
+        {/* 교수님 안녕하세요! <br/>
         <input onChange={(e)=>{setMajor(e.target.value)}}/>학과 <input onChange={(e)=>{setName(e.target.value)}}/>입니다. <br/>
         비대면 어쩌구저쩌구 <br/>
         <select onChange={(e)=>{setFirstSelect(e.target.value)}}>
@@ -73,7 +74,7 @@ function Default() {
         </select>
         <br/>
         ㅎㅎㅎㅎㅎㅎㅎ <br/>
-        감사합니다
+        감사합니다 */}
     </div>
     {/*
     <button onClick={()=>{console.log(firstSelect)}}></button>

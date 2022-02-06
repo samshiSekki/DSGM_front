@@ -2,14 +2,14 @@ import React, {useState} from 'react';
 import PostList from './PostList';
 
 
-function Billnut() {
+function Grade() {
   const [major, setMajor] = useState('');
   const [name, setName] = useState('');
   const [firstSelect, setFirstSelect] = useState('');
   return (
   <div>
     <div className='mailTextContainer'>
-      <PostList tabType={'please'}/>
+      <PostList tabType={'grade'}/>
        {/*  교수님 안녕하세요! <br/>
         <input onChange={(e)=>{setMajor(e.target.value)}}/>학과 <input onChange={(e)=>{setName(e.target.value)}}/>입니다. <br/>
         이 페이지는 빌넣 페이지 <br/>
@@ -23,12 +23,12 @@ function Billnut() {
         감사합니다 */}
     </div>
     <div className='buttonContainer'>
-      <div className='functionBtn'>맞춤법 검사하기</div>
-      <div onClick={()=>{window.location.replace("/")}} className='functionBtn'>Clear</div>
-      <div id='copyBtn'>복사하기</div>
+      <div>복사하기</div>
+      <div onClick={()=>{window.location.replace("/billnut")}}>clear</div>
+      <div>맞춤법 검사</div>
     </div>
   </div>
   );
 }
 
-export default Billnut;
+export default Grade;

@@ -1,15 +1,21 @@
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
 body{
+    font-family: 나눔스퀘어, 'NanumSquare', sans-serif;
     text-align: center;
 }
 .title{
+    margin-top: 65.61px;
     width : 100vw;
     height : 120px;
     line-height: 120px;
-    background: #C4C4C4;
+}
+.dsgmTitleImg{
+    width : 52vw;
+    height : auto;
 }
 .tabmenuContainer{
-    margin-top: 59px;
-    margin-bottom : 75px; 
+    
     width : 100vw;
     height: 87px;
 }
@@ -47,25 +53,50 @@ body{
 .mailTextContainer{
     display: inline-block;
     text-align: left;
-    width : 96vw;
+    width : 65%;
     height : auto;
-    padding : 44px 37px 27px 31px;
-    background: #EAEAEA;
+    padding : 76px 97px 65px 97px;
+    background: #F7F8FA;
+    font-size: 18px;
+    line-height: 32px;
+/* identical to box height */
+    color: #191E24;
 }
 .buttonContainer{
+    margin-top: 24px;
+    margin-left: 12vw;
+    margin-bottom: 66px;
     display: flex;
-    justify-content: space-around;
-    width : 100%;
-    height : 65px;
+    justify-content: space-between;
+    width : 75%;
+    height : 7%;
 }
-.buttonContainer div{
-    width : 33vw;
-    height : 65px;
+.functionBtn{
+    width : 32%;
+    height : 100%;
     line-height: 65px;
     float : left;
-    background: #000000;
+    background: #191E24;
+    border-radius: 27px;
     color : white;
+    font-weight: 800;
+    font-size: 24px;
 }
+#copyBtn{
+    width : 32%;
+    height : 100%;
+    line-height: 65px;
+    float : left;
+    background: #14B390;
+    border-radius: 27px;
+    color : white;
+    font-weight: 800;
+    font-size: 24px;
+}
+#copyBtn:hover{
+    background: #BDFFBF;
+}
+
 .buttonContainer div:hover{
     background: gray;
 }

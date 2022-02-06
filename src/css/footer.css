@@ -1,0 +1,32 @@
+.footerContainer{
+    width : 75%;
+    height : auto;
+    display: inline-block;
+}
+
+.footerContainer div{
+    
+}
+
+.copyright{
+    float:left;
+    color: #6A6A6A;
+    margin-right: 42%;
+}
+
+.accessCounter{
+    float:left;
+    color: #191E24;
+}
+
+.proposalBtn{
+    float: right;
+    color: #191E24;
+}
+.proposalBtn a{
+    text-decoration: none;
+}
+.proposalBtn a:visited{
+    text-decoration: none;
+    color: #191E24;
+}

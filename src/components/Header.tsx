@@ -8,7 +8,6 @@ function Header() {
       <div className='title'>
         <img src="img/dsgm_title.png" className='dsgmTitleImg'/>
       </div>
-
       <div className='tabmenuContainer'>
         <Link to='/'>
           <button className='tabButton'>기본</button>
@@ -16,8 +15,12 @@ function Header() {
         <Link to='/billnut'>
           <button className='tabButton'>빌넣</button>
         </Link>
+        <Link to='recommend'>
         <button className='tabButton'>추천서</button>
+        </Link> 
+        <Link to='grade'>
         <button className='tabButton'>성적문의</button>
+        </Link>
         <div className='dropdown'>
           <button className='dropButton'>기타</button>
           <div className = 'dropdown-content'>

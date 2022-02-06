@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from './Header';
 import '../css/main.css';
 import PostList from './PostList';
 
@@ -34,7 +33,7 @@ function Default() {
   <div>
     {/*<textarea className="copy_text"></textarea>*/}
     <div className='mailTextContainer'>
-        <PostList/>
+        <PostList tabType={''}/>
         {/* <select onChange={(e)=>{setFirstSelect(e.target.value)}}>
           <option value="none">선택</option>
           <option value="text1">텍스트1</option>

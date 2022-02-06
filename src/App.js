@@ -1,5 +1,5 @@
-import './App.css';
-import Header from './pages/Header';
+import Header from './components/Header';
+import Footer from 'components/Footer';
 import Default from './pages/Default';
 import Billnut from './pages/Billnut';
 import Recommend from './pages/Recommend';
@@ -17,6 +17,7 @@ function App() {
         <Route path="/recommend" element={<Recommend />} />
         <Route path="/grade" element={<Grade />} />
       </Routes>
+      <Footer/>
       </BrowserRouter>
     </div>
   );

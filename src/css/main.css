@@ -4,6 +4,12 @@ body{
     font-family: 나눔스퀘어, 'NanumSquare', sans-serif;
     text-align: center;
 }
+a{
+    text-decoration: none;
+}
+a:visited{
+    color: white;
+}
 .title{
     margin-top: 65.61px;
     width : 100vw;
@@ -50,6 +56,14 @@ body{
 .dropdown:hover .dropdown-content {
     display: block;
 }
+/*
+.tabBarContainer{
+    display: inline-block;
+    width: 75%;
+}
+.menuTabBar{
+    width: 100%;
+}*/
 .mailTextContainer{
     display: inline-block;
     text-align: left;
@@ -69,7 +83,7 @@ body{
     display: flex;
     justify-content: space-between;
     width : 75%;
-    height : 7%;
+    height : 6.9%;
 }
 .functionBtn{
     width : 32%;

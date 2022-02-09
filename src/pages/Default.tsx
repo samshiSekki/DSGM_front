@@ -61,7 +61,12 @@ function Default() {
 
   return(
   <div>
-    {/*<textarea className="copy_text"></textarea>*/}
+    <textarea className="copy_text"></textarea>
+    {/*
+    <div className='tabBarContainer'>
+      <img className='menuTabBar' src="img/defaultTabBar.png"/>
+    </div>
+    */}
     <div className='mailTextContainer'>
         <PostList tabType={''}/>
         {/* 교수님 안녕하세요! <br/>

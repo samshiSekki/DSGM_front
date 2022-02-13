@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 let TabWrap : any = styled.div`
   display: inline-block;
+  margin-top: 0.4vh;
 `;
 let MenuTabBar :any = styled.div`
   display: flex;
@@ -36,6 +37,12 @@ let TabBtn2 : any = styled.div`
 let TabBorder : any = styled.img`
   height: 60%;
   float: left;
+`;
+let CurrentIndicator : any = styled.img`
+  position: absolute;
+  width: 3%;
+  height: auto;
+  margin-left: 5.5vw;
 `;
 
 function Header() {
@@ -71,6 +78,7 @@ function Header() {
         
       </div>
       */}
+      <CurrentIndicator src="img/Group 8.png"/>
       <TabWrap>
       <MenuTabBar>
         
@@ -91,7 +99,15 @@ function Header() {
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn2>성적문의</TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
-        <TabBtn>기타</TabBtn>
+        <TabBtn className="dropdown">기타
+        <div className = 'dropdown-content'>
+            <a>대학원 진학 문의</a>
+            <a>조교 신청 문의</a>
+            <a>진로 상담</a>
+            <a>수업 내용 질문</a>
+            <a>과제 질문</a>
+          </div>
+          </TabBtn>
       </MenuTabBar>
       </TabWrap>
     </div>

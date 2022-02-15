@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable no-sequences */
+
 import React, { useEffect,useState,useRef, useCallback, Props} from "react";
 import axios from 'axios';
 import styled from 'styled-components'
@@ -81,6 +82,28 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
         
     },[type2])
 
+    const handleResize = useCallback(
+      () => {
+        if (textRef == null || textRef.current == null)
+        {
+            return;
+        }
+        textRef.current.style.height = '30px';
+        textRef.current.style.height = textRef.current.scrollHeight +'px';
+      },
+      [],
+    )
+    
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOption);
+        document.addEventListener('mousedown', handleClickOption2);
+        return () =>{
+            document.removeEventListener('mousedown', handleClickOption);
+            document.removeEventListener('mousedown', handleClickOption2);
+        }
+    },[]);
+    
     useEffect(()=>{
         //console.log(firstState);
         changeScrollValue(firstState, "greeting");
@@ -121,6 +144,7 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             :
             <div></div>}
         <Container>
+          
         <div>안녕하십니까 <InputDiv style={{width:'200px'}} placeholder='ex) 김철수' onChange={(e)=>changeInputValue(e, 'professorName')}></InputDiv> 교수님, </div>
         <div>저는  <InputDiv placeholder='ex) 컴퓨터공학과 00학번 이빛나' onChange={(e)=>changeInputValue(e, 'myName')}></InputDiv>입니다.
             
@@ -128,6 +152,7 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             <div ref={myRef} style={{position:'relative'}}>
             <div onClick={()=>setState(!state)} style={{fontWeight:'bold',color:'#14B390'}}>{firstState}</div>
             {state && <Scroll isFirst={true} ment = {firstMent} state = {firstState} setState={setFirstState} type= {type} setType={setType}/>}
+
             {tabType === '' ? <><div>다름이 아니라,</div><TextArea onInput={handleResize} ref={textRef} placeholder='ex) 메일 보낼 내용' onChange={(e)=>changeInputValue(e, 'defaultContent')}></TextArea></>
             : tabType==='please' ?<BillnutContent num = {num} setNum={setNum}/> 
             : tabType === 'recommend' ? <RecommendContent num = {num} setNum={setNum}/>

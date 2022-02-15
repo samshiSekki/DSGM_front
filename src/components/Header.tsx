@@ -24,6 +24,7 @@ let TabBtn : any = styled.div`
   font-weight: 800;
   font-size: 24px;
   line-height: 65px;
+  color: white;
 `;
 let TabBtn2 : any = styled.div`
   width: 20.6%;
@@ -33,6 +34,7 @@ let TabBtn2 : any = styled.div`
   font-weight: 800;
   font-size: 24px;
   line-height: 65px;
+  color: white;
 `;
 let TabBorder : any = styled.img`
   height: 60%;

@@ -8,8 +8,6 @@ import { createStore } from 'redux';
 
 let defaultInputValue = {
   professorName : '',
-  major : '',
-  studentCode : '',
   myName : '',
   defaultContent : '',
   greeting : '',
@@ -19,28 +17,25 @@ let defaultInputValue = {
 function inputChanger(inputValue = defaultInputValue, action){
   if(action.type === 'change'){
     let copy = inputValue;
-    if(action.payload.variableType == 'professorName'){
-      copy.professorName= action.payload.changeData;
-    }
-    else if(action.payload.variableType == 'major'){
-      copy.major = action.payload.changeData;
-    }
-    else if(action.payload.variableType == 'studentCode'){
-      copy.studentCode = action.payload.changeData;
-    }
-    else if(action.payload.variableType == 'myName'){
-      copy.myName = action.payload.changeData;
-    }
-    else if(action.payload.variableType == 'defaultContent'){
-      copy.defaultContent = action.payload.changeData;
-    }
-    else if(action.payload.variableType == 'greeting'){
-      copy.greeting = action.payload.changeData;
-    }
-    else if(action.payload.variableType == 'ending'){
-      copy.ending = action.payload.changeData;
-    }
-
+    
+    switch(action.payload.variableType){
+      case 'professorName' :
+        copy.professorName= action.payload.changeData;
+        break;
+      case 'myName' :
+        copy.myName= action.payload.changeData;
+        break;
+      case 'defaultContent' :
+        copy.defaultContent= action.payload.changeData;
+        break;
+      case 'greeting' :
+        copy.greeting= action.payload.changeData;
+        break;
+      case 'ending' :
+        copy.ending= action.payload.changeData;
+        break;
+  }
+    
     return copy;
   }else{
     return inputValue;

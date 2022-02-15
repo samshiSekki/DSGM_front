@@ -4,10 +4,6 @@
     display: inline-block;
 }
 
-.footerContainer div{
-    
-}
-
 .copyright{
     float:left;
     color: #6A6A6A;
@@ -25,6 +21,7 @@
 }
 .proposalBtn a{
     text-decoration: none;
+    color: #191E24;;
 }
 .proposalBtn a:visited{
     text-decoration: none;

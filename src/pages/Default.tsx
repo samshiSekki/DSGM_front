@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../css/main.css';
 import PostList from './PostList';
 import axios from 'axios';
-import { json } from 'stream/consumers';
 import styled from 'styled-components';
 import {connect, useDispatch} from 'react-redux';
 
@@ -14,15 +13,9 @@ let CurrentNav : any = styled.img`
 `;
 
 function Default(props: any) {
-  
-  //console.log(props.inputValue.professorName);
 
-  const [major, setMajor] = useState('');
-  const [name, setName] = useState('');
-  const [firstSelect, setFirstSelect] = useState('');
   const [showChecker, setShowChecker] = useState(false);
   let checkerResultDataString: string;
-  //let checkerResultDataJson: JSON;
   let copiedForm: string = '';
   let naverCheckerURL: string;
   let dispatch: any = useDispatch();
@@ -33,11 +26,7 @@ function Default(props: any) {
     let getData = ()=>{
       checkResult.then((appData : any)=>{
         checkerResultDataString = appData.data;
-        //console.log(checkerResultData);
         checkerResultDataString = checkerResultDataString.replace('mycallback(','').replace(');', '');
-        //console.log(checkerResultDataString);
-        //checkerResultDataJson = JSON.parse(checkerResultDataString);
-        //console.log(JSON.parse(checkerResultDataString).message.result.notag_html);
         checkerResultDataString = JSON.parse(checkerResultDataString).message.result.notag_html;
         console.log(checkerResultDataString);
       });
@@ -66,8 +55,8 @@ function Default(props: any) {
     if (!document.queryCommandSupported("copy"))
       return alert("복사하기가 지원되지 않는 브라우저입니다");
 
-    copiedForm = `안녕하십니까 ${props.inputValue.professorName}교수님\r\n`
-    +`저는 ${props.inputValue.major} ${props.inputValue.studentCode} ${props.inputValue.myName}입니다.\r\n`
+    copiedForm = `안녕하십니까 ${props.inputValue.professorName} 교수님\r\n`
+    +`저는 ${props.inputValue.myName}입니다.\r\n`
     +`${props.inputValue.greeting}\r\n`
     +`다름이 아니라, ${props.inputValue.defaultContent}.\r\n`
     +`${props.inputValue.ending}\r\n`;

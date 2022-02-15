@@ -6,9 +6,11 @@ body{
 }
 a{
     text-decoration: none;
+    color: white;
 }
 a:visited{
     color: white;
+    text-decoration: none;
 }
 .title{
     margin-top: 5.5vh;

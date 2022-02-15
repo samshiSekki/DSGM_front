@@ -24,6 +24,7 @@ let TabBtn : any = styled.div`
   font-weight: 800;
   font-size: 24px;
   line-height: 65px;
+  color: white;
 `;
 let TabBtn2 : any = styled.div`
   width: 20.6%;
@@ -33,6 +34,7 @@ let TabBtn2 : any = styled.div`
   font-weight: 800;
   font-size: 24px;
   line-height: 65px;
+  color: white;
 `;
 let TabBorder : any = styled.img`
   height: 60%;
@@ -95,9 +97,17 @@ function Header() {
         </TabBtn2>
         
         <TabBorder src='img/Line 4.png'></TabBorder>
-        <TabBtn2>추천서</TabBtn2>
+        <TabBtn2>
+          <Link to='/recommend'>
+            추천서
+          </Link>
+          </TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
-        <TabBtn2>성적문의</TabBtn2>
+        <TabBtn2>
+          <Link to='/grade'>
+            성적문의
+          </Link>
+        </TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn className="dropdown">기타
         <div className = 'dropdown-content'>

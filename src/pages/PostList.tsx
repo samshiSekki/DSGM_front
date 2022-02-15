@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable no-sequences */
-import React, { useEffect,useState,useRef, Props } from "react";
+import React, { useEffect,useState,useRef, useCallback} from "react";
 import axios from 'axios';
 import styled from 'styled-components'
 import Scroll from './Scroll';
@@ -27,7 +27,10 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
     const [state2, setState2] = useState(false);
     const myRef = useRef<any>(null);
 
+    const textRef = useRef<any>(null);
+
     const [num, setNum] = useState(0);
+
     const handleClickOption = (e:any) => {
         if (myRef.current && !myRef.current.contains(e.target)) {
             setState(false);
@@ -65,15 +68,7 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
                 console.log(response.data);
                 setCurrentContent(content[0]);
             }) */
-           
-        
-        document.addEventListener('mousedown', handleClickOption);
-        document.addEventListener('mousedown', handleClickOption2);
-        return () =>{
-            document.removeEventListener('mousedown', handleClickOption);
-            document.removeEventListener('mousedown', handleClickOption2);
-        }
-        
+                   
 
     },[type,tabType]);
     useEffect(() => {
@@ -94,6 +89,27 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
         //console.log(firstState);
         changeScrollValue(lastState, "ending");
     }, [lastState])
+    const handleResize = useCallback(
+      () => {
+        if (textRef == null || textRef.current == null)
+        {
+            return;
+        }
+        textRef.current.style.height = '30px';
+        textRef.current.style.height = textRef.current.scrollHeight +'px';
+      },
+      [],
+    )
+    
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOption);
+        document.addEventListener('mousedown', handleClickOption2);
+        return () =>{
+            document.removeEventListener('mousedown', handleClickOption);
+            document.removeEventListener('mousedown', handleClickOption2);
+        }
+    },[]);
 
 
     return (
@@ -105,21 +121,21 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             :
             <div></div>}
         <Container>
-        <div>안녕하십니까 <InputDiv placeholder='교수님 성함' onChange={(e)=>changeInputValue(e, 'professorName')}></InputDiv> 교수님 </div>
-        <div>저는  <InputDiv placeholder='과 이름' onChange={(e)=>changeInputValue(e, 'major')}></InputDiv> <InputDiv placeholder='학번' onChange={(e)=>changeInputValue(e, 'studentCode')}></InputDiv>  <InputDiv placeholder='학생 이름' onChange={(e)=>changeInputValue(e, 'myName')}></InputDiv>입니다.
+        <div>안녕하십니까 <InputDiv style={{width:'200px'}} placeholder='ex) 김철수' onChange={(e)=>changeInputValue(e, 'professorName')}></InputDiv> 교수님, </div>
+        <div>저는  <InputDiv placeholder='ex) 컴퓨터공학과 00학번 이빛나' onChange={(e)=>changeInputValue(e, 'myName')}></InputDiv>입니다.
             
             </div>
             <div ref={myRef} style={{position:'relative'}}>
-            <div onClick={()=>{setState(!state)}} style={{fontWeight:'bold'}}>{firstState}</div>
+            <div onClick={()=>setState(!state)} style={{fontWeight:'bold',color:'#14B390'}}>{firstState}</div>
             {state && <Scroll isFirst={true} ment = {firstMent} state = {firstState} setState={setFirstState} type= {type} setType={setType}/>}
-            {tabType === '' ? <>다름이 아니라, <InputDiv onChange={(e)=>changeInputValue(e, 'defaultContent')}></InputDiv></>
+            {tabType === '' ? <><div>다름이 아니라,</div><TextArea onInput={handleResize} ref={textRef} placeholder='ex) 메일 보낼 내용' onChange={(e)=>changeInputValue(e, 'defaultContent')}></TextArea></>
             : tabType==='please' ?<BillnutContent num = {num} setNum={setNum}/> 
             : tabType === 'recommend' ? <RecommendContent num = {num} setNum={setNum}/>
             : tabType === 'grade' ? <GradeContent num = {num} setNum={setNum}/>
             :
             <div></div>}
                         
-            <div onClick={()=>setState2(!state)} style={{fontWeight:'bold'}}>{lastState}</div>
+            <div onClick={()=>setState2(!state)} style={{fontWeight:'bold',color:'#14B390'}}>{lastState}</div>
             {state2 && <Scroll isFirst={false} ment = {lastMent} state = {lastState} setState={setLastState} type= {type2} setType={setType2}/>}
                         </div>
                         </Container>
@@ -167,13 +183,48 @@ justify-content:center;
     
 `
 const InputDiv = styled.input`
-    background: #FFFFFF;
-    border: 1px solid #E2E2E2;
-    border-radius: 13px;
-    width: 213px;
+    font-weight:bold;
+    background: #F7F8FA;
+    border:none;
+    border-bottom: 3px solid #14B390;
+    color: #14B390;
+    text-align:center;
+    &:focus{
+        outline:none;
+    }
+    //border: 1px solid #E2E2E2;
+    //border-radius: 13px;
+    
+    width: 500px;
     height: 30px;
     margin-top:10px;
     margin-bottom:10px;
     margin-right:5px;
+    &:placeholder-shown{
+        border-bottom: 3px solid black;
 
+    }
+    
+
+`;
+
+const TextArea = styled.textarea`
+font-weight:bold;
+    width:800px;
+    border:none;
+    background-image:
+        linear-gradient(to right, #F7F8FA 10px, transparent 10px),
+    linear-gradient(to left, #F7F8FA 10px, transparent 10px),
+    repeating-linear-gradient(#F7F8FA, #F7F8FA 34px, #000000 36px, #000000 37px, #000000 37px);
+    line-height: 37px;
+    padding: 8px 10px;
+    &:placeholder-shown{
+        border-bottom: none;
+    }
+    &:focus{
+        outline:none;
+    }
+    overflow-y:hidden;
+    resize:none;
+    
 `;

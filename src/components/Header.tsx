@@ -97,17 +97,13 @@ function Header() {
         </TabBtn2>
         
         <TabBorder src='img/Line 4.png'></TabBorder>
-        <TabBtn2>
-          <Link to='/recommend'>
-            추천서
-          </Link>
-          </TabBtn2>
+        <TabBtn2><Link to='recommend'>
+        추천서
+        </Link> </TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
-        <TabBtn2>
-          <Link to='/grade'>
-            성적문의
-          </Link>
-        </TabBtn2>
+        <TabBtn2><Link to='grade'>
+        성적문의
+        </Link></TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn className="dropdown">기타
         <div className = 'dropdown-content'>

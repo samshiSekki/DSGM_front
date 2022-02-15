@@ -8,8 +8,6 @@ import { createStore } from 'redux';
 
 let defaultInputValue = {
   professorName : '',
-  major : '',
-  studentCode : '',
   myName : '',
   defaultContent : '',
   greeting : '',
@@ -23,12 +21,6 @@ function inputChanger(inputValue = defaultInputValue, action){
     switch(action.payload.variableType){
       case 'professorName' :
         copy.professorName= action.payload.changeData;
-        break;
-      case 'major' :
-        copy.major= action.payload.changeData;
-        break;
-      case 'studentCode' :
-        copy.studentCode= action.payload.changeData;
         break;
       case 'myName' :
         copy.myName= action.payload.changeData;

@@ -1,19 +1,21 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable no-sequences */
-import React, { useEffect,useState,useRef, useCallback} from "react";
+import React, { useEffect,useState,useRef, useCallback,Props} from "react";
 import axios from 'axios';
 import styled from 'styled-components'
 import Scroll from './Scroll';
 import BillnutContent from '../components/Post/Billnut/BillnutContent';
 import GradeContent from '../components/Post/Grade/GradeContent';
 import RecommendContent from '../components/Post/Recommend/RecommendContent';
+import { connect, useDispatch } from 'react-redux';
 
 interface PostListProps {
-    tabType?: string
+    tabType?: string,
+    inputValue?: any
 }
 
 
-const PostList = ({tabType}:PostListProps) => {
+const PostList = ({tabType, inputValue}:PostListProps) => {
     const [firstState, setFirstState] = useState(`교수님의 가르침 덕분에, 저의 학문적 호기심을 기를 수 있었습니다. 감사합니다.`);
     const [lastState, setLastState] = useState("항상 좋은 수업 감사드립니다.");
     const [firstMent, setFirstMent] = useState([]);
@@ -41,6 +43,17 @@ const PostList = ({tabType}:PostListProps) => {
         }
 
     };  
+
+    let dispatch: any = useDispatch();
+    //console.log(inputValue.professorName);
+
+    function changeInputValue(e: any, variableType: string){
+        dispatch({type: 'change', payload:{changeData:e.target.value, variableType: variableType}});
+        //console.log(inputValue);
+    }
+    function changeScrollValue(ment: string, variableType: string){
+        dispatch({type: 'change', payload:{changeData: ment, variableType: variableType}});
+    }
 
     useEffect(()=>{        
             axios.get('http://13.125.177.135:5000/mail-forms/first',{params: {
@@ -89,6 +102,15 @@ const PostList = ({tabType}:PostListProps) => {
             document.removeEventListener('mousedown', handleClickOption2);
         }
     },[]);
+    
+    useEffect(()=>{
+        //console.log(firstState);
+        changeScrollValue(firstState, "greeting");
+    }, [firstState])
+    useEffect(()=>{
+        //console.log(firstState);
+        changeScrollValue(lastState, "ending");
+    }, [lastState])
 
 
     return (
@@ -100,14 +122,14 @@ const PostList = ({tabType}:PostListProps) => {
             :
             <div></div>}
         <Container>
-        <div>안녕하십니까 <InputDiv style={{width:'200px'}} placeholder='ex) 김철수'></InputDiv> 교수님, </div>
-        <div>저는  <InputDiv placeholder='ex) 컴퓨터공학과 00학번 이빛나'></InputDiv>입니다.
+        <div>안녕하십니까 <InputDiv style={{width:'200px'}} placeholder='교수님 성함' onChange={(e)=>changeInputValue(e, 'professorName')}></InputDiv> 교수님, </div>
+        <div>저는  <InputDiv placeholder='ex) 컴퓨터공학과 00학번 이빛나' onChange={(e)=>changeInputValue(e, 'major')}></InputDiv>입니다.
             
             </div>
             <div ref={myRef} style={{position:'relative'}}>
             <div onClick={()=>setState(!state)} style={{fontWeight:'bold',color:'#14B390'}}>{firstState}</div>
             {state && <Scroll isFirst={true} ment = {firstMent} state = {firstState} setState={setFirstState} type= {type} setType={setType}/>}
-            {tabType === '' ? <><div>다름이 아니라,</div><TextArea onInput={handleResize} ref={textRef} placeholder='ex) 메일 보낼 내용'></TextArea></>
+            {tabType === '' ? <><div>다름이 아니라,</div><TextArea onInput={handleResize} onChange={(e)=>changeInputValue(e, 'defaultContent')} ref={textRef} placeholder='ex) 메일 보낼 내용'></TextArea></>
             : tabType==='please' ?<BillnutContent num = {num} setNum={setNum}/> 
             : tabType === 'recommend' ? <RecommendContent num = {num} setNum={setNum}/>
             : tabType === 'grade' ? <GradeContent num = {num} setNum={setNum}/>
@@ -124,7 +146,14 @@ const PostList = ({tabType}:PostListProps) => {
 
 };
 
-export default PostList;
+function f1(inputValue: any){
+    return {
+      inputValue : inputValue
+    }
+};
+
+export default connect(f1)(PostList);
+//export default PostList;
 
 const Container = styled.div`
     //margin-top:300px;

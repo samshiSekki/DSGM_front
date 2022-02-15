@@ -2,6 +2,7 @@ import axios from 'axios';
 import e from 'express';
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
+import {connect, useDispatch} from 'react-redux';
 
 interface ScrollProps {
     isFirst:boolean
@@ -10,6 +11,7 @@ interface ScrollProps {
     setState : (state: string) => void
     type: string
     setType: (type : string) => void
+    inputValue : any
 }
 
 interface TextProps {
@@ -21,7 +23,7 @@ interface IsSelectProps {
     isSelect: boolean
 }
 
-const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps) => {
+const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps, props: any) => {
     //const tabMenu:Array<string> = ["기본", "계절","학업","날씨"];
     const [menu, setMenu] = useState<string>('');
     const [suggestion, setSuggestion] = useState<string>('');
@@ -55,6 +57,8 @@ const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps) =
         setIsSelect(isSelect);
         console.log(isSelect);
     },[isSelect,state]);
+
+    let dispatch = useDispatch();
 
     return (
         <>
@@ -93,7 +97,15 @@ const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps) =
 
 }
 
-export default Scroll;
+function f1(inputValue: any){
+    return {
+      inputValue : inputValue
+    }
+};
+
+export default connect(f1)(Scroll);
+
+//export default Scroll;
 
 const Container = styled.div`
  position:absolute;

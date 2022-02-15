@@ -3,10 +3,20 @@ import '../css/main.css';
 import PostList from './PostList';
 import axios from 'axios';
 import { json } from 'stream/consumers';
+import styled from 'styled-components';
+import {connect, useDispatch} from 'react-redux';
 
+let CurrentNav : any = styled.img`
+  position: absolute;
+  width: 3%;
+  height: auto;
+  margin-left: 5vw;
+`;
 
-function Default() {
+function Default(props: any) {
   
+  //console.log(props.inputValue.professorName);
+
   const [major, setMajor] = useState('');
   const [name, setName] = useState('');
   const [firstSelect, setFirstSelect] = useState('');
@@ -15,6 +25,7 @@ function Default() {
   //let checkerResultDataJson: JSON;
   let copiedForm: string = '';
   let naverCheckerURL: string;
+  let dispatch: any = useDispatch();
 
   const getChecker = async() => {
     naverCheckerURL = 'https://m.search.naver.com/p/csearch/ocontent/util/SpellerProxy?_callback=mycallback&q=' + '교수님안녕하새요!' + '&where=nexearch&color_blindness=0&_=1643811632694';
@@ -55,31 +66,20 @@ function Default() {
     if (!document.queryCommandSupported("copy"))
       return alert("복사하기가 지원되지 않는 브라우저입니다");
 
-    copiedForm = `교수님 안녕하세요!\r\n${major}학과 ${name}입니다.\r\n비대면 어쩌구저쩌구\r\n${firstSelect}\r\nㅎㅎㅎㅎㅎㅎㅎ\r\n감사합니다`;
+    copiedForm = `안녕하십니까 ${props.inputValue.professorName}교수님\r\n`
+    +`저는 ${props.inputValue.major} ${props.inputValue.studentCode} ${props.inputValue.myName}입니다.\r\n`
+    +`${props.inputValue.greeting}\r\n`
+    +`다름이 아니라, ${props.inputValue.defaultContent}.\r\n`
+    +`${props.inputValue.ending}\r\n`;
     copyInClipboard();
   }
 
   return(
   <div>
+    <CurrentNav src="img/Union.png"></CurrentNav>
     <textarea className="copy_text"></textarea>
-    {/*
-    <div className='tabBarContainer'>
-      <img className='menuTabBar' src="img/defaultTabBar.png"/>
-    </div>
-    */}
     <div className='mailTextContainer'>
         <PostList tabType={''}/>
-        {/* 교수님 안녕하세요! <br/>
-        <input onChange={(e)=>{setMajor(e.target.value)}}/>학과 <input onChange={(e)=>{setName(e.target.value)}}/>입니다. <br/>
-        비대면 어쩌구저쩌구 <br/>
-        <select onChange={(e)=>{setFirstSelect(e.target.value)}}>
-          <option value="">선택</option>
-          <option value="텍스트1">텍스트1</option>
-          <option value="텍스트2">텍스트2</option>
-        </select>
-        <br/>
-        ㅎㅎㅎㅎㅎㅎㅎ <br/>
-        감사합니다 */}
     </div>
     {/*
     <button onClick={()=>{console.log(firstSelect)}}></button>
@@ -95,4 +95,11 @@ function Default() {
   </div>);
 }
 
-export default Default;
+function f1(inputValue: any){
+  return {
+    inputValue : inputValue
+  }
+}
+export default connect(f1)(Default);
+
+//export default Default;

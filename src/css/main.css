@@ -11,10 +11,9 @@ a:visited{
     color: white;
 }
 .title{
-    margin-top: 65.61px;
+    margin-top: 5.5vh;
     width : 100vw;
     height : 120px;
-    line-height: 120px;
 }
 .dsgmTitleImg{
     width : 52vw;
@@ -41,17 +40,17 @@ a:visited{
 .dropdown-content{
     display : none;
     position : absolute;
-    width : 20vw;
-    background-color: #f9f9f9;
+    width : 15vw;
+    background-color: #191E24;
 }
 .dropdown-content a{
     display : block;
     text-decoration : none;
     font-size: 12px;
-    padding : 12px 20px;
+    /*padding : 12px 20px;*/
 }
 .dropdown-content a:hover{
-    background-color : #ececec
+    background-color : gray;
 }
 .dropdown:hover .dropdown-content {
     display: block;
@@ -69,7 +68,8 @@ a:visited{
     text-align: left;
     width : 65%;
     height : auto;
-    padding : 76px 97px 65px 97px;
+    /*padding : 76px 97px 65px 97px;*/
+    padding : 5% 5% 5% 5%;
     background: #F7F8FA;
     font-size: 18px;
     line-height: 32px;

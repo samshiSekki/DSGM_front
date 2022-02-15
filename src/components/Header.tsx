@@ -87,9 +87,13 @@ function Header() {
         </TabBtn2>
         
         <TabBorder src='img/Line 4.png'></TabBorder>
-        <TabBtn2>추천서</TabBtn2>
+        <TabBtn2><Link to='recommend'>
+        추천서
+        </Link> </TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
-        <TabBtn2>성적문의</TabBtn2>
+        <TabBtn2><Link to='grade'>
+        성적문의
+        </Link></TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn>기타</TabBtn>
       </MenuTabBar>

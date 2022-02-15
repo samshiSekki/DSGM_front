@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable no-sequences */
-import React, { useEffect,useState,useRef, useCallback} from "react";
+import React, { useEffect,useState,useRef, useCallback, Props} from "react";
 import axios from 'axios';
 import styled from 'styled-components'
 import Scroll from './Scroll';

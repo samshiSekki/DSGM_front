@@ -82,9 +82,9 @@ const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps, p
 
                 } */
                 if ( m.greeting== state) {
-                    return <SelectBox isSelect={true} onClick={()=>{setState(m.greeting); selectInput(idx);}}>✔ {m.greeting}</SelectBox>
+                    return <SelectBox isSelect={true} onClick={()=>{setState(m.greeting); selectInput(idx);}}>{m.greeting} <span>✔</span></SelectBox>
                 }else{
-                    return <SelectBox isSelect={false} onClick={()=>{setState(m.greeting); selectInput(idx);}}>{m.greeting}</SelectBox>
+                    return <SelectBox isSelect={false} onClick={()=>{setState(m.greeting); selectInput(idx);}}>{m.greeting} <span style={{marginLeft:'10px'}}>✔</span></SelectBox>
                 }
             }
             )}
@@ -145,11 +145,17 @@ const ScrollBox = styled.div`
     overflow:scroll;
     height:250px;
     
+
+overflow-x:hidden;
+    
 `;
 
 const SelectBox = styled.div<IsSelectProps>`
     margin:10px 10px;
     font-weight:${props => props.isSelect ? 'bold' :'none' };
+    color:${props => props.isSelect? '#14B390' : 'black'};
+    display:flex;
+    justify-content:space-between;
 `
 const InputDiv = styled.input`
     background: #FFFFFF;
@@ -160,6 +166,7 @@ const InputDiv = styled.input`
     margin-top:10px;
     margin-bottom:10px;
     margin-right:5px;
+    margin-left:10px;
 
 `;
 const ButtonDiv = styled.button`

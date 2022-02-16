@@ -50,7 +50,6 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
 
     function changeInputValue(e: any, variableType: string){
         dispatch({type: 'change', payload:{changeData:e.target.value, variableType: variableType}});
-        //console.log(inputValue);
     }
     function changeScrollValue(ment: string, variableType: string){
         dispatch({type: 'change', payload:{changeData: ment, variableType: variableType}});
@@ -112,17 +111,6 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
         //console.log(firstState);
         changeScrollValue(lastState, "ending");
     }, [lastState])
-    const handleResize = useCallback(
-      () => {
-        if (textRef == null || textRef.current == null)
-        {
-            return;
-        }
-        textRef.current.style.height = '30px';
-        textRef.current.style.height = textRef.current.scrollHeight +'px';
-      },
-      [],
-    )
     
 
     useEffect(() => {

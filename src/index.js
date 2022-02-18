@@ -43,6 +43,30 @@ let defaultInputValue = {
   billnutContent2_plus2 : '',
   billnutContent2_plus3 : '',
   billnutContent2_plus4 : '',
+
+  recommendState : 0,
+  recommendContent0_1 : '',
+  recommendContent0_2 : '',
+  recommendContent0_3 : '',
+  recommendContent0_4 : '',
+  recommendContent0_5 : '',
+  recommendContent0_plus1 : '',
+  recommendContent0_plus2 : '',
+  recommendContent0_plus3 : '',
+  recommendContent0_plus4 : '',
+
+  gradeState : 0,
+  gradeContent0_1 : '',
+  gradeContent0_2 : '',
+  gradeContent0_plus1 : '',
+  gradeContent0_plus2 : '',
+  gradeContent0_plus3 : '',
+  gradeContent0_plus4 : '',
+
+  gradeContent1_plus1 : '',
+  gradeContent1_plus2 : '',
+  gradeContent1_plus3 : '',
+  gradeContent1_plus4 : ''
 };
 
 function inputChanger(inputValue = defaultInputValue, action){
@@ -151,6 +175,72 @@ function inputChanger(inputValue = defaultInputValue, action){
         break;
       case 'billnutContent2_plus4':
         copy.billnutContent2_plus4 = action.payload.changeData;
+        break;
+
+      case 'recommendState':
+        copy.recommendState = action.payload.changeData;
+        break;
+      case 'recommendContent0_1' :
+        copy.recommendContent0_1 = action.payload.changeData;
+        break;
+      case 'recommendContent0_2' :
+        copy.recommendContent0_2 = action.payload.changeData;
+        break;
+      case 'recommendContent0_3' :
+        copy.recommendContent0_3 = action.payload.changeData;
+        break;
+      case 'recommendContent0_4' :
+        copy.recommendContent0_4 = action.payload.changeData;
+        break;
+      case 'recommendContent0_5' :
+        copy.recommendContent0_5 = action.payload.changeData;
+        break;
+      case 'recommendContent0_plus1' :
+        copy.recommendContent0_plus1 = action.payload.changeData;
+        break;
+      case 'recommendContent0_plus2' :
+        copy.recommendContent0_plus2 = action.payload.changeData;
+        break;
+      case 'recommendContent0_plus3' :
+        copy.recommendContent0_plus3 = action.payload.changeData;
+        break;
+      case 'recommendContent0_plus4' :
+        copy.recommendContent0_plus4 = action.payload.changeData;
+        break;
+
+      case 'gradeState':
+        copy.gradeState = action.payload.changeData;
+        break;
+      case 'gradeContent0_1' :
+        copy.gradeContent0_1 = action.payload.changeData;
+        break;
+      case 'gradeContent0_2' :
+        copy.gradeContent0_2 = action.payload.changeData;
+        break;
+      case 'gradeContent0_plus1' :
+        copy.gradeContent0_plus1 = action.payload.changeData;
+        break;
+      case 'gradeContent0_plus2' :
+        copy.gradeContent0_plus2 = action.payload.changeData;
+        break;
+      case 'gradeContent0_plus3' :
+        copy.gradeContent0_plus3 = action.payload.changeData;
+        break;
+      case 'gradeContent0_plus4' :
+        copy.gradeContent0_plus4 = action.payload.changeData;
+        break;
+
+      case 'gradeContent1_plus1' :
+        copy.gradeContent1_plus1 = action.payload.changeData;
+        break;
+      case 'gradeContent1_plus2' :
+        copy.gradeContent1_plus2 = action.payload.changeData;
+        break;
+      case 'gradeContent1_plus3' :
+        copy.gradeContent1_plus3 = action.payload.changeData;
+        break;
+      case 'gradeContent1_plus4' :
+        copy.gradeContent1_plus4 = action.payload.changeData;
         break;
   }
     

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import {connect, useDispatch} from 'react-redux';
 
 type ContentProps = {
     content : string
@@ -22,6 +23,8 @@ const RecommendContent = ({num,setNum}:NumberProps) => {
     const textRef3 = useRef<any>(null);
     const textRef4 = useRef<any>(null);
     const textRef5 = useRef<any>(null);
+
+    let dispatch = useDispatch();
 
     const handleResize = useCallback(
         (value:number) => {
@@ -78,28 +81,30 @@ const RecommendContent = ({num,setNum}:NumberProps) => {
                 setCurrent(response.data[num]);
                 console.log(response.data[num]);
             }) */
-
+        dispatch({type: 'change', payload:{changeData: num, variableType: 'recommendState'}});
     },[num]);
+
+    function changeInputValue(e: any, variableType: string){
+        dispatch({type: 'change', payload:{changeData: e.target.value, variableType: variableType}});
+    }
+
     return (
         <>
         <div>
         {num == 0 ?
             <>
-             <div>다름이 아니라, <InputDiv></InputDiv>에 지원하고자 하는데, 교수님의 추천서가 필요하다고 합니다.</div>
+             <div>다름이 아니라, <InputDiv onChange={(e)=>changeInputValue(e, 'recommendContent0_1')}></InputDiv>에 지원하고자 하는데, 교수님의 추천서가 필요하다고 합니다.</div>
              {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)}></TextArea></>}
-            <div>교수님의 <InputDiv></InputDiv>강의를 통해<InputDiv></InputDiv>에 대한 관심을 발견한 것은 <InputDiv></InputDiv>을 선택하는 동기가 되었습니다.</div>
+             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'recommendContent0_plus1')}></TextArea></>}
+            <div>교수님의 <InputDiv onChange={(e)=>changeInputValue(e, 'recommendContent0_2')}></InputDiv>강의를 통해<InputDiv onChange={(e)=>changeInputValue(e, 'recommendContent0_3')}></InputDiv>에 대한 관심을 발견한 것은 <InputDiv onChange={(e)=>changeInputValue(e, 'recommendContent0_4')}></InputDiv>을 선택하는 동기가 되었습니다.</div>
             {state2 == false ? <ButtonStyled onClick={()=>setState2(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)}></TextArea></>}
-            <div><InputDiv></InputDiv>이유로 이 수업을 꼭 듣고 싶은데 추가 증원이 가능한지 궁금합니다. </div>
-            {state3 == false ? <ButtonStyled onClick={()=>setState3(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)}></TextArea></>}
-            <div>따라서 교수님께 <InputDiv></InputDiv>지원을 위한 추천서를 부탁드리고자 메일을 드립니다.</div>
+             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'recommendContent0_plus2')}></TextArea></>}
+            <div>따라서 교수님께 <InputDiv onChange={(e)=>changeInputValue(e, 'recommendContent0_5')}></InputDiv>지원을 위한 추천서를 부탁드리고자 메일을 드립니다.</div>
             {state4 == false ? <ButtonStyled onClick={()=>setState4(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'recommendContent0_plus3')}></TextArea></>}
             <div>교수님의 승낙 이후에 추천서 일정 및 양식, 저에 대한 정보 등을 다시 첨부해드리고 방문 상담 일정을 잡고 싶습니다.</div>
             {state5 == false ? <ButtonStyled onClick={()=>setState5(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState5(false)}>-</ButtonStyled> <TextArea ref={textRef5} onInput={()=>handleResize(5)}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState5(false)}>-</ButtonStyled> <TextArea ref={textRef5} onInput={()=>handleResize(5)} onChange={(e)=>changeInputValue(e, 'recommendContent0_plus4')}></TextArea></>}
             </>
             : <div></div>}
                    
@@ -110,7 +115,12 @@ const RecommendContent = ({num,setNum}:NumberProps) => {
 
 };
 
-export default RecommendContent;
+function f1(inputValue: any){
+    return {
+      inputValue : inputValue
+    }
+}
+export default connect(f1)(RecommendContent);
 
 const ButtonStyled = styled.button`
 background-color:#F7F8FA;

@@ -4,9 +4,6 @@ import {connect} from 'react-redux';
 
 
 function Billnut(props: any) {
-  const [major, setMajor] = useState('');
-  const [name, setName] = useState('');
-  const [firstSelect, setFirstSelect] = useState('');
   let copiedForm: string = '';
 
   function copyInClipboard(){

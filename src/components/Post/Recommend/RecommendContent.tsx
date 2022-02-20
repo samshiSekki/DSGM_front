@@ -132,7 +132,7 @@ const InputDiv = styled.input`
 font-weight:bold;
     background: #F7F8FA;
     border:none;
-    border-bottom: 3px solid;
+    border-bottom: 1px solid #A3A3A3;
     text-align:center;
     &:focus{
         outline:none;
@@ -146,19 +146,16 @@ font-weight:bold;
     margin-bottom:10px;
     margin-right:5px;
     &:placeholder-shown{
-        border-bottom: 3px solid black;
+        border-bottom: 1px solid #A3A3A3;
 
     }
     `;
     const TextArea = styled.textarea`
-    font-weight:bold;
     width:800px;
     border:none;
     background-image:
-        linear-gradient(to right, #F7F8FA 10px, transparent 10px),
-    linear-gradient(to left, #F7F8FA 10px, transparent 10px),
-    repeating-linear-gradient(#F7F8FA, #F7F8FA 34px, #000000 36px, #000000 37px, #000000 37px);
-    line-height: 37px;
+    repeating-linear-gradient(#F7F8FA, #F7F8FA 35px, #A3A3A3 36px, #A3A3A3 36px, #A3A3A3 36px);
+    line-height: 36px;
     padding: 8px 10px;
     &:placeholder-shown{
         border-bottom: none;
@@ -170,4 +167,3 @@ font-weight:bold;
     resize:none;
     
 `;
-

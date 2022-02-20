@@ -3,6 +3,8 @@ import e from 'express';
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {connect, useDispatch} from 'react-redux';
+import ChangeIcon from '../components/asset/icon/icon-active.svg';
+import DefaultIcon from '../components/asset/icon/icon-inactive.svg';
 
 interface ScrollProps {
     isFirst:boolean
@@ -72,7 +74,7 @@ const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps, p
             : <><Tab onClick={()=>setType('default')}>💌기본💌</Tab>
             <Tab onClick={()=>setType('season')}>🌱계절🌱</Tab>
             <Tab onClick={()=>setType('weather')}>❄️날씨❄️</Tab>
-            <Tab onClick={()=>setType('time')}>☀️하루☀️</Tab></> }
+            <Tab onClick={()=>setType('time')}>💧하루💧</Tab></> }
         </TabBox>
         <ScrollBox>
             {ment.map((m:TextProps, idx:number) => 
@@ -82,9 +84,9 @@ const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps, p
 
                 } */
                 if ( m.greeting== state) {
-                    return <SelectBox isSelect={true} onClick={()=>{setState(m.greeting); selectInput(idx);}}>{m.greeting} <span>✔</span></SelectBox>
+                    return <SelectBox isSelect={true} onClick={()=>{setState(m.greeting); selectInput(idx);}}>{m.greeting} <div style={{marginLeft:'10px',marginTop:'5px'}}><img src={DefaultIcon}></img></div></SelectBox>
                 }else{
-                    return <SelectBox isSelect={false} onClick={()=>{setState(m.greeting); selectInput(idx);}}>{m.greeting} <span style={{marginLeft:'10px'}}>✔</span></SelectBox>
+                    return <SelectBox isSelect={false} onClick={()=>{setState(m.greeting); selectInput(idx);}}>{m.greeting} <div style={{marginLeft:'10px',marginTop:'5px'}}><img src={ChangeIcon}></img></div></SelectBox>
                 }
             }
             )}
@@ -108,11 +110,17 @@ export default connect(f1)(Scroll);
 //export default Scroll;
 
 const Container = styled.div`
- position:absolute;
+    position:absolute;
     background-color:#ffffff;
-    width:800px;
+    width:381px;
     height:300px;
-    
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 17px;
+    border: 1px solid #A3A3A3;
+    padding-top:10px;
+    padding-left:27px;
+    padding-right:27px;
+    margin-left:250px;
     
 `
 const TabBox = styled.div`
@@ -122,18 +130,20 @@ const TabBox = styled.div`
     
 `;
 const Tab = styled.div`
-background-color:#fff111;
-width: 25%;
-height:100%;
-color:black;
+    width: 25%;
+    height:100%;
+    color:black;
+font-size: 12px;
 
 display:flex;
 align-items:center;
 justify-content:center;
-background-color:#EAEAEA;
+background-color:#ffffff;
+border-radius: 17px 17px 0px 0px;
 :hover{
-    background-color:#C4C4C4;
+    font-weight:bold;
 }
+border-bottom:1px solid #A3A3A3;
     
 `
 
@@ -143,40 +153,58 @@ const ScrollBox = styled.div`
     overflow-x:hidden;
     height:400px; */
     overflow:scroll;
-    height:250px;
-    
-
-overflow-x:hidden;
+    height:216px;
+    font-size:14px;
+    padding-top:20px;
+    overflow-x:hidden;
+    padding-right:10px;
+    &::-webkit-scrollbar{
+        width: 7px;
+    }
+    &::-webkit-scrollbar-thumb {
+    background-color: #E2E2E2;
+    border-radius: 10px;
+  }
+  /* &::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  } */
     
 `;
 
 const SelectBox = styled.div<IsSelectProps>`
-    margin:10px 10px;
     font-weight:${props => props.isSelect ? 'bold' :'none' };
     color:${props => props.isSelect? '#14B390' : 'black'};
     display:flex;
     justify-content:space-between;
+    :hover{
+    background-color: #D6EEE8;
+    border-radius: 6px;
+    }
 `
 const InputDiv = styled.input`
     background: #FFFFFF;
     border: 1px solid #E2E2E2;
-    border-radius: 13px;
-    width: 550px;
+    border-radius: 10px;
+    width: 250px;
     height: 30px;
     margin-top:10px;
     margin-bottom:10px;
     margin-right:5px;
-    margin-left:10px;
+    float:left;
 
 `;
 const ButtonDiv = styled.button`
-    background-color:#EAEAEA;
+    background-color:#ffffff;
 :hover{
-    background-color:#C4C4C4;
+    background-color:#D6EEE8;
 }
-margin-left:20px;
+margin-left:10px;
 height:30px;
-width:100px;
+width:90px;
 font-weight:bold;
+margin-top:10px;
+border:none;
     
 `;

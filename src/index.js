@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -10,6 +11,7 @@ let defaultInputValue = {
   professorName : '',
   myName : '',
   defaultContent : '',
+  defaultContent_plus1 :'',
   greeting : '',
   ending : '',
 
@@ -82,6 +84,9 @@ function inputChanger(inputValue = defaultInputValue, action){
         break;
       case 'defaultContent' :
         copy.defaultContent= action.payload.changeData;
+        break;
+      case 'defaultContent_plus1' :
+        copy.defaultContent_plus1= action.payload.changeData;
         break;
       case 'greeting' :
         copy.greeting= action.payload.changeData;

@@ -58,6 +58,7 @@ function Default(props: any) {
     copiedForm = `안녕하십니까 ${props.inputValue.professorName} 교수님\r\n`
     +`저는 ${props.inputValue.myName}입니다.\r\n`
     +`${props.inputValue.greeting}\r\n`
+    +`${props.inputValue.defaultContent_plus1}\r\n`
     +`다름이 아니라, ${props.inputValue.defaultContent}.\r\n`
     +`${props.inputValue.ending}\r\n`;
     copyInClipboard();

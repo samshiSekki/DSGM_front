@@ -9,6 +9,10 @@ import BillnutContent from '../components/Post/Billnut/BillnutContent';
 import GradeContent from '../components/Post/Grade/GradeContent';
 import RecommendContent from '../components/Post/Recommend/RecommendContent';
 import { connect, useDispatch } from 'react-redux';
+import ChangeIcon from '../components/asset/icon/icon-change.svg';
+import MessageIcon1 from '../components/asset/icon/icon-message1.svg';
+import MessageIcon2 from '../components/asset/icon/icon-message2.svg';
+import MessageIconDelete from '../components/asset/icon/icon-message-delete.svg';
 
 interface PostListProps {
     tabType?: string,
@@ -25,10 +29,12 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
     const [type2, setType2] = useState('default'); // 끝인사
     
     const [state, setState] = useState(false);
+    const [state1, setState1]= useState<boolean>(false);
     const [state2, setState2] = useState(false);
     const myRef = useRef<any>(null);
 
     const textRef = useRef<any>(null);
+    const textRef1 = useRef<any>(null);
 
     const [num, setNum] = useState(0);
 
@@ -82,19 +88,32 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
     },[type2])
 
     const handleResize = useCallback(
-      () => {
-        if (textRef == null || textRef.current == null)
+      (value:number) => {
+        if (value == 1)
+        {
+            if (textRef1 == null || textRef1.current == null)
+            {
+                return;
+            }
+            textRef1.current.style.height = '30px';
+            textRef1.current.style.height = textRef1.current.scrollHeight +'px';
+        } else if (value == 2)
+        {
+            if (textRef == null || textRef.current == null)
         {
             return;
         }
         textRef.current.style.height = '30px';
         textRef.current.style.height = textRef.current.scrollHeight +'px';
+        }
+        
       },
       [],
     )
     
 
     useEffect(() => {
+        setState1(false);
         document.addEventListener('mousedown', handleClickOption);
         document.addEventListener('mousedown', handleClickOption2);
         return () =>{
@@ -122,6 +141,61 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
         }
     },[]);
 
+    
+    const [showImage, setShowImage] = useState(false);
+    const [showImage2, setShowImage2] = useState(false);
+
+    const HAS_VISITED_BEFORE : any = window.localStorage.getItem('hasVisitedBefore');
+    const handleShowModal = () => {
+        console.log(HAS_VISITED_BEFORE);
+        if (HAS_VISITED_BEFORE && HAS_VISITED_BEFORE > new Date()) {
+          return;
+        }        
+  
+        if (!HAS_VISITED_BEFORE) {
+          setShowImage(true);
+          let expires : any = new Date();
+          expires = expires.setMinutes(expires.getMinutes() + 1);
+          window.localStorage.setItem('hasVisitedBefore', expires);
+        }
+      };
+  
+    useEffect(() => {
+        //window.localStorage.removeItem('hasVisitedBefore');
+        console.log(1);
+        const handleShowModal = () => {
+            if (HAS_VISITED_BEFORE && HAS_VISITED_BEFORE > new Date()) {
+                if (showImage == false) setShowImage(false);
+                if (showImage2 == false) setShowImage2(false);
+              return;
+            }        
+      
+            if (!HAS_VISITED_BEFORE) {
+              setShowImage(true);
+              setShowImage2(true);
+              let expires : any = new Date();
+              expires = expires.setTime(expires.getTime() + (30*24*60*60*1000));
+              window.localStorage.setItem('hasVisitedBefore', expires);
+            }
+          };
+          window.setTimeout(handleShowModal,200);
+      
+    }, [HAS_VISITED_BEFORE]);
+  
+    const handleClose = () => {
+
+        setShowImage(false);
+        
+    };
+
+    const handleClose2 = () => {
+
+        setShowImage2(false);
+        
+    };
+  
+  
+
 
     return (
         <>
@@ -138,17 +212,20 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             
             </div>
             <div ref={myRef} style={{position:'relative'}}>
-            <div onClick={()=>setState(!state)} style={{fontWeight:'bold',color:'#14B390'}}>{firstState}</div>
+            <div style={{display:'flex', alignItems:'center'}}><div style={{fontWeight:'bold',color:'#14B390',marginRight:'10px'}}>{firstState}</div><img onClick={()=>setState(!state)} width='20px' height='20px' src={ChangeIcon}></img></div>
+            {showImage2 && <div style={{position:'absolute',left:'610px',top:'-110px'}}><div style={{position:'relative'}}><img src={MessageIcon2}></img><img onClick = {()=>handleClose2()} style={{position:'absolute', right:'15px', top:'10px'}} src={MessageIconDelete}></img></div></div>}
+            {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
+             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'recommendContent0_plus1')}></TextArea></>}
             {state && <Scroll isFirst={true} ment = {firstMent} state = {firstState} setState={setFirstState} type= {type} setType={setType}/>}
-
-            {tabType === '' ? <><div>다름이 아니라,</div><TextArea onInput={handleResize} ref={textRef} placeholder='ex) 메일 보낼 내용' onChange={(e)=>changeInputValue(e, 'defaultContent')}></TextArea></>
+            {showImage && <div style={{position:'absolute',left:'-200px',top:'-70px'}}><div style={{position:'relative'}}><img src={MessageIcon1}></img><img onClick = {()=>handleClose()} style={{position:'absolute', left:'15px', top:'10px'}} src={MessageIconDelete}></img></div></div>}
+            {tabType === '' ? <><div>다름이 아니라,</div><TextArea onInput={()=>handleResize(2)} ref={textRef} placeholder='ex) 메일 보낼 내용' onChange={(e)=>changeInputValue(e, 'defaultContent')}></TextArea></>
             : tabType==='please' ?<BillnutContent num = {num} setNum={setNum}/> 
             : tabType === 'recommend' ? <RecommendContent num = {num} setNum={setNum}/>
             : tabType === 'grade' ? <GradeContent num = {num} setNum={setNum}/>
             :
             <div></div>}
                         
-            <div onClick={()=>setState2(!state)} style={{fontWeight:'bold',color:'#14B390'}}>{lastState}</div>
+                        <div style={{display:'flex', alignItems:'center'}}><div style={{fontWeight:'bold',color:'#14B390',marginRight:'10px'}}>{lastState}</div><img onClick={()=>setState2(!state)} width='20px' height='20px' src={ChangeIcon}></img></div>
             {state2 && <Scroll isFirst={false} ment = {lastMent} state = {lastState} setState={setLastState} type= {type2} setType={setType2}/>}
                         </div>
                         </Container>
@@ -175,17 +252,20 @@ const Container = styled.div`
 `;
 
 const TabBox = styled.div`
-    height:50px;
+    height:39px;
     display:flex;
     flex-direction:row;
     margin-bottom:20px;
+    width: 307px;
     
 `;
 const Tab = styled.div`
-background-color:#EAEAEA;
-width: 25%;
+background-color:#EFEFEF;
+width: 89px;
 height:100%;
 color:black;
+margin-right:20px;
+border-radius: 19.5px;
 
 display:flex;
 align-items:center;
@@ -196,10 +276,9 @@ justify-content:center;
     
 `
 const InputDiv = styled.input`
-    font-weight:bold;
     background: #F7F8FA;
     border:none;
-    border-bottom: 3px solid #14B390;
+    border-bottom: 1px solid #14B390;
     color: #14B390;
     text-align:center;
     &:focus{
@@ -214,7 +293,7 @@ const InputDiv = styled.input`
     margin-bottom:10px;
     margin-right:5px;
     &:placeholder-shown{
-        border-bottom: 3px solid black;
+        border-bottom: 1px solid #A3A3A3;
 
     }
     
@@ -222,14 +301,11 @@ const InputDiv = styled.input`
 `;
 
 const TextArea = styled.textarea`
-font-weight:bold;
     width:800px;
     border:none;
     background-image:
-        linear-gradient(to right, #F7F8FA 10px, transparent 10px),
-    linear-gradient(to left, #F7F8FA 10px, transparent 10px),
-    repeating-linear-gradient(#F7F8FA, #F7F8FA 34px, #000000 36px, #000000 37px, #000000 37px);
-    line-height: 37px;
+    repeating-linear-gradient(#F7F8FA, #F7F8FA 35px, #A3A3A3 36px, #A3A3A3 36px, #A3A3A3 36px);
+    line-height: 36px;
     padding: 8px 10px;
     &:placeholder-shown{
         border-bottom: none;
@@ -239,5 +315,11 @@ font-weight:bold;
     }
     overflow-y:hidden;
     resize:none;
+    
+`;
+const ButtonStyled = styled.button`
+background-color:#F7F8FA;
+border:none;
+cursor:pointer;
     
 `;

@@ -1,6 +1,15 @@
 import React, {useState} from 'react';
 import PostList from './PostList';
 import {connect} from 'react-redux';
+import styled from 'styled-components';
+
+let CurrentNav : any = styled.img`
+  position: absolute;
+  width: 3%;
+  height: auto;
+  margin-left: 51.5vw;
+`;
+
 
 function Grade(props: any) {
   let copiedForm: string = '';
@@ -24,6 +33,7 @@ function Grade(props: any) {
       copiedForm = `안녕하십니까 ${props.inputValue.professorName}교수님\r\n`
       +`저는 ${props.inputValue.myName}입니다.\r\n`
       +`${props.inputValue.greeting}\r\n`
+      +`${props.inputValue.commonContent_plus}\r\n`
       +`다름이 아니라, 이번 ${props.inputValue.gradeContent0_1} 수업에서 ${props.inputValue.gradeContent0_2} 부분에 대해 저는 최선을 다했습니다.\r\n`
       +`${props.inputValue.gradeContent0_plus1}\r\n`
       +`그럼에도 예상과 달리 다소 낮은 성적을 받아 조금 아쉽습니다.\r\n`
@@ -38,6 +48,7 @@ function Grade(props: any) {
       copiedForm = `안녕하십니까 ${props.inputValue.professorName}교수님\r\n`
       +`저는 ${props.inputValue.myName}입니다.\r\n`
       +`${props.inputValue.greeting}\r\n`
+      +`${props.inputValue.commonContent_plus}\r\n`
       +`다름이 아니라 각 항목에 대한 취득 점수 및 상세 성적을 알 수 있을까 싶어 메일을 보내게 되었습니다.\r\n`
       +`${props.inputValue.gradeContent1_plus1}\r\n`
       +`과제와 시험 모두 나름대로 열심히 준비했는데, 예상한 결과보다는 아쉬운 결과에 문의를 드리게 되었습니다.\r\n`
@@ -53,6 +64,7 @@ function Grade(props: any) {
   }
   return (
   <div>
+    <CurrentNav src="img/Union.png"/>
     <div className='mailTextContainer'>
       <PostList tabType={'grade'}/>
       

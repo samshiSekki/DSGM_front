@@ -1,7 +1,14 @@
 import React, {useState} from 'react';
 import PostList from './PostList';
 import {connect} from 'react-redux';
+import styled from 'styled-components';
 
+let CurrentNav : any = styled.img`
+  position: absolute;
+  width: 3%;
+  height: auto;
+  margin-left: 20.5vw;
+`;
 
 function Billnut(props: any) {
   let copiedForm: string = '';
@@ -25,6 +32,7 @@ function Billnut(props: any) {
       copiedForm = `안녕하십니까 ${props.inputValue.professorName}교수님\r\n`
       +`저는 ${props.inputValue.myName}입니다.\r\n`
       +`${props.inputValue.greeting}\r\n`
+      +`${props.inputValue.commonContent_plus}\r\n`
       +`연락드리게 된 이유는 다름이 아니라 ${props.inputValue.billnutContent0_1} 과목의 증원 가능성이 있는지 여쭙기 위함입니다.\r\n`
       +`${props.inputValue.billnutContent0_plus1}\r\n`
       +`이 과목은 여러 분반이 있지만, 그럼에도 교수님의 수업을 수강하고자 하는 이유는 다음과 같습니다.\r\n`
@@ -43,6 +51,7 @@ function Billnut(props: any) {
       copiedForm = `안녕하십니까 ${props.inputValue.professorName}교수님\r\n`
       +`저는 ${props.inputValue.myName}입니다.\r\n`
       +`${props.inputValue.greeting}\r\n`
+      +`${props.inputValue.commonContent_plus}\r\n`
       +`다름 아니라, 교수님 수업 중 ${props.inputValue.billnutContent1_1}이 혹시라도 증원이 가능한지 조심스럽게 여쭤보고자 메일 드립니다.\r\n`
       +`${props.inputValue.billnutContent1_plus1}\r\n`
       +`${props.inputValue.billnutContent1_2}는 제가 ${props.inputValue.billnutContent1_3}학과 수업들을 수강하며 꼭 듣고 싶었던 수업 중 하나입니다.`
@@ -59,6 +68,7 @@ function Billnut(props: any) {
       copiedForm = `안녕하십니까 ${props.inputValue.professorName}교수님\r\n`
       +`저는 ${props.inputValue.myName}입니다.\r\n`
       +`${props.inputValue.greeting}\r\n`
+      +`${props.inputValue.commonContent_plus}\r\n`
       +`이번 학기 ${props.inputValue.billnutContent2_1} 수업 증원과 관련하여 여쭙고 싶어 메일 드립니다.\r\n`
       +`${props.inputValue.billnutContent2_plus1}\r\n`
       +`교수님의 강의 계획서를 보고 ${props.inputValue.billnutContent2_2} 내용에 대한 관심이 생겨, 이번 학기 해당 과목을 수강함으로써 관련 분야에 대한 식견을 넓히고 싶습니다.\r\n`
@@ -73,6 +83,7 @@ function Billnut(props: any) {
   }
   return (
   <div>
+    <CurrentNav src="img/Union.png"/>
     <div className='mailTextContainer'>
       <PostList tabType={'please'}/>
        

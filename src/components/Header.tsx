@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import '../css/main.css';
 import styled from 'styled-components';
@@ -40,42 +40,65 @@ let TabBorder : any = styled.img`
   height: 60%;
   float: left;
 `;
-let CurrentIndicator : any = styled.img`
+let CurrentIndicator0 : any = styled.img`
   position: absolute;
   width: 3%;
   height: auto;
   margin-left: 5.5vw;
 `;
+let CurrentIndicator1 : any = styled.img`
+  position: absolute;
+  width: 3%;
+  height: auto;
+  margin-left: 20.5vw;
+`;
+let CurrentIndicator2 : any = styled.img`
+  position: absolute;
+  width: 3%;
+  height: auto;
+  margin-left: 36vw;
+`;
+let CurrentIndicator3 : any = styled.img`
+  position: absolute;
+  width: 3%;
+  height: auto;
+  margin-left: 51.5vw;
+`;
 
 function Header() {
+  const [currentMenu, setCurrentMenu] = useState(0);
   return(
     <div>
       <div className='title'>
         <img src="img/dsgm_title.png" className='dsgmTitleImg'/>
       </div>
-      <CurrentIndicator src="img/Group 8.png"/>
+      {currentMenu === 0?<CurrentIndicator0 src="img/Group 8.png"/>
+        : currentMenu === 1?<CurrentIndicator1 src="img/Group 8.png"/>
+        : currentMenu === 2?<CurrentIndicator2 src="img/Group 8.png"/>
+        : <CurrentIndicator3 src="img/Group 8.png"/>
+      }
       <TabWrap>
       <MenuTabBar>
         
         <TabBtn>
           <Link to='/'>
-            기본
+            <div onClick={()=>{setCurrentMenu(0)}}>기본</div>
           </Link>
         </TabBtn>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn2>
           <Link to='/billnut'>
-            빌넣
+            <div onClick={()=>{setCurrentMenu(1)}}>빌넣</div>
           </Link>
         </TabBtn2>
         
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn2><Link to='recommend'>
-        추천서
+            <div onClick={()=>{setCurrentMenu(2)}}>추천서</div>
         </Link> </TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn2><Link to='grade'>
-        성적문의
+        <div onClick={()=>{setCurrentMenu(3)}}>성적문의</div>
         </Link></TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn className="dropdown">기타

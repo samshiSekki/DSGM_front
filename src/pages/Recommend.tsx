@@ -1,6 +1,14 @@
 import React, {useState} from 'react';
 import PostList from './PostList';
 import {connect} from 'react-redux';
+import styled from 'styled-components';
+
+let CurrentNav : any = styled.img`
+  position: absolute;
+  width: 3%;
+  height: auto;
+  margin-left: 36vw;
+`;
 
 function Recommend(props: any) {
   let copiedForm: string = '';
@@ -24,6 +32,7 @@ function Recommend(props: any) {
       copiedForm = `안녕하십니까 ${props.inputValue.professorName}교수님\r\n`
       +`저는 ${props.inputValue.myName}입니다.\r\n`
       +`${props.inputValue.greeting}\r\n`
+      +`${props.inputValue.commonContent_plus}\r\n`
       +`다름이 아니라, ${props.inputValue.recommendContent0_1}에 지원하고자 하는데, 교수님의 추천서가 필요하다고 합니다.\r\n`
       +`${props.inputValue.recommendContent0_plus1}\r\n`
       +`교수님의 ${props.inputValue.recommendContent0_2} 강의를 통해 ${props.inputValue.recommendContent0_3}에 대한 관심을 발견한 것은 ${props.inputValue.recommendContent0_4}을 선택하는 동기가 되었습니다.\r\n`
@@ -40,6 +49,7 @@ function Recommend(props: any) {
 
   return (
   <div>
+    <CurrentNav src="img/Union.png"/>
     <div className='mailTextContainer'>
       <PostList tabType={'recommend'}/>
     </div>

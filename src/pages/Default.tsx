@@ -34,7 +34,8 @@ function Default(props: any) {
     +`저는 ${props.inputValue.myName}입니다.\r\n`
     +`${props.inputValue.greeting}\r\n`
     +`${props.inputValue.commonContent_plus}\r\n`
-    +`다름이 아니라, ${props.inputValue.defaultContent}.\r\n`
+    +`다름이 아니라,\r\n`
+    +`${props.inputValue.defaultContent}\r\n`
     +`${props.inputValue.ending}\r\n`;
     naverCheckerURL = 'https://m.search.naver.com/p/csearch/ocontent/util/SpellerProxy?_callback=mycallback&q=' + stringToCheck + '&where=nexearch&color_blindness=0&_=1643811632694';
     let checkResult : any = axios.get(naverCheckerURL).then((appData : any)=>{
@@ -42,14 +43,8 @@ function Default(props: any) {
       checkerResultDataString = checkerResultDataString.replace('mycallback(','').replace(');', '');
       checkerResultDataString = JSON.parse(checkerResultDataString).message.result.notag_html;
 
-      //console.log(checkerResultDataString.length);
-      //console.log(checkerResultDataString.slice(0, 3) + '\r\n');
-      
       for(let i=0; i<checkerResultDataString.length; i++){
         if(checkerResultDataString[i] == '.' || checkerResultDataString[i] == ','){
-          //console.log(i);
-          //console.log(checkerResultDataString.slice(0,i+1));
-          //console.log(checkerResultDataString.slice(i+1));
           checkerResultDataString = checkerResultDataString.slice(0,i+1) + '\n' + checkerResultDataString.slice(i+1);
         }
       }
@@ -79,7 +74,8 @@ function Default(props: any) {
     +`저는 ${props.inputValue.myName}입니다.\r\n`
     +`${props.inputValue.greeting}\r\n`
     +`${props.inputValue.commonContent_plus}\r\n`
-    +`다름이 아니라, ${props.inputValue.defaultContent}.\r\n`
+    +`다름이 아니라,\r\n`
+    +`${props.inputValue.defaultContent}\r\n`
     +`${props.inputValue.ending}\r\n`;
     copyInClipboard();
   }
@@ -92,16 +88,15 @@ function Default(props: any) {
   return(
   <div>
     <CurrentNav src="img/Union.png"/>
-      {
+    {
         showChecker === true?
         <div className='checkerInfoContainer'>
         <CheckerInfo src="img/Group 75.png"/>
         </div>
       : null
       }
-      
-
     <div className='mailTextContainer'>
+      
       <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
         <PostList tabType={''}/>
       </div>

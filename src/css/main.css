@@ -57,7 +57,11 @@ a:visited{
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
+.checkerInfoContainer{
+    display: inline-block;
+    width: 75vw;
+    background-color: white;
+}
 .mailTextContainer{
     display: inline-block;
     text-align: left;

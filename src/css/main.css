@@ -57,26 +57,21 @@ a:visited{
 .dropdown:hover .dropdown-content {
     display: block;
 }
-/*
-.tabBarContainer{
-    display: inline-block;
-    width: 75%;
-}
-.menuTabBar{
-    width: 100%;
-}*/
+
 .mailTextContainer{
     display: inline-block;
     text-align: left;
-    width : 65%;
+    width : 65vw;
     height : auto;
-    /*padding : 76px 97px 65px 97px;*/
-    padding : 5% 5% 5% 5%;
+    padding : 5vw 5vw 5vw 5vw;
     background: #F7F8FA;
     font-size: 18px;
     line-height: 32px;
 /* identical to box height */
     color: #191E24;
+}
+.hideCheckcer{
+    display: none;
 }
 .buttonContainer{
     margin-top: 24px;

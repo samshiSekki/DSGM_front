@@ -4,6 +4,7 @@ import PostList from './PostList';
 import axios from 'axios';
 import styled from 'styled-components';
 import {connect, useDispatch} from 'react-redux';
+import parse from 'html-react-parser';
 
 let CurrentNav : any = styled.img`
   position: absolute;
@@ -22,7 +23,8 @@ let CheckerInfo : any = styled.img`
 function Default(props: any) {
 
   let [showChecker, setShowChecker] = useState(false);
-  let [checkerResult, setCheckerResult] = useState('테스트');//맞춤법 검사 결과 화면에 뿌리는 용도
+  let [checkerResult1, setCheckerResult1] = useState('');//맞춤법 검사 결과 화면에 뿌리는 용도
+  let [checkerResult2, setCheckerResult2] = useState('');//맞춤법 검사 결과 화면에 뿌리는 용도
   let checkerResultDataString: string = '초기값';
   let copiedForm: string = '';
   let naverCheckerURL: string;
@@ -30,29 +32,24 @@ function Default(props: any) {
   //let dispatch: any = useDispatch();
 
   const getChecker = async() => {
-    stringToCheck = `안녕하십니까 ${props.inputValue.professorName} 교수님\r\n`
-    +`저는 ${props.inputValue.myName}입니다.\r\n`
-    +`${props.inputValue.greeting}\r\n`
-    +`${props.inputValue.commonContent_plus}\r\n`
-    +`다름이 아니라,\r\n`
-    +`${props.inputValue.defaultContent}\r\n`
-    +`${props.inputValue.ending}\r\n`;
+    stringToCheck = props.inputValue.commonContent_plus;
     naverCheckerURL = 'https://m.search.naver.com/p/csearch/ocontent/util/SpellerProxy?_callback=mycallback&q=' + stringToCheck + '&where=nexearch&color_blindness=0&_=1643811632694';
     let checkResult : any = axios.get(naverCheckerURL).then((appData : any)=>{
       checkerResultDataString = appData.data;
       checkerResultDataString = checkerResultDataString.replace('mycallback(','').replace(');', '');
-      checkerResultDataString = JSON.parse(checkerResultDataString).message.result.notag_html;
-
-      for(let i=0; i<checkerResultDataString.length; i++){
-        if(checkerResultDataString[i] == '.' || checkerResultDataString[i] == ','){
-          checkerResultDataString = checkerResultDataString.slice(0,i+1) + '\n' + checkerResultDataString.slice(i+1);
-        }
-      }
-      console.log(checkerResultDataString);
-      setCheckerResult(checkerResultDataString);
-      return checkerResultDataString;
+      checkerResultDataString = JSON.parse(checkerResultDataString).message.result.html;
+      setCheckerResult1(checkerResultDataString);
+      checkResult2();
     });
-    checkerResultDataString = await checkResult.then(setShowChecker(true));
+    stringToCheck = props.inputValue.defaultContent;
+    naverCheckerURL = 'https://m.search.naver.com/p/csearch/ocontent/util/SpellerProxy?_callback=mycallback&q=' + stringToCheck + '&where=nexearch&color_blindness=0&_=1643811632694';
+    let checkResult2 : any = axios.get(naverCheckerURL).then((appData : any)=>{
+      checkerResultDataString = appData.data;
+      checkerResultDataString = checkerResultDataString.replace('mycallback(','').replace(');', '');
+      checkerResultDataString = JSON.parse(checkerResultDataString).message.result.html;
+      setCheckerResult2(checkerResultDataString);
+    });
+    await checkResult.then(setShowChecker(true));
   }
   
   function copyInClipboard(){
@@ -80,11 +77,6 @@ function Default(props: any) {
     copyInClipboard();
   }
   
-  useEffect(() => {
-    console.log(checkerResult);
-  }, [checkerResult])
-  
-  
   return(
   <div>
     <CurrentNav src="img/Union.png"/>
@@ -103,7 +95,31 @@ function Default(props: any) {
       {
         showChecker === true?
         <div id='resultTest'>
-          {checkerResult}
+          안녕하십니까 {props.inputValue.professorName} 교수님,<br/>
+          저는 {props.inputValue.myName}입니다.<br/>
+          {props.inputValue.greeting}<br/>
+          {
+            checkerResult1 != ''
+            ? 
+            <>
+            {parse(checkerResult1)}
+            <br/>
+            </>
+            : null
+          }
+          다름이 아니라, <br/>
+          {
+            checkerResult2 != ''
+            ?
+            <>
+            {parse(checkerResult2)}
+            <br/>
+            </>
+            : null
+          }
+          {props.inputValue.ending}
+
+          {/*checkerResult*/}
         </div>
       : null
       }

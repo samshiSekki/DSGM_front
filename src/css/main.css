@@ -127,3 +127,15 @@ a:visited{
     width: 500px;
     height: 100px;
 }
+.green_text{
+    color: #FFC700;
+}
+.red_text{
+    color: #ED635E;
+}
+.blue_text{
+    color: #55ABE4;
+}
+.violet_text{
+    color: #A341EF;
+}

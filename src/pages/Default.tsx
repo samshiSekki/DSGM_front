@@ -29,25 +29,30 @@ function Default(props: any) {
   let copiedForm: string = '';
   let naverCheckerURL: string;
   let stringToCheck: string
-  //let dispatch: any = useDispatch();
 
   const getChecker = async() => {
-    stringToCheck = props.inputValue.commonContent_plus;
+    stringToCheck = `안녕하십니까 ${props.inputValue.professorName} 교수님, `
+    +`저는 ${props.inputValue.myName}입니다. `
+    +`${props.inputValue.greeting} `
+    +`${props.inputValue.commonContent_plus} `
+    +`다름이 아니라, `
+    +`${props.inputValue.defaultContent} `
+    +`${props.inputValue.ending} `;
     naverCheckerURL = 'https://m.search.naver.com/p/csearch/ocontent/util/SpellerProxy?_callback=mycallback&q=' + stringToCheck + '&where=nexearch&color_blindness=0&_=1643811632694';
     let checkResult : any = axios.get(naverCheckerURL).then((appData : any)=>{
       checkerResultDataString = appData.data;
       checkerResultDataString = checkerResultDataString.replace('mycallback(','').replace(');', '');
       checkerResultDataString = JSON.parse(checkerResultDataString).message.result.html;
+
+      //console.log(checkerResultDataString);
+
+      for(let i=0; i<checkerResultDataString.length; i++){
+        if(checkerResultDataString[i] == '.' || checkerResultDataString[i] == ','){
+          checkerResultDataString = checkerResultDataString.slice(0, i+1) + `<br/>` + checkerResultDataString.slice(i+1);
+        }
+      }
+      
       setCheckerResult1(checkerResultDataString);
-      checkResult2();
-    });
-    stringToCheck = props.inputValue.defaultContent;
-    naverCheckerURL = 'https://m.search.naver.com/p/csearch/ocontent/util/SpellerProxy?_callback=mycallback&q=' + stringToCheck + '&where=nexearch&color_blindness=0&_=1643811632694';
-    let checkResult2 : any = axios.get(naverCheckerURL).then((appData : any)=>{
-      checkerResultDataString = appData.data;
-      checkerResultDataString = checkerResultDataString.replace('mycallback(','').replace(');', '');
-      checkerResultDataString = JSON.parse(checkerResultDataString).message.result.html;
-      setCheckerResult2(checkerResultDataString);
     });
     await checkResult.then(setShowChecker(true));
   }
@@ -94,36 +99,11 @@ function Default(props: any) {
       </div>
       {
         showChecker === true?
-        <div id='resultTest'>
-          안녕하십니까 {props.inputValue.professorName} 교수님,<br/>
-          저는 {props.inputValue.myName}입니다.<br/>
-          {props.inputValue.greeting}<br/>
-          {
-            checkerResult1 != ''
-            ? 
-            <>
-            {parse(checkerResult1)}
-            <br/>
-            </>
-            : null
-          }
-          다름이 아니라, <br/>
-          {
-            checkerResult2 != ''
-            ?
-            <>
-            {parse(checkerResult2)}
-            <br/>
-            </>
-            : null
-          }
-          {props.inputValue.ending}
-
-          {/*checkerResult*/}
+        <div>
+          {parse(checkerResult1)}
         </div>
       : null
       }
-      
     </div>
       
     <div className='buttonContainer'>

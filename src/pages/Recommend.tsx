@@ -26,41 +26,39 @@ function Recommend(props: any) {
   let copiedForm: string = '';
   let checkerResultDataString: string = '초기값';
   let naverCheckerURL: string;
-  let stringToCheck: string;
+  let stringToCheck: string[];
+  let checkFinal: string = '';
 
   const getChecker = async() => {
+    let checking: any = async() => {
     if(props.inputValue.recommendState == 0){
-      stringToCheck = `안녕하십니까 ${props.inputValue.professorName}교수님, `
-      +`저는 ${props.inputValue.myName}입니다. `
-      +`${props.inputValue.greeting} `
-      +`${props.inputValue.commonContent_plus} `
-      +`다름이 아니라, ${props.inputValue.recommendContent0_1}에 지원하고자 하는데, 교수님의 추천서가 필요하다고 합니다. `
-      +`${props.inputValue.recommendContent0_plus1} `
-      +`교수님의 ${props.inputValue.recommendContent0_2} 강의를 통해 ${props.inputValue.recommendContent0_3}에 대한 관심을 발견한 것은 ${props.inputValue.recommendContent0_4}을 선택하는 동기가 되었습니다. `
-      +`${props.inputValue.recommendContent0_plus2} `
-      +`따라서 교수님께 ${props.inputValue.recommendContent0_5} 지원을 위한 추천서를 부탁드리고자 메일을 드립니다. `
-      +`${props.inputValue.recommendContent0_plus3} `
-      +`교수님의 승낙 이후에 추천서 일정 및 양식, 저에 대한 정보 등을 다시 첨부해드리고 방문 상담 일정을 잡고 싶습니다. `
-      +`${props.inputValue.recommendContent0_plus4} `
-      +`${props.inputValue.ending}`;
+      stringToCheck = [`안녕하십니까 ${props.inputValue.professorName}교수님,`,
+      `저는 ${props.inputValue.myName}입니다.`,
+      `${props.inputValue.greeting}`,
+      `${props.inputValue.commonContent_plus}`,
+      `다름이 아니라, ${props.inputValue.recommendContent0_1}에 지원하고자 하는데, 교수님의 추천서가 필요하다고 합니다.`,
+      `${props.inputValue.recommendContent0_plus1}`,
+      `교수님의 ${props.inputValue.recommendContent0_2} 강의를 통해 ${props.inputValue.recommendContent0_3}에 대한 관심을 발견한 것은 ${props.inputValue.recommendContent0_4}을 선택하는 동기가 되었습니다.`,
+      `${props.inputValue.recommendContent0_plus2}`,
+      `따라서 교수님께 ${props.inputValue.recommendContent0_5} 지원을 위한 추천서를 부탁드리고자 메일을 드립니다.`,
+      `${props.inputValue.recommendContent0_plus3}`,
+      `교수님의 승낙 이후에 추천서 일정 및 양식, 저에 대한 정보 등을 다시 첨부해드리고 방문 상담 일정을 잡고 싶습니다.`,
+      `${props.inputValue.recommendContent0_plus4}`,
+      `${props.inputValue.ending}`];
     }
-    naverCheckerURL = 'https://m.search.naver.com/p/csearch/ocontent/util/SpellerProxy?_callback=mycallback&q=' + stringToCheck + '&where=nexearch&color_blindness=0&_=1643811632694';
-    let checkResult : any = axios.get(naverCheckerURL).then((appData : any)=>{
-      checkerResultDataString = appData.data;
-      checkerResultDataString = checkerResultDataString.replace('mycallback(','').replace(');', '');
-      checkerResultDataString = JSON.parse(checkerResultDataString).message.result.html;
-
-      //console.log(checkerResultDataString);
-
-      for(let i=0; i<checkerResultDataString.length; i++){
-        if(checkerResultDataString[i] == '.' || checkerResultDataString[i] == ','){
-          checkerResultDataString = checkerResultDataString.slice(0, i+1) + `<br/>` + checkerResultDataString.slice(i+1);
-        }
+    for(let i=0; i<stringToCheck.length; i++){
+      if(stringToCheck[i] !== ''){
+        naverCheckerURL = 'https://m.search.naver.com/p/csearch/ocontent/util/SpellerProxy?_callback=mycallback&q=' + stringToCheck[i] + '&where=nexearch&color_blindness=0&_=1643811632694';
+          await axios.get(naverCheckerURL).then((appData : any)=>{
+            checkerResultDataString = appData.data;
+            checkerResultDataString = checkerResultDataString.replace('mycallback(','').replace(');', '');
+            checkerResultDataString = JSON.parse(checkerResultDataString).message.result.html+'<br>';
+            checkFinal = checkFinal + checkerResultDataString;
+          }).then(()=>{setCheckerResult(checkFinal)});
       }
-      
-      setCheckerResult(checkerResultDataString);
-    });
-    await checkResult.then(setShowChecker(true));
+    }
+  }
+  checking().then(setShowChecker(true));
   }
 
   function copyInClipboard(){

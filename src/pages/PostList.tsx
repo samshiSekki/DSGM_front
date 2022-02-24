@@ -194,15 +194,16 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
         
     };
   
-  
-
+    function clearCommonPlus(){
+        dispatch({type: 'change', payload:{changeData:'', variableType: 'commonContent_plus'}});
+    }
 
     return (
         <>
         {tabType === '' ? <></>
-            : tabType==='please' ?<TabBox><Tab onClick={()=>{setNum(0)}}>양식1</Tab><Tab onClick={()=>{setNum(1)}}>양식2</Tab><Tab onClick={()=>{setNum(2)}}>양식3</Tab></TabBox>
-            : tabType === 'recommend' ? <TabBox><Tab onClick={()=>{setNum(0)}}>양식1</Tab></TabBox>
-            : tabType === 'grade' ? <TabBox><Tab onClick={()=>{setNum(0)}}>양식1</Tab><Tab onClick={()=>{setNum(1)}}>양식2</Tab></TabBox>
+            : tabType==='please' ?<TabBox><Tab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</Tab><Tab onClick={()=>{setNum(1); clearCommonPlus()}}>양식2</Tab><Tab onClick={()=>{setNum(2); clearCommonPlus()}}>양식3</Tab></TabBox>
+            : tabType === 'recommend' ? <TabBox><Tab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</Tab></TabBox>
+            : tabType === 'grade' ? <TabBox><Tab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</Tab><Tab onClick={()=>{setNum(1); clearCommonPlus()}}>양식2</Tab></TabBox>
             :
             <div></div>}
         <Container>

@@ -24,37 +24,31 @@ function Default(props: any) {
 
   let [showChecker, setShowChecker] = useState(false);
   let [checkerResult1, setCheckerResult1] = useState('');//맞춤법 검사 결과 화면에 뿌리는 용도
-  let [checkerResult2, setCheckerResult2] = useState('');//맞춤법 검사 결과 화면에 뿌리는 용도
+  let checkFinal: string = '';
   let checkerResultDataString: string = '초기값';
   let copiedForm: string = '';
   let naverCheckerURL: string;
-  let stringToCheck: string
+  let stringToCheck: string[];
 
   const getChecker = async() => {
-    stringToCheck = `안녕하십니까 ${props.inputValue.professorName} 교수님, `
-    +`저는 ${props.inputValue.myName}입니다. `
-    +`${props.inputValue.greeting} `
-    +`${props.inputValue.commonContent_plus} `
-    +`다름이 아니라, `
-    +`${props.inputValue.defaultContent} `
-    +`${props.inputValue.ending} `;
-    naverCheckerURL = 'https://m.search.naver.com/p/csearch/ocontent/util/SpellerProxy?_callback=mycallback&q=' + stringToCheck + '&where=nexearch&color_blindness=0&_=1643811632694';
-    let checkResult : any = axios.get(naverCheckerURL).then((appData : any)=>{
-      checkerResultDataString = appData.data;
-      checkerResultDataString = checkerResultDataString.replace('mycallback(','').replace(');', '');
-      checkerResultDataString = JSON.parse(checkerResultDataString).message.result.html;
+    stringToCheck = [];
+    let checking: any = async() => {
+    stringToCheck = [`안녕하십니까 ${props.inputValue.professorName} 교수님,`, `저는 ${props.inputValue.myName}입니다.`, `${props.inputValue.greeting}`, `${props.inputValue.commonContent_plus}`,`다름이 아니라,`, `${props.inputValue.defaultContent}`, `${props.inputValue.ending}`];
 
-      //console.log(checkerResultDataString);
-
-      for(let i=0; i<checkerResultDataString.length; i++){
-        if(checkerResultDataString[i] == '.' || checkerResultDataString[i] == ','){
-          checkerResultDataString = checkerResultDataString.slice(0, i+1) + `<br/>` + checkerResultDataString.slice(i+1);
-        }
-      }
+    for(let i=0; i<stringToCheck.length; i++){
       
-      setCheckerResult1(checkerResultDataString);
-    });
-    await checkResult.then(setShowChecker(true));
+      if(stringToCheck[i] !== ''){
+        naverCheckerURL = 'https://m.search.naver.com/p/csearch/ocontent/util/SpellerProxy?_callback=mycallback&q=' + stringToCheck[i] + '&where=nexearch&color_blindness=0&_=1643811632694';
+          await axios.get(naverCheckerURL).then((appData : any)=>{
+            checkerResultDataString = appData.data;
+            checkerResultDataString = checkerResultDataString.replace('mycallback(','').replace(');', '');
+            checkerResultDataString = JSON.parse(checkerResultDataString).message.result.html+'<br>';
+            checkFinal = checkFinal + checkerResultDataString;
+          }).then(()=>{setCheckerResult1(checkFinal)});
+      }
+    }
+  }
+  checking().then(setShowChecker(true)); 
   }
   
   function copyInClipboard(){

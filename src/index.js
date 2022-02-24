@@ -11,7 +11,7 @@ let defaultInputValue = {
   professorName : '',
   myName : '',
   defaultContent : '',
-  defaultContent_plus1 :'',
+  commonContent_plus :'',
   greeting : '',
   ending : '',
 
@@ -85,8 +85,8 @@ function inputChanger(inputValue = defaultInputValue, action){
       case 'defaultContent' :
         copy.defaultContent= action.payload.changeData;
         break;
-      case 'defaultContent_plus1' :
-        copy.defaultContent_plus1= action.payload.changeData;
+      case 'commonContent_plus' :
+        copy.commonContent_plus= action.payload.changeData;
         break;
       case 'greeting' :
         copy.greeting= action.payload.changeData;

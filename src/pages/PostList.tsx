@@ -194,15 +194,16 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
         
     };
   
-  
-
+    function clearCommonPlus(){
+        dispatch({type: 'change', payload:{changeData:'', variableType: 'commonContent_plus'}});
+    }
 
     return (
         <>
         {tabType === '' ? <></>
-            : tabType==='please' ?<TabBox><Tab onClick={()=>{setNum(0)}}>양식1</Tab><Tab onClick={()=>{setNum(1)}}>양식2</Tab><Tab onClick={()=>{setNum(2)}}>양식3</Tab></TabBox>
-            : tabType === 'recommend' ? <TabBox><Tab onClick={()=>{setNum(0)}}>양식1</Tab></TabBox>
-            : tabType === 'grade' ? <TabBox><Tab onClick={()=>{setNum(0)}}>양식1</Tab><Tab onClick={()=>{setNum(1)}}>양식2</Tab></TabBox>
+            : tabType==='please' ?<TabBox><Tab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</Tab><Tab onClick={()=>{setNum(1); clearCommonPlus()}}>양식2</Tab><Tab onClick={()=>{setNum(2); clearCommonPlus()}}>양식3</Tab></TabBox>
+            : tabType === 'recommend' ? <TabBox><Tab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</Tab></TabBox>
+            : tabType === 'grade' ? <TabBox><Tab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</Tab><Tab onClick={()=>{setNum(1); clearCommonPlus()}}>양식2</Tab></TabBox>
             :
             <div></div>}
         <Container>
@@ -215,7 +216,7 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             <div style={{display:'flex', alignItems:'center'}}><div style={{fontWeight:'bold',color:'#14B390',marginRight:'10px'}}>{firstState}</div><img onClick={()=>setState(!state)} width='20px' height='20px' src={ChangeIcon}></img></div>
             {showImage2 && <div style={{position:'absolute',left:'610px',top:'-110px'}}><div style={{position:'relative'}}><img src={MessageIcon2}></img><img onClick = {()=>handleClose2()} style={{position:'absolute', right:'15px', top:'10px'}} src={MessageIconDelete}></img></div></div>}
             {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'recommendContent0_plus1')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'commonContent_plus')}></TextArea></>}
             {state && <Scroll isFirst={true} ment = {firstMent} state = {firstState} setState={setFirstState} type= {type} setType={setType}/>}
             {showImage && <div style={{position:'absolute',left:'-200px',top:'-70px'}}><div style={{position:'relative'}}><img src={MessageIcon1}></img><img onClick = {()=>handleClose()} style={{position:'absolute', left:'15px', top:'10px'}} src={MessageIconDelete}></img></div></div>}
             {tabType === '' ? <><div>다름이 아니라,</div><TextArea onInput={()=>handleResize(2)} ref={textRef} placeholder='ex) 메일 보낼 내용' onChange={(e)=>changeInputValue(e, 'defaultContent')}></TextArea></>

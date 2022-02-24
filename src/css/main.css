@@ -41,42 +41,42 @@ a:visited{
 }
 .dropdown-content{
     display : none;
-    position : absolute;
     width : 15vw;
     background-color: #191E24;
 }
 .dropdown-content a{
+    margin-top: 0;
     display : block;
     text-decoration : none;
     font-size: 12px;
-    /*padding : 12px 20px;*/
 }
 .dropdown-content a:hover{
     background-color : gray;
 }
 .dropdown:hover .dropdown-content {
+    margin-top: 370px;
+    position: absolute;
     display: block;
 }
-/*
-.tabBarContainer{
+.checkerInfoContainer{
     display: inline-block;
-    width: 75%;
+    width: 75vw;
+    background-color: white;
 }
-.menuTabBar{
-    width: 100%;
-}*/
 .mailTextContainer{
     display: inline-block;
     text-align: left;
-    width : 65%;
+    width : 65vw;
     height : auto;
-    /*padding : 76px 97px 65px 97px;*/
-    padding : 5% 5% 5% 5%;
+    padding : 5vw 5vw 5vw 5vw;
     background: #F7F8FA;
     font-size: 18px;
     line-height: 32px;
 /* identical to box height */
     color: #191E24;
+}
+.hideCheckcer{
+    display: none;
 }
 .buttonContainer{
     margin-top: 24px;
@@ -127,4 +127,16 @@ a:visited{
     margin-top: 100px;
     width: 500px;
     height: 100px;
+}
+.green_text{
+    color: #FFC700;
+}
+.red_text{
+    color: #ED635E;
+}
+.blue_text{
+    color: #55ABE4;
+}
+.violet_text{
+    color: #A341EF;
 }

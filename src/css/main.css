@@ -40,9 +40,7 @@ a:visited{
     height:87px;
 }
 .dropdown-content{
-    margin-top: 0;
     display : none;
-    
     width : 15vw;
     background-color: #191E24;
 }
@@ -56,6 +54,8 @@ a:visited{
     background-color : gray;
 }
 .dropdown:hover .dropdown-content {
+    margin-top: 370px;
+    position: absolute;
     display: block;
 }
 .checkerInfoContainer{

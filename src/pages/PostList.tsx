@@ -62,7 +62,7 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
     }
 
     useEffect(()=>{        
-            axios.get('http://13.125.177.135:5000/mail-forms/first',{params: {
+            axios.get('http://mail-helper.com/mail-forms/first',{params: {
                 category: type
             }}).then(function(response){
                 setFirstMent(response.data);
@@ -79,7 +79,7 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
     },[type,tabType]);
     useEffect(() => {
 
-        axios.get('http://13.125.177.135:5000/mail-forms/last',{params: {
+        axios.get('http://mail-helper.com/mail-forms/last',{params: {
             category: type2
         }}).then(function(response){
             setLastMent(response.data);

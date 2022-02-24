@@ -12,9 +12,9 @@ let MenuTabBar :any = styled.div`
   display: flex;
   align-items: center;
   width: 75vw;
-  height: 8.2vh;
+  height: 100%;
   background: #191E24;
-  border-radius: 33px;
+  border-radius: 26px;
   color: white;
 `;
 let TabBtn : any = styled.div`
@@ -43,7 +43,7 @@ let TabBtn2 : any = styled.div`
   justify-content: center;
 `;
 let TabBorder : any = styled.img`
-  height: 60%;
+  height: 30px;
   float: left;
 `;
 let CurrentIndicator0 : any = styled.img`

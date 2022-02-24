@@ -225,7 +225,7 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             :
             <div></div>}
                         
-                        <div style={{display:'flex', alignItems:'center'}}><div style={{fontWeight:'bold',color:'#14B390',marginRight:'10px'}}>{lastState}</div><img onClick={()=>setState2(!state)} width='20px' height='20px' src={ChangeIcon}></img></div>
+                        <div style={{display:'flex', alignItems:'center'}}><div style={{fontWeight:'bold',color:'#14B390',marginRight:'10px'}}>{lastState}</div><img onClick={()=>setState2(!state2)} width='20px' height='20px' src={ChangeIcon}></img></div>
             {state2 && <Scroll isFirst={false} ment = {lastMent} state = {lastState} setState={setLastState} type= {type2} setType={setType2}/>}
                         </div>
                         </Container>
@@ -281,6 +281,7 @@ const InputDiv = styled.input`
     border-bottom: 1px solid #14B390;
     color: #14B390;
     text-align:center;
+    line-height: 36px;
     &:focus{
         outline:none;
     }
@@ -302,6 +303,7 @@ const InputDiv = styled.input`
 
 const TextArea = styled.textarea`
     width:800px;
+    font-family: 'Roboto';
     border:none;
     background-image:
     repeating-linear-gradient(#F7F8FA, #F7F8FA 35px, #A3A3A3 36px, #A3A3A3 36px, #A3A3A3 36px);

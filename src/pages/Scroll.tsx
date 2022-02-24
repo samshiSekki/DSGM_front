@@ -90,7 +90,9 @@ const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps, p
                 }
             }
             )}
-            <InputDiv placeholder={"멘트를 제안해주세요!"} value={suggestion} onChange={handleInput}></InputDiv><ButtonDiv onClick={onSuggest}>{'💌보내기💌'}</ButtonDiv>
+            <div style={{display:'flex', justifyContent:'space-between'}}>
+                <InputDiv placeholder={"멘트를 제안해주세요!"} value={suggestion} onChange={handleInput}></InputDiv><ButtonDiv onClick={onSuggest}>{'💌보내기💌'}</ButtonDiv>
+            </div>
         </ScrollBox>
         </Container>
         </>
@@ -112,7 +114,7 @@ export default connect(f1)(Scroll);
 const Container = styled.div`
     position:absolute;
     background-color:#ffffff;
-    width:381px;
+    width:600px;
     height:300px;
     box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.2);
     border-radius: 17px;
@@ -185,9 +187,10 @@ const SelectBox = styled.div<IsSelectProps>`
 `
 const InputDiv = styled.input`
     background: #FFFFFF;
+    font-family: 'Roboto';
     border: 1px solid #E2E2E2;
     border-radius: 10px;
-    width: 250px;
+    width: 450px;
     height: 30px;
     margin-top:10px;
     margin-bottom:10px;

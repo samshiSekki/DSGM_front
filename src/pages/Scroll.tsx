@@ -32,7 +32,7 @@ const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps, p
     const [isSelect, setIsSelect] = useState<number>(0);
 
     const onSuggest = () =>{
-        axios.post('http://13.125.177.135:5000/mail-forms/suggestion', {
+        axios.post('http://mail-helper.com/mail-forms/suggestion', {
             type: type,
             suggestion: suggestion
         })

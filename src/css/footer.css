@@ -1,3 +1,6 @@
+body{
+    -webkit-text-size-adjust: none;
+}
 .footerContainer{
     width : 75%;
     height : auto;
@@ -26,4 +29,22 @@
 .proposalBtn a:visited{
     text-decoration: none;
     color: #191E24;
+}
+
+.propsalMobile{
+    float: right;
+  font-size: 7px;
+  line-height: 8px;
+  color: #241E19;
+}
+.proposalMobile a{
+    float:right;
+    font-size: 7px;
+    text-decoration: none;
+    color: #241E19;
+}
+.proposalMobile a:visited{
+    font-size: 7px;
+    text-decoration: none;
+    color: #241E19;
 }

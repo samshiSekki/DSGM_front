@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import '../css/main.css';
 import styled from 'styled-components';
+import { connect, useDispatch } from 'react-redux';
 
 let TabWrap : any = styled.div`
   display: inline-block;
@@ -67,6 +68,12 @@ let CurrentIndicator3 : any = styled.img`
 
 function Header() {
   const [currentMenu, setCurrentMenu] = useState(0);
+  let dispatch = useDispatch();
+
+  function clearCommonPlus(){
+    dispatch({type: 'change', payload:{changeData:'', variableType: 'commonContent_plus'}});
+  }
+
   return(
     <div>
       <div className='title'>
@@ -82,23 +89,23 @@ function Header() {
         
         <TabBtn>
           <Link to='/'>
-            <div onClick={()=>{setCurrentMenu(0)}}>기본</div>
+            <div onClick={()=>{setCurrentMenu(0); clearCommonPlus()}}>기본</div>
           </Link>
         </TabBtn>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn2>
           <Link to='/billnut'>
-            <div onClick={()=>{setCurrentMenu(1)}}>빌넣</div>
+            <div onClick={()=>{setCurrentMenu(1); clearCommonPlus()}}>빌넣</div>
           </Link>
         </TabBtn2>
         
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn2><Link to='recommend'>
-            <div onClick={()=>{setCurrentMenu(2)}}>추천서</div>
+            <div onClick={()=>{setCurrentMenu(2); clearCommonPlus()}}>추천서</div>
         </Link> </TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn2><Link to='grade'>
-        <div onClick={()=>{setCurrentMenu(3)}}>성적문의</div>
+        <div onClick={()=>{setCurrentMenu(3); clearCommonPlus()}}>성적문의</div>
         </Link></TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn className="dropdown">기타
@@ -116,4 +123,10 @@ function Header() {
   );
 }
 
-export default Header;
+function f1(inputValue: any){
+  return {
+    inputValue : inputValue
+  }
+};
+
+export default connect(f1)(Header);

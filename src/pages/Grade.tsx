@@ -179,6 +179,7 @@ function Grade(props: any) {
         </div>
       : null
       }
+      <BrowserView>
     <div className='mailTextContainer'>
       <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
         <PostList tabType={'grade'}/>
@@ -193,6 +194,24 @@ function Grade(props: any) {
       }
 
     </div>
+    </BrowserView>
+    <MobileView>
+    <div className='mailTextContainerMobile'>
+      <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
+        <PostList tabType={'grade'}/>
+      </div>
+      
+      {
+        showChecker === true?
+        <div>
+          {parse(checkerResult)}
+        </div>
+      : null
+      }
+
+    </div>
+
+      </MobileView>
     <BrowserView>
     <div className='buttonContainer'>
     {

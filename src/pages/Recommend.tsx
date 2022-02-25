@@ -148,6 +148,7 @@ function Recommend(props: any) {
         </div>
       : null
       }
+    <BrowserView>
     <div className='mailTextContainer'>
       <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
         <PostList tabType={'recommend'}/>
@@ -160,6 +161,21 @@ function Recommend(props: any) {
       : null
       }
     </div>
+    </BrowserView>
+    <MobileView>
+    <div className='mailTextContainerMobile'>
+      <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
+        <PostList tabType={'recommend'}/>
+      </div>
+      {
+        showChecker === true?
+        <div>
+          {parse(checkerResult)}
+        </div>
+      : null
+      }
+    </div>
+    </MobileView>
     <BrowserView>
     <div className='buttonContainer'>
     {

@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PostList from './PostList';
-import {connect} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import styled from 'styled-components';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import {BrowserView, MobileView} from "react-device-detect";
+import Header from '../components/Header';
 
 let CurrentNav : any = styled.img`
   position: absolute;
@@ -70,6 +71,7 @@ function Billnut(props: any) {
   let naverCheckerURL: string;
   let stringToCheck: string[];
   let checkFinal: string = '';
+  let dispatch : any = useDispatch();
 
   const getChecker = async() => {
     let checking: any = async() => {
@@ -186,6 +188,7 @@ function Billnut(props: any) {
   }
   return (
   <div>
+    <Header currentMenu = 'billnut'/>
     <CurrentNav src="img/Union.png"/>
     {
         showChecker === true?

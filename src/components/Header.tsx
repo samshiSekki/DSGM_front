@@ -149,7 +149,7 @@ let CurrentIndicatorMobile3 : any = styled.img`
   margin-left: 230px;
 `;
 
-function Header() {
+function Header(props: any) {
   const [currentMenu, setCurrentMenu] = useState(0);
   let dispatch = useDispatch();
 
@@ -164,9 +164,9 @@ function Header() {
         <div className='title'>
           <img src="img/dsgm_title.png" className='dsgmTitleImg'/>
         </div>
-        {currentMenu === 0?<CurrentIndicator0 src="img/Group 8.png"/>
-          : currentMenu === 1?<CurrentIndicator1 src="img/Group 8.png"/>
-          : currentMenu === 2?<CurrentIndicator2 src="img/Group 8.png"/>
+        {props.currentMenu === 'default'?<CurrentIndicator0 src="img/Group 8.png"/>
+          : props.currentMenu === 'billnut'?<CurrentIndicator1 src="img/Group 8.png"/>
+          : props.currentMenu === 'recommend'?<CurrentIndicator2 src="img/Group 8.png"/>
           : <CurrentIndicator3 src="img/Group 8.png"/>
         }
       <TabWrap>
@@ -185,11 +185,11 @@ function Header() {
         </TabBtn2>
         
         <TabBorder src='img/Line 4.png'></TabBorder>
-        <TabBtn2><Link to='recommend'>
+        <TabBtn2><Link to='/recommend'>
             <div onClick={()=>{setCurrentMenu(2); clearCommonPlus()}}>추천서</div>
         </Link> </TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
-        <TabBtn2><Link to='grade'>
+        <TabBtn2><Link to='/grade'>
         <div onClick={()=>{setCurrentMenu(3); clearCommonPlus()}}>성적문의</div>
         </Link></TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
@@ -209,9 +209,9 @@ function Header() {
         <div>
         <MobileTitle src="img/dsgm_title_mobile.png"/>
         </div>
-        {currentMenu === 0?<CurrentIndicatorMobile0 src="img/Group 8.png"/>
-          : currentMenu === 1?<CurrentIndicatorMobile1 src="img/Group 8.png"/>
-          : currentMenu === 2?<CurrentIndicatorMobile2 src="img/Group 8.png"/>
+        {props.currentMenu === 'default'?<CurrentIndicatorMobile0 src="img/Group 8.png"/>
+          : props.currentMenu === 'billnut'?<CurrentIndicatorMobile1 src="img/Group 8.png"/>
+          : props.currentMenu === 'recommend'?<CurrentIndicatorMobile2 src="img/Group 8.png"/>
           : <CurrentIndicatorMobile3 src="img/Group 8.png"/>
         }
         <TabWrapMobile>
@@ -229,13 +229,13 @@ function Header() {
             </TabBtnMobile2>
             <TabBorderMobile src='img/Line 4.png'></TabBorderMobile>
             <TabBtnMobile2>
-              <Link to='recommend'>
+              <Link to='/recommend'>
                 <div onClick={()=>{setCurrentMenu(2); clearCommonPlus()}}>추천서</div>
               </Link>
             </TabBtnMobile2>
             <TabBorderMobile src='img/Line 4.png'></TabBorderMobile>
             <TabBtnMobile2>
-              <Link to='grade'>
+              <Link to='/grade'>
                 <div onClick={()=>{setCurrentMenu(3); clearCommonPlus()}}>성적문의</div>
               </Link>
             </TabBtnMobile2>

@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import {connect, useDispatch} from 'react-redux';
 import parse from 'html-react-parser';
 import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
+import Header from '../components/Header';
 
 let CurrentNav : any = styled.img`
   position: absolute;
@@ -76,6 +77,13 @@ function Default(props: any) {
   let copiedForm: string = '';
   let naverCheckerURL: string;
   let stringToCheck: string[];
+  let dispatch : any = useDispatch();
+
+  /*
+  useEffect(() => {
+    dispatch({type: 'change', payload:{changeData:'default', variableType: 'currentMenu'}});
+  }, [])
+  */
 
   const getChecker = async() => {
     stringToCheck = [];
@@ -125,6 +133,7 @@ function Default(props: any) {
   
   return(
   <div>
+    <Header currentMenu = 'default'/>
     <BrowserView>
     <CurrentNav src="img/Union.png"/>
     {

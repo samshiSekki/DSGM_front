@@ -165,6 +165,7 @@ font-weight:bold;
     //border: 1px solid #E2E2E2;
     //border-radius: 13px;
     -webkit-appearance: none;
+    border-radius : 0;
     
     width: 500px;
     height: 30px;
@@ -220,6 +221,7 @@ const MobileInputDiv = styled.input`
     //border: 1px solid #E2E2E2;
     //border-radius: 13px;
     -webkit-appearance: none;
+    border-radius : 0;
     
     width: 240px;
     height: 30px;

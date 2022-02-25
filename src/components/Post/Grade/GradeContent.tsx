@@ -181,6 +181,7 @@ const InputDiv = styled.input`
     //border: 1px solid #E2E2E2;
     //border-radius: 13px;
     -webkit-appearance: none;
+    border-radius : 0;
     
     width: 500px;
     height: 30px;
@@ -202,6 +203,7 @@ const InputDiv2 = styled.input`
     margin-bottom:10px;
     margin-right:5px;
     -webkit-appearance: none;
+    border-radius : 0;
 
 `;
 const ButtonStyled = styled.button`
@@ -252,6 +254,7 @@ const MobileInputDiv = styled.input`
     }
     font-size: 10px;
     -webkit-appearance: none;
+    border-radius : 0;
     //border: 1px solid #E2E2E2;
     //border-radius: 13px;
     

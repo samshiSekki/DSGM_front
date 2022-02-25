@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import {connect, useDispatch} from 'react-redux';
 import ChangeIcon from '../components/asset/icon/icon-active.svg';
 import DefaultIcon from '../components/asset/icon/icon-inactive.svg';
+import {BrowserView, MobileView} from "react-device-detect";
 
 interface ScrollProps {
     isFirst:boolean
@@ -64,6 +65,7 @@ const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps, p
 
     return (
         <>
+        <BrowserView>
         <Container>
         <TabBox>
             {isFirst ?
@@ -95,6 +97,41 @@ const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps, p
             </div>
         </ScrollBox>
         </Container>
+        </BrowserView>
+        <MobileView>
+        <MobileContainer>
+        <MobileTabBox>
+            {isFirst ?
+            <><MobileTab onClick={()=>setType('default')}>💌기본💌</MobileTab>
+            <MobileTab onClick={()=>setType('season')}>🌱계절🌱</MobileTab>
+            <MobileTab onClick={()=>setType('weather')}>❄️날씨❄️</MobileTab>
+            <MobileTab onClick={()=>setType('study')}>📚학업📚</MobileTab></>
+            : <><MobileTab onClick={()=>setType('default')}>💌기본💌</MobileTab>
+            <MobileTab onClick={()=>setType('season')}>🌱계절🌱</MobileTab>
+            <MobileTab onClick={()=>setType('weather')}>❄️날씨❄️</MobileTab>
+            <MobileTab onClick={()=>setType('time')}>💧하루💧</MobileTab></> }
+        </MobileTabBox>
+        <MobileScrollBox>
+            {ment.map((m:TextProps, idx:number) => 
+            {
+                /* if (m.greeting.includes('*')) {
+                    return <SelectBox>{'hi'}</SelectBox>
+
+                } */
+                if ( m.greeting== state) {
+                    return <MobileSelectBox isSelect={true} onClick={()=>{setState(m.greeting); selectInput(idx);}}>{m.greeting} </MobileSelectBox>
+                }else{
+                    return <MobileSelectBox isSelect={false} onClick={()=>{setState(m.greeting); selectInput(idx);}}>{m.greeting} </MobileSelectBox>
+                }
+            }
+            )}
+            <div style={{display:'flex', justifyContent:'space-between'}}>
+                <MobileInputDiv placeholder={"멘트를 제안해주세요!"} value={suggestion} onChange={handleInput}></MobileInputDiv><MobileButtonDiv onClick={onSuggest}>{'💌'}</MobileButtonDiv>
+            </div>
+        </MobileScrollBox>
+        </MobileContainer>
+
+        </MobileView>
         </>
     )
 
@@ -116,9 +153,9 @@ const Container = styled.div`
     background-color:#ffffff;
     width:600px;
     height:300px;
-    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 8px 10px rgba(0, 0, 0, 0.1);
     border-radius: 17px;
-    border: 1px solid #A3A3A3;
+    border:  0.5px solid #CBCBCB;
     padding-top:10px;
     padding-left:27px;
     padding-right:27px;
@@ -135,7 +172,7 @@ const Tab = styled.div`
     width: 25%;
     height:100%;
     color:black;
-font-size: 12px;
+font-size: 15px;
 
 display:flex;
 align-items:center;
@@ -209,5 +246,111 @@ width:90px;
 font-weight:bold;
 margin-top:10px;
 border:none;
+    
+`;
+
+//
+
+
+const MobileContainer = styled.div`
+    position:absolute;
+    background-color:#ffffff;
+    width:220px;
+    height:146px;
+    box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 8px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 17px;
+    border: 0.5px solid #CBCBCB;
+    padding-top:15px;
+    padding-left:15px;
+    padding-right:15px;
+    margin-left:30px;
+    
+`
+const MobileTabBox = styled.div`
+    height:30px;
+    display:flex;
+    flex-direction:row;
+    font-size: 3px;
+    
+`;
+const MobileTab = styled.div`
+    width: 25%;
+    height:100%;
+    color:black;
+
+    font-size: 3px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+background-color:#ffffff;
+border-radius: 17px 17px 0px 0px;
+:hover{
+    font-weight:bold;
+}
+border-bottom:1px solid #A3A3A3;
+    
+`
+
+const MobileScrollBox = styled.div`
+   
+   /*  overflow:scroll;
+    overflow-x:hidden;
+    height:400px; */
+    overflow:scroll;
+    height:86px;
+    padding-top:10px;
+    overflow-x:hidden;
+    padding-right:10px;
+    &::-webkit-scrollbar{
+        width: 7px;
+    }
+    &::-webkit-scrollbar-thumb {
+    background-color: #E2E2E2;
+    border-radius: 10px;
+  }
+  /* &::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  } */
+    
+`;
+
+const MobileSelectBox = styled.div<IsSelectProps>`
+    font-weight:${props => props.isSelect ? 'bold' :'none' };
+    color:${props => props.isSelect? '#14B390' : 'black'};
+    display:flex;
+    justify-content:space-between;
+    :hover{
+    background-color: #D6EEE8;
+    border-radius: 6px;
+    }
+    font-size: 5px;
+`
+const MobileInputDiv = styled.input`
+    background: #FFFFFF;
+    font-family: 'Roboto';
+    border: 1px solid #E2E2E2;
+    border-radius: 10px;
+    width: 140px;
+    height: 20px;
+    margin-top:10px;
+    margin-bottom:10px;
+    float:left;
+    font-size:5px;
+
+`;
+const MobileButtonDiv = styled.button`
+    background-color:#ffffff;
+:hover{
+    background-color:#D6EEE8;
+}
+height:30px;
+width:30px;
+font-weight:bold;
+margin-top:10px;
+border:none;
+font-size:7px;
     
 `;

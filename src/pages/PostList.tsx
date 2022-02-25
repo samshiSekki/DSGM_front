@@ -322,6 +322,8 @@ const InputDiv = styled.input`
     &:focus{
         outline:none;
     }
+    -webkit-appearance: none;
+    border-radius : 0;
     //border: 1px solid #E2E2E2;
     //border-radius: 13px;
     
@@ -393,6 +395,8 @@ const MobileInputDiv = styled.input`
     &:focus{
         outline:none;
     }
+    -webkit-appearance: none;
+    border-radius : 0;
     font-size: 10px;
     //border: 1px solid #E2E2E2;
     //border-radius: 13px;

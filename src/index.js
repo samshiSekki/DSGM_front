@@ -8,6 +8,8 @@ import {Provider} from 'react-redux';
 import { createStore } from 'redux';
 
 let defaultInputValue = {
+  currentMenu : 'default',
+
   professorName : '',
   myName : '',
   defaultContent : '',
@@ -76,6 +78,10 @@ function inputChanger(inputValue = defaultInputValue, action){
     let copy = inputValue;
     
     switch(action.payload.variableType){
+      case 'currentMenu' :
+        copy.currentMenu = action.payload.changeData;
+        break;
+
       case 'professorName' :
         copy.professorName= action.payload.changeData;
         break;

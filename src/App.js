@@ -10,7 +10,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Header/>
       <Routes>
         <Route path="/" element={<Default />} />
         <Route path="/billnut" element={<Billnut />} />

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import {BrowserView, MobileView} from "react-device-detect";
+import Header from '../components/Header';
 
 let CurrentNav : any = styled.img`
   position: absolute;
@@ -138,6 +139,7 @@ function Recommend(props: any) {
 
   return (
   <div>
+    <Header currentMenu = 'recommend'/>
     <CurrentNav src="img/Union.png"/>
     {
         showChecker === true?

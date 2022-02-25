@@ -33,12 +33,6 @@ let AccessCounterMobile : any = styled.div`
   font-size: 7px;
   line-height: 8px;
 `;
-let ProposalMobile : any = styled.div`
-  float: right;
-  font-size: 7px;
-  line-height: 8px;
-  color: #241E19;
-`;
 let HeartIconMobile : any = styled.img`
   width: 8px;
   height: auto;

@@ -164,6 +164,7 @@ font-weight:bold;
     }
     //border: 1px solid #E2E2E2;
     //border-radius: 13px;
+    -webkit-appearance: none;
     
     width: 500px;
     height: 30px;
@@ -218,6 +219,7 @@ const MobileInputDiv = styled.input`
     font-size: 10px;
     //border: 1px solid #E2E2E2;
     //border-radius: 13px;
+    -webkit-appearance: none;
     
     width: 240px;
     height: 30px;

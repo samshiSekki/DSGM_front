@@ -233,6 +233,7 @@ const InputDiv = styled.input`
     margin-bottom:10px;
     margin-right:5px;
     float:left;
+    -webkit-appearance: none;
 
 `;
 const ButtonDiv = styled.button`
@@ -339,6 +340,7 @@ const MobileInputDiv = styled.input`
     margin-bottom:10px;
     float:left;
     font-size:5px;
+    -webkit-appearance: none;
 
 `;
 const MobileButtonDiv = styled.button`

@@ -247,6 +247,8 @@ const InputDiv = styled.input`
     }
     //border: 1px solid #E2E2E2;
     //border-radius: 13px;
+    -webkit-appearance: none;
+    border-radius : 0;
     
     width: 500px;
     height: 30px;
@@ -296,6 +298,7 @@ const MobileContainer = styled.div`
 const MobileInputDiv = styled.input`
     background: #F7F8FA;
     border:none;
+    border-radius : 0;
     border-bottom: 1px solid #14B390;
     color: #14B390;
     text-align:center;
@@ -307,6 +310,7 @@ const MobileInputDiv = styled.input`
     font-size: 10px;
     //border: 1px solid #E2E2E2;
     //border-radius: 13px;
+    -webkit-appearance: none;
     
     width: 240px;
     height: 30px;

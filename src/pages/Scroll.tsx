@@ -153,9 +153,9 @@ const Container = styled.div`
     background-color:#ffffff;
     width:600px;
     height:300px;
-    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 8px 10px rgba(0, 0, 0, 0.1);
     border-radius: 17px;
-    border: 1px solid #A3A3A3;
+    border:  0.5px solid #CBCBCB;
     padding-top:10px;
     padding-left:27px;
     padding-right:27px;
@@ -172,7 +172,7 @@ const Tab = styled.div`
     width: 25%;
     height:100%;
     color:black;
-font-size: 12px;
+font-size: 15px;
 
 display:flex;
 align-items:center;
@@ -257,9 +257,9 @@ const MobileContainer = styled.div`
     background-color:#ffffff;
     width:220px;
     height:146px;
-    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 8px 10px rgba(0, 0, 0, 0.1);
     border-radius: 17px;
-    border: 1px solid #A3A3A3;
+    border: 0.5px solid #CBCBCB;
     padding-top:15px;
     padding-left:15px;
     padding-right:15px;

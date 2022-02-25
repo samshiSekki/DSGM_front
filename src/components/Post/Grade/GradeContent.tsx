@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import {connect, useDispatch} from 'react-redux';
+import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
 
 type ContentProps = {
     content : string
@@ -85,6 +86,42 @@ const GradeContent = ({num,setNum}:NumberProps) => {
 
     return (
         <>
+        <MobileView>
+        <div>
+        {num == 0?
+            <>
+             <div style={{whiteSpace:'pre-line'}}>다름이 아니라, 이번 <MobileInputDiv style={{width: '170px'}} onChange={(e)=>changeInputValue(e, 'gradeContent0_1')}></MobileInputDiv>수업에서 <MobileInputDiv  style={{width: '170px'}} onChange={(e)=>changeInputValue(e, 'gradeContent0_2')}></MobileInputDiv>{'부분에 대해 저는 최선을 \n다했습니다. '}</div>
+             {state1 == false ? <MobileButtonStyled onClick={()=>setState1(true)}>+</MobileButtonStyled> :
+             <><MobileButtonStyled onClick={()=>setState1(false)}>-</MobileButtonStyled> <MobileTextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'gradeContent0_plus1')}></MobileTextArea></>}
+            <div>그럼에도 예상과 달리 다소 낮은 성적을 받아 조금 아쉽습니다. </div>
+            {state2 == false ? <MobileButtonStyled onClick={()=>setState2(true)}>+</MobileButtonStyled> :
+             <><MobileButtonStyled onClick={()=>setState2(false)}>-</MobileButtonStyled> <MobileTextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'gradeContent0_plus2')}></MobileTextArea></>}
+            <div style={{whiteSpace:'pre-line'}}>{'어떤 부분이 부족하여 이런 성적을 받았는지 여쭙고 싶어\n 메일을 작성하게 되었습니다.'} </div>
+            {state3 == false ? <MobileButtonStyled onClick={()=>setState3(true)}>+</MobileButtonStyled> : 
+             <><MobileButtonStyled onClick={()=>setState3(false)}>-</MobileButtonStyled><MobileTextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'gradeContent0_plus3')}></MobileTextArea></>}
+            <div style={{whiteSpace:'pre-line'}}>{'교수님의 피드백을 바탕으로 이후 부족한 점을 보완하고자 하니, \n바쁘시겠지만 꼭 한 번 다시 검토해주시면 감사하겠습니다.'}</div>
+            {state4 == false ? <MobileButtonStyled onClick={()=>setState4(true)}>+</MobileButtonStyled> : 
+             <><MobileButtonStyled onClick={()=>setState4(false)}>-</MobileButtonStyled><MobileTextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'gradeContent0_plus4')}></MobileTextArea></>}
+            </>
+            :
+            <>
+             <div style={{whiteSpace:'pre-line'}}>{'다름이 아니라 각 항목에 대한 취득 점수 및 상세 성적을 알 수 있을까 싶어\n 메일을 보내게 되었습니다.'} </div>
+             {state1 == false ? <MobileButtonStyled onClick={()=>setState1(true)}>+</MobileButtonStyled> :
+             <><MobileButtonStyled onClick={()=>setState1(false)}>-</MobileButtonStyled> <MobileTextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'gradeContent1_plus1')}></MobileTextArea></>}
+            <div style={{whiteSpace:'pre-line'}}>{'과제와 시험 모두 나름대로 열심히 준비했는데, \n예상한 결과보다는 아쉬운 결과에 문의를 드리게 되었습니다.'}  </div>
+            {state2 == false ? <MobileButtonStyled onClick={()=>setState2(true)}>+</MobileButtonStyled> :
+             <><MobileButtonStyled onClick={()=>setState2(false)}>-</MobileButtonStyled> <MobileTextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'gradeContent1_plus2')}></MobileTextArea></>}
+            <div style={{whiteSpace:'pre-line'}}>{'제가 어떤 부분에서 부족했고, 앞으로 어떠한 부분을 보완하는 것이 좋을지 \n의견을 여쭙고 싶어 실례를 무릅쓰고 메일 드립니다.'}</div>
+            {state3 == false ? <MobileButtonStyled onClick={()=>setState3(true)}>+</MobileButtonStyled> :
+             <><MobileButtonStyled onClick={()=>setState3(false)}>-</MobileButtonStyled> <MobileTextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'gradeContent1_plus3')}></MobileTextArea></>}
+            <div>제가 어떤 부분이 부족했는지 알려주시면 학업에 참고하여 보완하고 싶습니다.</div>
+            {state4 == false ? <MobileButtonStyled onClick={()=>setState4(true)}>+</MobileButtonStyled> :
+             <><MobileButtonStyled onClick={()=>setState4(false)}>-</MobileButtonStyled> <MobileTextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'gradeContent1_plus4')}></MobileTextArea></>}
+            </>}
+           
+        </div>
+        </MobileView>
+        <BrowserView>
         <div>
         {num == 0?
             <>
@@ -118,6 +155,8 @@ const GradeContent = ({num,setNum}:NumberProps) => {
             </>}
            
         </div>
+        
+        </BrowserView>
         </>
 
     );
@@ -185,5 +224,72 @@ const TextArea = styled.textarea`
     overflow-y:hidden;
     resize:none;
     
+`;
+//
+
+
+const MobileContainer = styled.div`
+    //margin-top:300px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    font-size:10px;
+    width: 335px;
+`;
+
+const MobileInputDiv = styled.input`
+    background: #F7F8FA;
+    border:none;
+    border-bottom: 1px solid #14B390;
+    color: #14B390;
+    text-align:center;
+    margin-bottom: 4px;
+    line-height: 36px;
+    &:focus{
+        outline:none;
+    }
+    font-size: 10px;
+    //border: 1px solid #E2E2E2;
+    //border-radius: 13px;
+    
+    width: 240px;
+    height: 30px;
+    margin-right:5px;
+    &:placeholder-shown{
+        border-bottom: 1px solid #A3A3A3;
+
+    }
+    
+
+`;
+
+const MobileTextArea = styled.textarea`
+    width:270px;
+    font-family: 'Roboto';
+    border:none;
+    font-size: 10px;
+    background-image:
+    repeating-linear-gradient(#F7F8FA, #F7F8FA 35px, #A3A3A3 36px, #A3A3A3 36px, #A3A3A3 36px);
+    line-height: 36px;
+    padding: 8px 10px;
+    &:placeholder-shown{
+        border-bottom: none;
+    }
+    &:focus{
+        outline:none;
+    }
+    overflow-y:hidden;
+    resize:none;
+
+`;
+
+const MobileButtonStyled = styled.button`
+background-color:#F7F8FA;
+border:none;
+cursor:pointer;
+position: absolute;
+background: transparent;
+left: -15px;
+margin-top: -10px;        
 `;
 

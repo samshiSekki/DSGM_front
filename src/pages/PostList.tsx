@@ -13,6 +13,7 @@ import ChangeIcon from '../components/asset/icon/icon-change.svg';
 import MessageIcon1 from '../components/asset/icon/icon-message1.svg';
 import MessageIcon2 from '../components/asset/icon/icon-message2.svg';
 import MessageIconDelete from '../components/asset/icon/icon-message-delete.svg';
+import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
 
 interface PostListProps {
     tabType?: string,
@@ -200,6 +201,7 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
 
     return (
         <>
+        <BrowserView>
         {tabType === '' ? <></>
             : tabType==='please' ?<TabBox><Tab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</Tab><Tab onClick={()=>{setNum(1); clearCommonPlus()}}>양식2</Tab><Tab onClick={()=>{setNum(2); clearCommonPlus()}}>양식3</Tab></TabBox>
             : tabType === 'recommend' ? <TabBox><Tab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</Tab></TabBox>
@@ -230,6 +232,40 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             {state2 && <Scroll isFirst={false} ment = {lastMent} state = {lastState} setState={setLastState} type= {type2} setType={setType2}/>}
                         </div>
                         </Container>
+        </BrowserView>
+        <MobileView>
+        {tabType === '' ? <></>
+            : tabType==='please' ?<MobileTabBox><MobileTab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</MobileTab><MobileTab onClick={()=>{setNum(1); clearCommonPlus()}}>양식2</MobileTab><MobileTab onClick={()=>{setNum(2); clearCommonPlus()}}>양식3</MobileTab></MobileTabBox>
+            : tabType === 'recommend' ? <MobileTabBox><MobileTab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</MobileTab></MobileTabBox>
+            : tabType === 'grade' ? <MobileTabBox><MobileTab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</MobileTab><MobileTab onClick={()=>{setNum(1); clearCommonPlus()}}>양식2</MobileTab></MobileTabBox>
+            :
+            <div></div>}
+        <MobileContainer>
+          
+        <div>안녕하십니까 <MobileInputDiv style={{width:'50px'}} placeholder='ex) 김철수' onChange={(e)=>changeInputValue(e, 'professorName')}></MobileInputDiv> 교수님, </div>
+        <div>저는  <MobileInputDiv placeholder='ex) 컴퓨터공학과 00학번 이빛나' onChange={(e)=>changeInputValue(e, 'myName')}></MobileInputDiv>입니다.
+            
+            </div>
+            <div ref={myRef} style={{position:'relative'}}>
+            <div style={{display:'flex', alignItems:'center'}}><div style={{fontWeight:'bold',color:'#14B390',marginRight:'10px',width:'300px'}}>{firstState}<img onClick={()=>setState(!state)} style={{marginLeft:'3px'}} width='10px' height='10px' src={ChangeIcon}></img></div></div>
+            {showImage2 && <div style={{position:'absolute',left:'610px',top:'-110px'}}><div style={{position:'relative'}}><img src={MessageIcon2}></img><img onClick = {()=>handleClose2()} style={{position:'absolute', right:'15px', top:'10px'}} src={MessageIconDelete}></img></div></div>}
+            {state1 == false ? <MobileButtonStyled onClick={()=>setState1(true)}>+</MobileButtonStyled> :
+             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <MobileTextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'commonContent_plus')}></MobileTextArea></>}
+            {state && <Scroll isFirst={true} ment = {firstMent} state = {firstState} setState={setFirstState} type= {type} setType={setType}/>}
+            {showImage && <div style={{position:'absolute',left:'-200px',top:'-70px'}}><div style={{position:'relative'}}><img src={MessageIcon1}></img><img onClick = {()=>handleClose()} style={{position:'absolute', left:'15px', top:'10px'}} src={MessageIconDelete}></img></div></div>}
+            {tabType === '' ? <><div>다름이 아니라,</div><MobileTextArea onInput={()=>handleResize(2)} ref={textRef} placeholder='ex) 메일 보낼 내용' onChange={(e)=>changeInputValue(e, 'defaultContent')}></MobileTextArea></>
+            : tabType==='please' ?<BillnutContent num = {num} setNum={setNum}/> 
+            : tabType === 'recommend' ? <RecommendContent num = {num} setNum={setNum}/>
+            : tabType === 'grade' ? <GradeContent num = {num} setNum={setNum}/>
+            :
+            <div></div>}
+                        
+                        <div style={{display:'flex', alignItems:'center'}}><div style={{fontWeight:'bold',color:'#14B390',marginRight:'10px'}}>{lastState}<img style={{width: '10px', height:'10px', marginLeft:'3px'}} onClick={()=>setState2(!state2)} src={ChangeIcon}></img></div></div>
+            {state2 && <Scroll isFirst={false} ment = {lastMent} state = {lastState} setState={setLastState} type= {type2} setType={setType2}/>}
+                        </div>
+                        </MobileContainer>
+
+        </MobileView>
         </>
     );
 
@@ -318,11 +354,108 @@ const TextArea = styled.textarea`
     }
     overflow-y:hidden;
     resize:none;
+
     
 `;
 const ButtonStyled = styled.button`
 background-color:#F7F8FA;
 border:none;
 cursor:pointer;
+    
+`;
+
+//
+
+const MobileContainer = styled.div`
+    //margin-top:300px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    font-size:7px;
+    width: 335px;
+`;
+
+const MobileTabBox = styled.div`
+    height:19px;
+    display:flex;
+    flex-direction:row;
+    margin-bottom:13px;
+    
+`;
+const MobileInputDiv = styled.input`
+    background: #F7F8FA;
+    border:none;
+    border-bottom: 1px solid #14B390;
+    color: #14B390;
+    text-align:center;
+    margin-bottom: 4px;
+    line-height: 36px;
+    &:focus{
+        outline:none;
+    }
+    font-size: 10px;
+    //border: 1px solid #E2E2E2;
+    //border-radius: 13px;
+    
+    width: 240px;
+    height: 30px;
+    margin-right:5px;
+    &:placeholder-shown{
+        border-bottom: 1px solid #A3A3A3;
+
+    }
+    
+
+`;
+
+const MobileTextArea = styled.textarea`
+    width:270px;
+    font-family: 'Roboto';
+    border:none;
+    font-size: 10px;
+    background-image:
+    repeating-linear-gradient(#F7F8FA, #F7F8FA 35px, #A3A3A3 36px, #A3A3A3 36px, #A3A3A3 36px);
+    line-height: 36px;
+    padding: 8px 10px;
+    &:placeholder-shown{
+        border-bottom: none;
+    }
+    &:focus{
+        outline:none;
+    }
+    overflow-y:hidden;
+    resize:none;
+    white-space:pre-line;
+
+`;
+
+const MobileButtonStyled = styled.button`
+    background-color:#F7F8FA;
+    border:none;
+    cursor:pointer;
+    position:absolute;
+    top: 35px;
+    left: -15px;
+    background: transparent;
+        
+`;
+
+const MobileTab = styled.div`
+background-color:#EFEFEF;
+width: 39px;
+height:100%;
+color:black;
+margin-right:20px;
+border-radius: 19.5px;
+font-weight: bold;
+font-size: 7px;
+line-height: 8px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+:hover{
+    background-color:#C4C4C4;
+}
     
 `;

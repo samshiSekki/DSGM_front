@@ -197,6 +197,7 @@ function Billnut(props: any) {
         </div>
       : null
       }
+      <BrowserView>
     <div className='mailTextContainer'>
 
       <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
@@ -210,7 +211,22 @@ function Billnut(props: any) {
       : null
       }
     </div>
+    </BrowserView>
+    <MobileView>
+    <div className='mailTextContainerMobile'>
 
+    <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
+      <PostList tabType={'please'}/>
+    </div>
+    {
+      showChecker === true?
+      <div>
+        {parse(checkerResult)}
+      </div>
+    : null
+    }
+    </div>
+      </MobileView>
     <BrowserView>
     <div className='buttonContainer'>
       {

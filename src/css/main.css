@@ -75,6 +75,19 @@ a:visited{
 /* identical to box height */
     color: #191E24;
 }
+.mailTextContainerMobile{
+
+    display: inline-block;
+    text-align: left;
+    width : 80%;
+    height : auto;
+    padding : 5vw 5vw 5vw 5vw;
+    background: #F7F8FA;
+    font-size: 10px;
+    line-height: 23px;
+/* identical to box height */
+    color: #191E24;
+}
 .hideCheckcer{
     display: none;
 }

@@ -132,9 +132,8 @@ function Default(props: any) {
   }
   
   return(
-  <div>
+  <div style={{overflowX:'hidden'}}>
     <Header currentMenu = 'default'/>
-    <BrowserView>
     <CurrentNav src="img/Union.png"/>
     {
         showChecker === true?
@@ -143,6 +142,8 @@ function Default(props: any) {
         </div>
       : null
       }
+    <BrowserView>
+
     <div className='mailTextContainer'>
       
       <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
@@ -158,6 +159,26 @@ function Default(props: any) {
     </div>
     </BrowserView>
     <MobileView>
+    {
+        showChecker === true?
+        <div className='checkerInfoContainer'>
+        <CheckerInfo src="img/Group 75.png"/>
+        </div>
+      : null
+      }
+    <div className='mailTextContainerMobile'>
+      
+      <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
+        <PostList tabType={''}/>
+      </div>
+      {
+        showChecker === true?
+        <div>
+          {parse(checkerResult1)}
+        </div>
+      : null
+      }
+    </div>
     </MobileView>
       
     <BrowserView>

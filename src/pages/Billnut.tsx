@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PostList from './PostList';
-import {connect} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import styled from 'styled-components';
 import axios from 'axios';
 import parse from 'html-react-parser';
+import {BrowserView, MobileView} from "react-device-detect";
+import Header from '../components/Header';
 
 let CurrentNav : any = styled.img`
   position: absolute;
@@ -19,6 +21,47 @@ let CheckerInfo : any = styled.img`
   height: auto;
 `;
 
+let ButtonContainerMobile : any = styled.div`
+  display: inline-block;
+  margin-top: 12px;
+  margin-bottom: 23px;
+  width: 335px;
+  height: 31px;
+`;
+let MobileButtonFlex : any = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+let FunctionBtnMobile : any = styled.div`
+  float: left;
+  width: 105px;
+  height: 31px;
+  background: #241E19;
+  color: white;
+  border-radius: 7px;
+
+  font-style: normal;
+font-weight: 800;
+font-size: 11px;
+line-height: 31px;
+text-align: center;
+`;
+let CopyBtnMobile : any = styled.div`
+  float: left;
+  width: 105px;
+  height: 31px;
+  background: #14B390;
+  color: white;
+  border-radius: 7px;
+
+  font-style: normal;
+font-weight: 800;
+font-size: 11px;
+line-height: 31px;
+text-align: center;
+`;
+
+
 function Billnut(props: any) {
 
   let [showChecker, setShowChecker] = useState(false);
@@ -28,6 +71,7 @@ function Billnut(props: any) {
   let naverCheckerURL: string;
   let stringToCheck: string[];
   let checkFinal: string = '';
+  let dispatch : any = useDispatch();
 
   const getChecker = async() => {
     let checking: any = async() => {
@@ -144,6 +188,7 @@ function Billnut(props: any) {
   }
   return (
   <div>
+    <Header currentMenu = 'billnut'/>
     <CurrentNav src="img/Union.png"/>
     {
         showChecker === true?
@@ -166,6 +211,7 @@ function Billnut(props: any) {
       }
     </div>
 
+    <BrowserView>
     <div className='buttonContainer'>
       {
         showChecker === false?
@@ -175,6 +221,20 @@ function Billnut(props: any) {
       <div onClick={()=>{window.location.replace("/billnut")}} className='functionBtn'>Clear</div>
       <div id='copyBtn' onClick={copyBtnClickHandler}>복사하기</div>
     </div>
+    </BrowserView>
+    <MobileView>
+      <ButtonContainerMobile>
+        <MobileButtonFlex>
+          {
+            showChecker === false?
+            <FunctionBtnMobile onClick={getChecker}>맞춤법 검사하기</FunctionBtnMobile>
+            :<FunctionBtnMobile onClick={()=>{setShowChecker(!showChecker)}}>검사 종료하기</FunctionBtnMobile>
+          }
+          <FunctionBtnMobile onClick={()=>{window.location.replace("/billnut")}}>Clear</FunctionBtnMobile>
+          <CopyBtnMobile onClick={copyBtnClickHandler}>복사하기</CopyBtnMobile>
+        </MobileButtonFlex>
+      </ButtonContainerMobile>
+    </MobileView>
   </div>
   );
 }

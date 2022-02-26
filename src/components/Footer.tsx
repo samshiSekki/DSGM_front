@@ -58,9 +58,11 @@ function Footer() {
 
         <MobileView>
           <FooterContainerMobile>
-            <CopyrightMobile>Copyright(c)2022 삼시세끼 All rights reserved.</CopyrightMobile><br/>
+            
             <AccessCounterMobile><HeartIconMobile src='img/Heart.png'/>지금까지 n명이 접속했어요!</AccessCounterMobile>
             <div className='proposalMobile'><a target="_blank" href="https://www.instagram.com/samshisaekki/">제안하기</a><MicIconMobile src='img/Mic.png'/></div>
+            <br/>
+            <CopyrightMobile>Copyright(c)2022 삼시세끼 All rights reserved.</CopyrightMobile>
           </FooterContainerMobile>
         </MobileView>
     </div>

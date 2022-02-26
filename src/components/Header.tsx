@@ -144,9 +144,22 @@ let CurrentIndicator3 : any = styled.img`
 `;
 let CurrentIndicatorMobile3 : any = styled.img`
   position: absolute;
-  width: 3%;
+  width: 14.02px;
   height: auto;
   margin-left: 230px;
+`;
+
+let CurrentIndicator4 : any = styled.img`
+  position: absolute;
+  width: 3%;
+  height: auto;
+  margin-left: 66.5vw;
+`;
+let CurrentIndicatorMobile4 : any = styled.img`
+  position: absolute;
+  width: 14.02px;
+  height: auto;
+  margin-left: 297px;
 `;
 
 function Header(props: any) {
@@ -167,7 +180,8 @@ function Header(props: any) {
         {props.currentMenu === 'default'?<CurrentIndicator0 src="img/Group 8.png"/>
           : props.currentMenu === 'billnut'?<CurrentIndicator1 src="img/Group 8.png"/>
           : props.currentMenu === 'recommend'?<CurrentIndicator2 src="img/Group 8.png"/>
-          : <CurrentIndicator3 src="img/Group 8.png"/>
+          : props.currentMenu === 'grade'?<CurrentIndicator3 src="img/Group 8.png"/>
+          : <CurrentIndicator4 src="img/Group 8.png"/>
         }
       <TabWrap>
       <MenuTabBar>
@@ -195,11 +209,15 @@ function Header(props: any) {
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn className="dropdown">기타
         <div className = 'dropdown-content'>
-            <a>대학원 진학 문의</a>
-            <a>조교 신청 문의</a>
-            <a>진로 상담</a>
-            <a>수업 내용 질문</a>
-            <a>과제 질문</a>
+            <Link to='/others'><a>대학원 진학 문의</a></Link>
+            <hr className='dropdown-hr'/>
+            <Link to='/others'><a>조교 신청 문의</a></Link>
+            <hr className='dropdown-hr'/>
+            <Link to='/others'><a>진로 상담</a></Link>
+            <hr className='dropdown-hr'/>
+            <Link to='/others'><a>수업 내용 질문</a></Link>
+            <hr className='dropdown-hr'/>
+            <Link to='/others'><a>과제 질문</a></Link>
           </div>
           </TabBtn>
       </MenuTabBar>
@@ -212,7 +230,8 @@ function Header(props: any) {
         {props.currentMenu === 'default'?<CurrentIndicatorMobile0 src="img/Group 8.png"/>
           : props.currentMenu === 'billnut'?<CurrentIndicatorMobile1 src="img/Group 8.png"/>
           : props.currentMenu === 'recommend'?<CurrentIndicatorMobile2 src="img/Group 8.png"/>
-          : <CurrentIndicatorMobile3 src="img/Group 8.png"/>
+          : props.currentMenu === 'grade'?<CurrentIndicatorMobile3 src="img/Group 8.png"/>
+          : <CurrentIndicatorMobile4 src="img/Group 8.png"/>
         }
         <TabWrapMobile>
           <MenuTabBarMobile>
@@ -241,7 +260,7 @@ function Header(props: any) {
             </TabBtnMobile2>
             <TabBorderMobile src='img/Line 4.png'></TabBorderMobile>
             <TabBtnMobile1>
-              기타
+              <Link to='/others'>기타</Link>
                 <div className = 'dropdown-content'>
                   <a>대학원 진학 문의</a>
                   <a>조교 신청 문의</a>

@@ -13,6 +13,12 @@ let CurrentNav : any = styled.img`
   height: auto;
   margin-left: 36vw;
 `;
+let CurrentNavMobile : any = styled.img`
+  position: absolute;
+  width: 14.02px;
+  height: auto;
+  margin-left: 161px;
+`;
 
 let CheckerInfo : any = styled.img`
   margin-top: 5vh;
@@ -140,6 +146,8 @@ function Recommend(props: any) {
   return (
   <div>
     <Header currentMenu = 'recommend'/>
+    
+    <BrowserView>
     <CurrentNav src="img/Union.png"/>
     {
         showChecker === true?
@@ -148,7 +156,6 @@ function Recommend(props: any) {
         </div>
       : null
       }
-    <BrowserView>
     <div className='mailTextContainer'>
       <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
         <PostList tabType={'recommend'}/>
@@ -163,6 +170,14 @@ function Recommend(props: any) {
     </div>
     </BrowserView>
     <MobileView>
+    <CurrentNavMobile src="img/Union.png"/>
+    {
+        showChecker === true?
+        <div className='checkerInfoContainerMobile'>
+        <img src="img/Group 75.png" className='checkerInfoMobile'/>
+        </div>
+      : null
+      }
     <div className='mailTextContainerMobile'>
       <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
         <PostList tabType={'recommend'}/>

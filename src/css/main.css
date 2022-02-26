@@ -40,21 +40,42 @@ a:visited{
     height:87px;
 }
 .dropdown-content{
+    padding-top: 10px;
+    padding-bottom: 10px;
     display : none;
     width : 15vw;
     background-color: #191E24;
+    z-index: 999;
+
+    background: #FFFFFF;
+    border: 0.3px solid #241E19;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 1px 9px rgba(0, 0, 0, 0.1);
+    border-radius: 14px 18px 14px 14px;
+    color: black;
+    text-align: center;
 }
 .dropdown-content a{
     margin-top: 0;
-    display : block;
+    width: 90%;
+    border: 0px solid;
+    border-radius: 6px;
+    display : inline-block;
     text-decoration : none;
-    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    color: black;
+}
+.dropdown-hr{
+    border: 0.5px solid rgba(203, 203, 203, 0.7);
+    width: 90%;
 }
 .dropdown-content a:hover{
-    background-color : gray;
+    background: #F7F8FA;
 }
 .dropdown:hover .dropdown-content {
-    margin-top: 370px;
+    margin-top: 500px;
     position: absolute;
     display: block;
 }
@@ -62,6 +83,34 @@ a:visited{
     display: inline-block;
     width: 75vw;
     background-color: white;
+}
+.checkerInfoContainerMobile{
+    display: inline-block;
+    width: 335px;
+    background-color: white;
+}
+.checkerInfoMobile{
+    margin-top: 20px;
+    margin-bottom: 19px;
+    width: 195px;
+}
+.loadingContainer{
+    padding-top: 139px;
+    padding-bottom: 159px;
+    display: inline-block;
+    text-align: center;
+    width : 75vw;
+    height : auto;
+    background: #F7F8FA;
+}
+.loadingContainerMobile{
+    padding-top: 78px;
+    padding-bottom: 81.15px;
+    display: inline-block;
+    text-align: center;
+    width : 335px;
+    height : auto;
+    background: #F7F8FA;
 }
 .mailTextContainer{
     display: inline-block;
@@ -79,9 +128,9 @@ a:visited{
 
     display: inline-block;
     text-align: left;
-    width : 80%;
+    width : 306px;
     height : auto;
-    padding : 5vw 5vw 5vw 5vw;
+    padding : 30px 14px 31px 15px;
     background: #F7F8FA;
     font-size: 10px;
     line-height: 23px;

@@ -13,6 +13,12 @@ let CurrentNav : any = styled.img`
   height: auto;
   margin-left: 51.5vw;
 `;
+let CurrentNavMobile : any = styled.img`
+  position: absolute;
+  width: 14.02px;
+  height: auto;
+  margin-left: 230px;
+`;
 
 let CheckerInfo : any = styled.img`
   margin-top: 5vh;
@@ -171,7 +177,9 @@ function Grade(props: any) {
   return (
   <div>
     <Header currentMenu = 'grade'/>
-    <CurrentNav src="img/Union.png"/>
+    
+      <BrowserView>
+      <CurrentNav src="img/Union.png"/>
     {
         showChecker === true?
         <div className='checkerInfoContainer'>
@@ -179,7 +187,6 @@ function Grade(props: any) {
         </div>
       : null
       }
-      <BrowserView>
     <div className='mailTextContainer'>
       <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
         <PostList tabType={'grade'}/>
@@ -196,6 +203,14 @@ function Grade(props: any) {
     </div>
     </BrowserView>
     <MobileView>
+    <CurrentNavMobile src="img/Union.png"/>
+    {
+        showChecker === true?
+        <div className='checkerInfoContainerMobile'>
+        <img src="img/Group 75.png" className='checkerInfoMobile'/>
+        </div>
+      : null
+      }
     <div className='mailTextContainerMobile'>
       <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
         <PostList tabType={'grade'}/>

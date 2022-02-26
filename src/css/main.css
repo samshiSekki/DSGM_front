@@ -63,6 +63,16 @@ a:visited{
     width: 75vw;
     background-color: white;
 }
+.checkerInfoContainerMobile{
+    display: inline-block;
+    width: 335px;
+    background-color: white;
+}
+.checkerInfoMobile{
+    margin-top: 20px;
+    margin-bottom: 19px;
+    width: 195px;
+}
 .mailTextContainer{
     display: inline-block;
     text-align: left;
@@ -79,9 +89,9 @@ a:visited{
 
     display: inline-block;
     text-align: left;
-    width : 80%;
+    width : 306px;
     height : auto;
-    padding : 5vw 5vw 5vw 5vw;
+    padding : 30px 14px 31px 15px;
     background: #F7F8FA;
     font-size: 10px;
     line-height: 23px;

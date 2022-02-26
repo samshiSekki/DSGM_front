@@ -14,7 +14,7 @@ let CurrentNav : any = styled.img`
   height: auto;
   margin-left: 5.5vw;
 `;
-let CurrnetNavMobile : any = styled.img`
+let CurrentNavMobile : any = styled.img`
   position: absolute;
   width: 14.02px;
   height: auto;
@@ -134,6 +134,8 @@ function Default(props: any) {
   return(
   <div style={{overflowX:'hidden'}}>
     <Header currentMenu = 'default'/>
+    
+    <BrowserView>
     <CurrentNav src="img/Union.png"/>
     {
         showChecker === true?
@@ -142,8 +144,6 @@ function Default(props: any) {
         </div>
       : null
       }
-    <BrowserView>
-
     <div className='mailTextContainer'>
       
       <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
@@ -159,10 +159,11 @@ function Default(props: any) {
     </div>
     </BrowserView>
     <MobileView>
+    <CurrentNavMobile src="img/Union.png"/>
     {
         showChecker === true?
-        <div className='checkerInfoContainer'>
-        <CheckerInfo src="img/Group 75.png"/>
+        <div className='checkerInfoContainerMobile'>
+        <img src="img/Group 75.png" className='checkerInfoMobile'/>
         </div>
       : null
       }

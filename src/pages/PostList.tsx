@@ -248,11 +248,11 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             </div>
             <div ref={myRef} style={{position:'relative'}}>
             <div style={{display:'flex', alignItems:'center'}}><div style={{fontWeight:'bold',color:'#14B390',marginRight:'10px',width:'300px'}}>{firstState}<img onClick={()=>setState(!state)} style={{marginLeft:'3px'}} width='10px' height='10px' src={ChangeIcon}></img></div></div>
-            {showImage2 && <div style={{position:'absolute',left:'610px',top:'-110px'}}><div style={{position:'relative'}}><img src={MessageIcon2}></img><img onClick = {()=>handleClose2()} style={{position:'absolute', right:'15px', top:'10px'}} src={MessageIconDelete}></img></div></div>}
+            {/* {showImage2 && <div style={{position:'absolute',left:'610px',top:'-110px'}}><div style={{position:'relative'}}><img src={MessageIcon2}></img><img onClick = {()=>handleClose2()} style={{position:'absolute', right:'15px', top:'10px'}} src={MessageIconDelete}></img></div></div>} */}
             {state1 == false ? <MobileButtonStyled onClick={()=>setState1(true)}>+</MobileButtonStyled> :
-             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <MobileTextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'commonContent_plus')}></MobileTextArea></>}
+             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <MobileTextArea style={{width:'250px'}} ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'commonContent_plus')}></MobileTextArea></>}
             {state && <Scroll isFirst={true} ment = {firstMent} state = {firstState} setState={setFirstState} type= {type} setType={setType}/>}
-            {showImage && <div style={{position:'absolute',left:'-200px',top:'-70px'}}><div style={{position:'relative'}}><img src={MessageIcon1}></img><img onClick = {()=>handleClose()} style={{position:'absolute', left:'15px', top:'10px'}} src={MessageIconDelete}></img></div></div>}
+            {/* {showImage && <div style={{position:'absolute',left:'-200px',top:'-70px'}}><div style={{position:'relative'}}><img src={MessageIcon1}></img><img onClick = {()=>handleClose()} style={{position:'absolute', left:'15px', top:'10px'}} src={MessageIconDelete}></img></div></div>} */}
             {tabType === '' ? <><div>다름이 아니라,</div><MobileTextArea onInput={()=>handleResize(2)} ref={textRef} placeholder='ex) 메일 보낼 내용' onChange={(e)=>changeInputValue(e, 'defaultContent')}></MobileTextArea></>
             : tabType==='please' ?<BillnutContent num = {num} setNum={setNum}/> 
             : tabType === 'recommend' ? <RecommendContent num = {num} setNum={setNum}/>

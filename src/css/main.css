@@ -47,7 +47,8 @@ a:visited{
 .title{
     margin-top: 5.5vh;
     width : 100vw;
-    height : 120px;
+    height : 100px;
+    display: block;
 }
 .dsgmTitleImg{
     width : 52vw;
@@ -121,8 +122,8 @@ a:visited{
     background: #F7F8FA;
 }
 .dropdown:hover .dropdown-content {
-    margin-top: 200px;
-    position: fixed;
+    margin-top: 500px;
+    position: absolute;
     display: block;
 }
 .checkerInfoContainer{

@@ -142,10 +142,9 @@ function Default(props: any) {
   
   return(
   <div style={{overflowX:'hidden'}}>
-    
+    <Header currentMenu = 'default'/>
     
     <BrowserView>
-    <Header currentMenu = 'default'/>
     <CurrentNav src="img/Union.png"/>
     {
         showChecker === true?
@@ -169,17 +168,8 @@ function Default(props: any) {
     </div>
     </BrowserView>
     <MobileView>
-      <MobileTitleContainer>
-        <MobileTitle src="img/dsgm_title_mobile.png"/>
-      </MobileTitleContainer>
-    <div className='mobileHeaderContainer'>
-    <img src='img/defaultMobileHeader.png' className='mobileHeaderImg'/>
-    </div>
-    <Link to = 'billnut'>
-    <div className='mobileHeaderContainerClick'>
-    </div>
-    </Link>
-    <div className='checkerInfoAndTexts'>
+    <CurrentNavMobile src="img/Union.png"/>
+
     {
         showChecker === true?
         <div className='checkerInfoContainerMobile'>
@@ -199,7 +189,6 @@ function Default(props: any) {
         </div>
       : null
       }
-    </div>
     </div>
     </MobileView>
       

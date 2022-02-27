@@ -7,10 +7,11 @@ import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect"
 
 let MobileTitle: any = styled.img`
   margin-top: 38.95px;
-  margin-bottom: 22.95px;
+  margin-bottom: 5px;
 `;
 let MobileTitleContainer: any = styled.div`
   width: 100%;
+  display: block;
 `;
 
 let TabWrap : any = styled.div`
@@ -100,66 +101,77 @@ let TabBorderMobile : any = styled.img`
   height: 13.2px;
   float: left;
 `;
-let CurrentIndicator0 : any = styled.img`
+let IndicatorWrapper : any = styled.div`
+  float: left;
   position: absolute;
-  width: 3%;
+  display: inline-block;
+  width: 75vw;
+`;
+let IndicatorWrapperMobile : any = styled.div`
+  position: absolute;
+  display: inline-block;
+  width: 335px;
+`;
+let CurrentIndicator0 : any = styled.img`
+  float: left;
+  width: 4%;
   height: auto;
   margin-left: 5.5vw;
 `;
 let CurrentIndicatorMobile0 : any = styled.img`
+  float:left;
   width: 14.02px;
   height: auto;
-  position: absolute;
   margin-left: 24.98px;
 `;
 
 let CurrentIndicator1 : any = styled.img`
-  position: absolute;
-  width: 3%;
+float: left;
+  width: 4%;
   height: auto;
   margin-left: 20.5vw;
 `;
 let CurrentIndicatorMobile1 : any = styled.img`
+  float: left;
   width: 14.02px;
   height: auto;
-  position: absolute;
   margin-left: 92px;
 `;
 
 let CurrentIndicator2 : any = styled.img`
-  position: absolute;
-  width: 3%;
+float: left;
+  width: 4%;
   height: auto;
   margin-left: 36vw;
 `;
 let CurrentIndicatorMobile2 : any = styled.img`
+  float:left; 
   width: 14.02px;
   height: auto;
-  position: absolute;
   margin-left: 161px;
 `;
 
 let CurrentIndicator3 : any = styled.img`
-  position: absolute;
-  width: 3%;
+float: left;
+  width: 4%;
   height: auto;
   margin-left: 51.5vw;
 `;
 let CurrentIndicatorMobile3 : any = styled.img`
-  position: absolute;
+  float:left;
   width: 14.02px;
   height: auto;
   margin-left: 230px;
 `;
 
 let CurrentIndicator4 : any = styled.img`
-  position: absolute;
-  width: 3%;
+float: left;
+  width: 4%;
   height: auto;
   margin-left: 66.5vw;
 `;
 let CurrentIndicatorMobile4 : any = styled.img`
-  position: absolute;
+  float:left;
   width: 14.02px;
   height: auto;
   margin-left: 297px;
@@ -180,12 +192,15 @@ function Header(props: any) {
         <div className='title'>
           <img src="img/dsgm_title.png" className='dsgmTitleImg'/>
         </div>
+        <br/>
+        <IndicatorWrapper>
         {props.currentMenu === 'default'?<CurrentIndicator0 src="img/Group 8.png"/>
           : props.currentMenu === 'billnut'?<CurrentIndicator1 src="img/Group 8.png"/>
           : props.currentMenu === 'recommend'?<CurrentIndicator2 src="img/Group 8.png"/>
           : props.currentMenu === 'grade'?<CurrentIndicator3 src="img/Group 8.png"/>
           : <CurrentIndicator4 src="img/Group 8.png"/>
         }
+        </IndicatorWrapper>
       <TabWrap>
       <MenuTabBar>
         
@@ -230,12 +245,15 @@ function Header(props: any) {
         <MobileTitleContainer>
         <MobileTitle src="img/dsgm_title_mobile.png"/>
         </MobileTitleContainer>
+        <br/>
+        <IndicatorWrapperMobile>
         {props.currentMenu === 'default'?<CurrentIndicatorMobile0 src="img/Group 8.png"/>
           : props.currentMenu === 'billnut'?<CurrentIndicatorMobile1 src="img/Group 8.png"/>
           : props.currentMenu === 'recommend'?<CurrentIndicatorMobile2 src="img/Group 8.png"/>
           : props.currentMenu === 'grade'?<CurrentIndicatorMobile3 src="img/Group 8.png"/>
           : <CurrentIndicatorMobile4 src="img/Group 8.png"/>
         }
+        </IndicatorWrapperMobile>
         <TabWrapMobile>
           <MenuTabBarMobile>
             <TabBtnMobile1>

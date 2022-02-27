@@ -9,6 +9,9 @@ let MobileTitle: any = styled.img`
   margin-top: 38.95px;
   margin-bottom: 22.95px;
 `;
+let MobileTitleContainer: any = styled.div`
+  width: 100%;
+`;
 
 let TabWrap : any = styled.div`
   display: inline-block;
@@ -188,23 +191,23 @@ function Header(props: any) {
         
         <TabBtn>
           <Link to='/'>
-            <div onClick={()=>{setCurrentMenu(0); clearCommonPlus()}}>기본</div>
+            <div onClick={()=>{clearCommonPlus()}}>기본</div>
           </Link>
         </TabBtn>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn2>
           <Link to='/billnut'>
-            <div onClick={()=>{setCurrentMenu(1); clearCommonPlus()}}>빌넣</div>
+            <div onClick={()=>{clearCommonPlus()}}>빌넣</div>
           </Link>
         </TabBtn2>
         
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn2><Link to='/recommend'>
-            <div onClick={()=>{setCurrentMenu(2); clearCommonPlus()}}>추천서</div>
+            <div onClick={()=>{clearCommonPlus()}}>추천서</div>
         </Link> </TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn2><Link to='/grade'>
-        <div onClick={()=>{setCurrentMenu(3); clearCommonPlus()}}>성적문의</div>
+        <div onClick={()=>{clearCommonPlus()}}>성적문의</div>
         </Link></TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn className="dropdown">기타
@@ -224,9 +227,9 @@ function Header(props: any) {
       </TabWrap>
       </BrowserView>
       <MobileView>
-        <div>
+        <MobileTitleContainer>
         <MobileTitle src="img/dsgm_title_mobile.png"/>
-        </div>
+        </MobileTitleContainer>
         {props.currentMenu === 'default'?<CurrentIndicatorMobile0 src="img/Group 8.png"/>
           : props.currentMenu === 'billnut'?<CurrentIndicatorMobile1 src="img/Group 8.png"/>
           : props.currentMenu === 'recommend'?<CurrentIndicatorMobile2 src="img/Group 8.png"/>

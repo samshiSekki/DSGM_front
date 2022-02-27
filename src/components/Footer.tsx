@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import 'css/footer.css';
 import styled from 'styled-components';
 import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
+import axios from 'axios';
 
 let HeartIcon : any = styled.img`
   width: 16px;
@@ -45,13 +46,35 @@ let MicIconMobile : any = styled.img`
   float: right;
 `;
 
+
+
 function Footer() {
+  const HAS_VISITED_BEFORE : any = window.localStorage.getItem('hasVisitedBefore');
+  const [visit, setVisit] = useState(0);
+  useEffect(() => {
+    axios.get('http://mail-helper.com/mail-forms/visit').then(function(response){
+                //console.log(response.data);
+                setVisit(response.data);
+                if (!HAS_VISITED_BEFORE){
+                setVisit(response.data + 1);
+                axios.put('http://mail-helper.com/mail-forms/visit', {
+                  "counter": response.data + 1
+              });
+              let expires : any = new Date();
+              expires = expires.setTime(expires.getTime() + (30*24*60*60*1000));
+              window.localStorage.setItem('hasVisitedBefore', expires);
+            }
+            
+            })
+  }, []);
+  
+  
   return (
     <div>
         <BrowserView>
         <div className='footerContainer'>
             <div className='copyright'>Copyright(c)2022 삼시세끼 All rights reserved.</div>
-            <div className='accessCounter'><HeartIcon src='img/Heart.png'/>지금까지 n명이 접속했어요!</div>
+            <div className='accessCounter'><HeartIcon src='img/Heart.png'/>지금까지 {visit}명이 접속했어요!</div>
             <div className='proposalBtn'><MicIcon src='img/Mic.png'/><a target="_blank" href="https://www.instagram.com/samshisaekki/">제안하기</a></div>
         </div>
         </BrowserView>
@@ -59,7 +82,7 @@ function Footer() {
         <MobileView>
           <FooterContainerMobile>
             
-            <AccessCounterMobile><HeartIconMobile src='img/Heart.png'/>지금까지 n명이 접속했어요!</AccessCounterMobile>
+            <AccessCounterMobile><HeartIconMobile src='img/Heart.png'/>지금까지 {visit}명이 접속했어요!</AccessCounterMobile>
             <div className='proposalMobile'><a target="_blank" href="https://www.instagram.com/samshisaekki/">제안하기</a><MicIconMobile src='img/Mic.png'/></div>
             <br/>
             <CopyrightMobile>Copyright(c)2022 삼시세끼 All rights reserved.</CopyrightMobile>

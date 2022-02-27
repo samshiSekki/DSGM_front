@@ -22,6 +22,7 @@ interface PostListProps {
 
 
 const PostList = ({tabType, inputValue}:PostListProps) => {
+    const [visit, setVisit] = useState(-1);
     const [firstState, setFirstState] = useState(`교수님의 가르침 덕분에, 저의 학문적 호기심을 기를 수 있었습니다. 감사합니다.`);
     const [lastState, setLastState] = useState("항상 좋은 수업 감사드립니다.");
     const [firstMent, setFirstMent] = useState([]);
@@ -141,7 +142,7 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             document.removeEventListener('mousedown', handleClickOption2);
         }
     },[]);
-
+    
     
     const [showImage, setShowImage] = useState(false);
     const [showImage2, setShowImage2] = useState(false);
@@ -160,16 +161,16 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
           window.localStorage.setItem('hasVisitedBefore', expires);
         }
       };
-  
+
     useEffect(() => {
         //window.localStorage.removeItem('hasVisitedBefore');
-        console.log(1);
+        //console.log(1);
         const handleShowModal = () => {
             if (HAS_VISITED_BEFORE && HAS_VISITED_BEFORE > new Date()) {
                 if (showImage == false) setShowImage(false);
                 if (showImage2 == false) setShowImage2(false);
               return;
-            }        
+            }       
       
             if (!HAS_VISITED_BEFORE) {
               setShowImage(true);

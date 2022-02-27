@@ -1,12 +1,21 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import '../css/main.css';
 import PostList from './PostList';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 import {connect, useDispatch} from 'react-redux';
 import parse from 'html-react-parser';
 import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
 import Header from '../components/Header';
+
+let MobileTitle: any = styled.img`
+  margin-top: 38.95px;
+  margin-bottom: 22.95px;
+`;
+let MobileTitleContainer: any = styled.div`
+  width: 100%;
+`;
 
 let CurrentNav : any = styled.img`
   position: absolute;
@@ -133,9 +142,10 @@ function Default(props: any) {
   
   return(
   <div style={{overflowX:'hidden'}}>
-    <Header currentMenu = 'default'/>
+    
     
     <BrowserView>
+    <Header currentMenu = 'default'/>
     <CurrentNav src="img/Union.png"/>
     {
         showChecker === true?
@@ -159,7 +169,17 @@ function Default(props: any) {
     </div>
     </BrowserView>
     <MobileView>
-    <CurrentNavMobile src="img/Union.png"/>
+      <MobileTitleContainer>
+        <MobileTitle src="img/dsgm_title_mobile.png"/>
+      </MobileTitleContainer>
+    <div className='mobileHeaderContainer'>
+    <img src='img/defaultMobileHeader.png' className='mobileHeaderImg'/>
+    </div>
+    <Link to = 'billnut'>
+    <div className='mobileHeaderContainerClick'>
+    </div>
+    </Link>
+    <div className='checkerInfoAndTexts'>
     {
         showChecker === true?
         <div className='checkerInfoContainerMobile'>
@@ -179,6 +199,7 @@ function Default(props: any) {
         </div>
       : null
       }
+    </div>
     </div>
     </MobileView>
       

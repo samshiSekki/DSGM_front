@@ -117,31 +117,33 @@ function Header(props: any) {
         }
         </IndicatorWrapperMobile>
         <TabWrapMobile>
+          <MobileTabBorderWrapper>
+            <MobileTabBorder1 src="img/Line 4.png"/>
+            <MobileTabBorder2 src="img/Line 4.png"/>
+            <MobileTabBorder2 src="img/Line 4.png"/>
+            <MobileTabBorder2 src="img/Line 4.png"/>
+          </MobileTabBorderWrapper>
           <MenuTabBarMobile>
             <TabBtnMobile1>
               <Link to='/'>
                 <div onClick={()=>{setCurrentMenu(0); clearCommonPlus()}}>기본</div>
               </Link>
             </TabBtnMobile1>
-            <TabBorderMobile src='img/Line 4.png'></TabBorderMobile>
             <TabBtnMobile2>
               <Link to='/billnut'>
                 <div onClick={()=>{setCurrentMenu(1); clearCommonPlus()}}>빌넣</div>
               </Link>
             </TabBtnMobile2>
-            <TabBorderMobile src='img/Line 4.png'></TabBorderMobile>
             <TabBtnMobile2>
               <Link to='/recommend'>
                 <div onClick={()=>{setCurrentMenu(2); clearCommonPlus()}}>추천서</div>
               </Link>
             </TabBtnMobile2>
-            <TabBorderMobile src='img/Line 4.png'></TabBorderMobile>
             <TabBtnMobile2>
               <Link to='/grade'>
                 <div onClick={()=>{setCurrentMenu(3); clearCommonPlus()}}>성적문의</div>
               </Link>
             </TabBtnMobile2>
-            <TabBorderMobile src='img/Line 4.png'></TabBorderMobile>
             <TabBtnMobile1>
               <Link to='/others'>기타</Link>
 
@@ -356,6 +358,25 @@ let DropdownWrapper : any = styled.div`
   padding-left: 12.5vw;
   padding-right: 12.5vw;
   z-index:999;
+`;
+
+let MobileTabBorderWrapper : any = styled.div`
+  width: 335px;
+  height: 31px;
+  position: absolute;
+`;
+
+let MobileTabBorder1 : any = styled.img`
+  margin-top: 8.58px;
+  margin-left: 63.98px;
+  height: 13.2px;
+  float: left;
+`;
+let MobileTabBorder2 : any = styled.img`
+  margin-top: 8.58px;
+  margin-left: 69px;
+  height: 13.2px;
+  float: left;
 `;
 
 

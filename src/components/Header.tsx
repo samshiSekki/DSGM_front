@@ -1,9 +1,164 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { Link } from 'react-router-dom';
 import '../css/main.css';
 import styled from 'styled-components';
 import { connect, useDispatch } from 'react-redux';
 import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
+
+
+function Header(props: any) {
+  const [currentMenu, setCurrentMenu] = useState(0);
+  const [showDropdown,setShowDropdown]= useState(false);
+  let dispatch = useDispatch();
+
+  const el: any = useRef();
+  const handleCloseDropDown = (e: any) => {
+    if(el.current && !el.current.contains(e.target)) setShowDropdown(false);
+  }
+
+  useEffect(() => {
+    window.addEventListener('click', handleCloseDropDown);
+    return()=>{
+      window.removeEventListener('click', handleCloseDropDown);
+    }
+  }, []);
+  
+
+  function clearCommonPlus(){
+    dispatch({type: 'change', payload:{changeData:'', variableType: 'commonContent_plus'}});
+  }
+
+  return(
+    
+    <div>
+      <BrowserView>
+        <div className='title'>
+          <img src="img/dsgm_title.png" className='dsgmTitleImg'/>
+        </div>
+        <br/>
+        <IndicatorWrapper>
+        {props.currentMenu === 'default'?<CurrentIndicator0 src="img/Group 8.png"/>
+          : props.currentMenu === 'billnut'?<CurrentIndicator1 src="img/Group 8.png"/>
+          : props.currentMenu === 'recommend'?<CurrentIndicator2 src="img/Group 8.png"/>
+          : props.currentMenu === 'grade'?<CurrentIndicator3 src="img/Group 8.png"/>
+          : <CurrentIndicator4 src="img/Group 8.png"/>
+        }
+        </IndicatorWrapper>
+      <TabWrap>
+        
+      <MenuTabBar>
+        
+        <TabBtn>
+          <Link to='/'>
+            <div onClick={()=>{clearCommonPlus()}}>기본</div>
+          </Link>
+        </TabBtn>
+        <TabBorder src='img/Line 4.png'></TabBorder>
+        <TabBtn2>
+          <Link to='/billnut'>
+            <div onClick={()=>{clearCommonPlus()}}>빌넣</div>
+          </Link>
+        </TabBtn2>
+        
+        <TabBorder src='img/Line 4.png'></TabBorder>
+        <TabBtn2><Link to='/recommend'>
+            <div onClick={()=>{clearCommonPlus()}}>추천서</div>
+        </Link> </TabBtn2>
+        <TabBorder src='img/Line 4.png'></TabBorder>
+        <TabBtn2><Link to='/grade'>
+        <div onClick={()=>{clearCommonPlus()}}>성적문의</div>
+        </Link></TabBtn2>
+        <TabBorder src='img/Line 4.png'></TabBorder>
+        <TabBtn className="dropdown" onMouseOver={()=>{setShowDropdown(true)}}>기타
+        </TabBtn>
+      </MenuTabBar>
+      </TabWrap>
+      
+      <DropdownWrapper>
+        {showDropdown &&
+        <DivDropdown ref={el}>
+          <Link to='/others'>
+          <div className='dropdown_selection'>대학원 진학 문의</div>
+          </Link>
+          <Link to='/others'>
+          <hr className='dropdown-hr'/>
+          </Link>
+          <Link to='/others'>
+          <div className='dropdown_selection'>조교 신청 문의</div>
+          </Link>
+          <hr className='dropdown-hr'/>
+          <Link to='/others'>
+          <div className='dropdown_selection'>진로 상담</div>
+          </Link>
+          <hr className='dropdown-hr'/>
+          <Link to='/others'>
+          <div className='dropdown_selection'>수업 내용 질문</div>
+          </Link>
+          <hr className='dropdown-hr'/>
+          <Link to='/others'>
+          <div className='dropdown_selection'>과제 질문</div>
+          </Link>
+        </DivDropdown>
+        }
+        </DropdownWrapper>
+
+      </BrowserView>
+      <MobileView>
+        <MobileTitleContainer>
+        <MobileTitle src="img/dsgm_title_mobile.png"/>
+        </MobileTitleContainer>
+        <br/>
+        <IndicatorWrapperMobile>
+        {props.currentMenu === 'default'?<CurrentIndicatorMobile0 src="img/Group 8.png"/>
+          : props.currentMenu === 'billnut'?<CurrentIndicatorMobile1 src="img/Group 8.png"/>
+          : props.currentMenu === 'recommend'?<CurrentIndicatorMobile2 src="img/Group 8.png"/>
+          : props.currentMenu === 'grade'?<CurrentIndicatorMobile3 src="img/Group 8.png"/>
+          : <CurrentIndicatorMobile4 src="img/Group 8.png"/>
+        }
+        </IndicatorWrapperMobile>
+        <TabWrapMobile>
+          <MenuTabBarMobile>
+            <TabBtnMobile1>
+              <Link to='/'>
+                <div onClick={()=>{setCurrentMenu(0); clearCommonPlus()}}>기본</div>
+              </Link>
+            </TabBtnMobile1>
+            <TabBorderMobile src='img/Line 4.png'></TabBorderMobile>
+            <TabBtnMobile2>
+              <Link to='/billnut'>
+                <div onClick={()=>{setCurrentMenu(1); clearCommonPlus()}}>빌넣</div>
+              </Link>
+            </TabBtnMobile2>
+            <TabBorderMobile src='img/Line 4.png'></TabBorderMobile>
+            <TabBtnMobile2>
+              <Link to='/recommend'>
+                <div onClick={()=>{setCurrentMenu(2); clearCommonPlus()}}>추천서</div>
+              </Link>
+            </TabBtnMobile2>
+            <TabBorderMobile src='img/Line 4.png'></TabBorderMobile>
+            <TabBtnMobile2>
+              <Link to='/grade'>
+                <div onClick={()=>{setCurrentMenu(3); clearCommonPlus()}}>성적문의</div>
+              </Link>
+            </TabBtnMobile2>
+            <TabBorderMobile src='img/Line 4.png'></TabBorderMobile>
+            <TabBtnMobile1>
+              <Link to='/others'>기타</Link>
+
+            </TabBtnMobile1>
+          </MenuTabBarMobile>
+        </TabWrapMobile>
+      </MobileView>
+    </div>
+
+  );
+}
+
+function f1(inputValue: any){
+  return {
+    inputValue : inputValue
+  }
+};
 
 let MobileTitle: any = styled.img`
   margin-top: 38.95px;
@@ -41,7 +196,7 @@ let MenuTabBarMobile : any = styled.div`
   border-radius: 10px;
 `;
 let TabBtn : any = styled.div`
-  width: 19.1%;
+  width: 19.09%;
   height: 100%;
   position: relative;
   float: left;
@@ -49,34 +204,6 @@ let TabBtn : any = styled.div`
   font-size: 24px;
   line-height: 65px;
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-let TabBtnMobile1 : any = styled.div`
-  width: 63.98px;
-  height: 31px;
-  position: relative;
-  float: left;
-  font-weight: 800;
-  font-size: 11px;
-  line-height: 12px;
-  text-align: center;
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-let TabBtnMobile2 : any = styled.div`
-  width: 69.09px;
-  height: 31px;
-  position: relative;
-  float: left;
-  font-weight: 800;
-  font-size: 11px;
-  line-height: 12px;
-  text-align: center;
-  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,6 +220,35 @@ let TabBtn2 : any = styled.div`
   align-items: center;
   justify-content: center;
 `;
+let TabBtnMobile1 : any = styled.div`
+  width: 63.73px;
+  height: 31px;
+  position: relative;
+  float: left;
+  font-weight: 800;
+  font-size: 11px;
+  line-height: 12px;
+  text-align: center;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+let TabBtnMobile2 : any = styled.div`
+  width: 68.84px;
+  height: 31px;
+  position: relative;
+  float: left;
+  font-weight: 800;
+  font-size: 11px;
+  line-height: 12px;
+  text-align: center;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 let TabBorder : any = styled.img`
   height: 30px;
   float: left;
@@ -177,131 +333,30 @@ let CurrentIndicatorMobile4 : any = styled.img`
   margin-left: 297px;
 `;
 
-function Header(props: any) {
-  const [currentMenu, setCurrentMenu] = useState(0);
-  let dispatch = useDispatch();
+let DivDropdown : any = styled.div`
+  float: right;
+  width: 19.1%;
+  height: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #FFFFFF;
+  border: 0.3px solid #241E19;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 1px 9px rgba(0, 0, 0, 0.1);
+  border-radius: 14px 18px 14px 14px;
+  display: inline-block;
+`;
 
-  function clearCommonPlus(){
-    dispatch({type: 'change', payload:{changeData:'', variableType: 'commonContent_plus'}});
-  }
+let DropdownWrapper : any = styled.div`
 
-  return(
-    
-    <div>
-      <BrowserView>
-        <div className='title'>
-          <img src="img/dsgm_title.png" className='dsgmTitleImg'/>
-        </div>
-        <br/>
-        <IndicatorWrapper>
-        {props.currentMenu === 'default'?<CurrentIndicator0 src="img/Group 8.png"/>
-          : props.currentMenu === 'billnut'?<CurrentIndicator1 src="img/Group 8.png"/>
-          : props.currentMenu === 'recommend'?<CurrentIndicator2 src="img/Group 8.png"/>
-          : props.currentMenu === 'grade'?<CurrentIndicator3 src="img/Group 8.png"/>
-          : <CurrentIndicator4 src="img/Group 8.png"/>
-        }
-        </IndicatorWrapper>
-      <TabWrap>
-      <MenuTabBar>
-        
-        <TabBtn>
-          <Link to='/'>
-            <div onClick={()=>{clearCommonPlus()}}>기본</div>
-          </Link>
-        </TabBtn>
-        <TabBorder src='img/Line 4.png'></TabBorder>
-        <TabBtn2>
-          <Link to='/billnut'>
-            <div onClick={()=>{clearCommonPlus()}}>빌넣</div>
-          </Link>
-        </TabBtn2>
-        
-        <TabBorder src='img/Line 4.png'></TabBorder>
-        <TabBtn2><Link to='/recommend'>
-            <div onClick={()=>{clearCommonPlus()}}>추천서</div>
-        </Link> </TabBtn2>
-        <TabBorder src='img/Line 4.png'></TabBorder>
-        <TabBtn2><Link to='/grade'>
-        <div onClick={()=>{clearCommonPlus()}}>성적문의</div>
-        </Link></TabBtn2>
-        <TabBorder src='img/Line 4.png'></TabBorder>
-        <TabBtn className="dropdown">기타
-        <div className = 'dropdown-content'>
-            <Link to='/others'><a>대학원 진학 문의</a></Link>
-            <hr className='dropdown-hr'/>
-            <Link to='/others'><a>조교 신청 문의</a></Link>
-            <hr className='dropdown-hr'/>
-            <Link to='/others'><a>진로 상담</a></Link>
-            <hr className='dropdown-hr'/>
-            <Link to='/others'><a>수업 내용 질문</a></Link>
-            <hr className='dropdown-hr'/>
-            <Link to='/others'><a>과제 질문</a></Link>
-          </div>
-          </TabBtn>
-      </MenuTabBar>
-      </TabWrap>
-      </BrowserView>
-      <MobileView>
-        <MobileTitleContainer>
-        <MobileTitle src="img/dsgm_title_mobile.png"/>
-        </MobileTitleContainer>
-        <br/>
-        <IndicatorWrapperMobile>
-        {props.currentMenu === 'default'?<CurrentIndicatorMobile0 src="img/Group 8.png"/>
-          : props.currentMenu === 'billnut'?<CurrentIndicatorMobile1 src="img/Group 8.png"/>
-          : props.currentMenu === 'recommend'?<CurrentIndicatorMobile2 src="img/Group 8.png"/>
-          : props.currentMenu === 'grade'?<CurrentIndicatorMobile3 src="img/Group 8.png"/>
-          : <CurrentIndicatorMobile4 src="img/Group 8.png"/>
-        }
-        </IndicatorWrapperMobile>
-        <TabWrapMobile>
-          <MenuTabBarMobile>
-            <TabBtnMobile1>
-              <Link to='/'>
-                <div onClick={()=>{setCurrentMenu(0); clearCommonPlus()}}>기본</div>
-              </Link>
-            </TabBtnMobile1>
-            <TabBorderMobile src='img/Line 4.png'></TabBorderMobile>
-            <TabBtnMobile2>
-              <Link to='/billnut'>
-                <div onClick={()=>{setCurrentMenu(1); clearCommonPlus()}}>빌넣</div>
-              </Link>
-            </TabBtnMobile2>
-            <TabBorderMobile src='img/Line 4.png'></TabBorderMobile>
-            <TabBtnMobile2>
-              <Link to='/recommend'>
-                <div onClick={()=>{setCurrentMenu(2); clearCommonPlus()}}>추천서</div>
-              </Link>
-            </TabBtnMobile2>
-            <TabBorderMobile src='img/Line 4.png'></TabBorderMobile>
-            <TabBtnMobile2>
-              <Link to='/grade'>
-                <div onClick={()=>{setCurrentMenu(3); clearCommonPlus()}}>성적문의</div>
-              </Link>
-            </TabBtnMobile2>
-            <TabBorderMobile src='img/Line 4.png'></TabBorderMobile>
-            <TabBtnMobile1>
-              <Link to='/others'>기타</Link>
-                <div className = 'dropdown-content'>
-                  <a>대학원 진학 문의</a>
-                  <a>조교 신청 문의</a>
-                  <a>진로 상담</a>
-                  <a>수업 내용 질문</a>
-                  <a>과제 질문</a>
-                </div>
-            </TabBtnMobile1>
-          </MenuTabBarMobile>
-        </TabWrapMobile>
-      </MobileView>
-    </div>
+  margin-top: 11px;
+  width: 75vw;
+  height: auto;
+  position: absolute;
+  padding-left: 12.5vw;
+  padding-right: 12.5vw;
+  z-index:999;
+`;
 
-  );
-}
-
-function f1(inputValue: any){
-  return {
-    inputValue : inputValue
-  }
-};
 
 export default connect(f1)(Header);

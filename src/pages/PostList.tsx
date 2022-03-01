@@ -374,7 +374,7 @@ const MobileContainer = styled.div`
     display:flex;
     flex-direction:column;
     justify-content:center;
-    font-size:7px;
+    font-size:10px;
     width: 335px;
 `;
 

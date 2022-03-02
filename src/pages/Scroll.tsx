@@ -6,6 +6,7 @@ import {connect, useDispatch} from 'react-redux';
 import ChangeIcon from '../components/asset/icon/icon-active.svg';
 import DefaultIcon from '../components/asset/icon/icon-inactive.svg';
 import {BrowserView, MobileView} from "react-device-detect";
+export const SUGGEST_POST_URL = process.env.REACT_APP_API_ROOT;
 
 interface ScrollProps {
     isFirst:boolean
@@ -33,7 +34,7 @@ const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps, p
     const [isSelect, setIsSelect] = useState<number>(0);
 
     const onSuggest = () =>{
-        axios.post('http://mail-helper.com/mail-forms/suggestion', {
+        axios.post(`http://mail-helper.com/${SUGGEST_POST_URL}`, {
             type: type,
             suggestion: suggestion
         })

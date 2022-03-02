@@ -271,7 +271,7 @@ const MobileTabBox = styled.div`
     height:30px;
     display:flex;
     flex-direction:row;
-    font-size: 3px;
+    font-size: 5px;
     
 `;
 const MobileTab = styled.div`
@@ -279,7 +279,7 @@ const MobileTab = styled.div`
     height:100%;
     color:black;
 
-    font-size: 3px;
+    font-size: 5px;
 
 display:flex;
 align-items:center;
@@ -327,7 +327,7 @@ const MobileSelectBox = styled.div<IsSelectProps>`
     background-color: #D6EEE8;
     border-radius: 6px;
     }
-    font-size: 5px;
+    font-size: 7px;
 `
 const MobileInputDiv = styled.input`
     background: #FFFFFF;

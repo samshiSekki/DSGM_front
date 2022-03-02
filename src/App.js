@@ -5,12 +5,35 @@ import Billnut from './pages/Billnut';
 import Recommend from './pages/Recommend';
 import Grade from './pages/Grade';
 import Others from 'pages/Others';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import ReactGA from 'react-ga';
+
+
+ReactGA.event({
+  category: 'User',
+  action: 'Created an Account'
+});
+ReactGA.exception({
+  description: 'An error ocurred',
+  fatal: true
+});
 
 function App() {
+  const location = useLocation();
+  
+  useEffect(()=>{
+    ReactGA.initialize("user id");
+  },[]);
+
+  
+  useEffect(() => {
+    ReactGA.set({ page: location.pathname }); // Update the user's current page
+    ReactGA.pageview(location.pathname); // Record a pageview for the given page
+  }, [location]);
+  
   return (
     <div className="App">
-      <BrowserRouter>
       <Routes>
         <Route path="/" element={<Default />} />
         <Route path="/billnut" element={<Billnut />} />
@@ -19,7 +42,6 @@ function App() {
         <Route path="/others" element={<Others />} />
       </Routes>
       <Footer/>
-      </BrowserRouter>
     </div>
   );
 }

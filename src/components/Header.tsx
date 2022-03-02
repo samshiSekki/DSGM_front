@@ -4,6 +4,7 @@ import '../css/main.css';
 import styled from 'styled-components';
 import { connect, useDispatch } from 'react-redux';
 import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
+import ReactGA from 'react-ga';
 
 
 function Header(props: any) {
@@ -50,23 +51,51 @@ function Header(props: any) {
         
         <TabBtn>
           <Link to='/'>
-            <div onClick={()=>{clearCommonPlus()}}>기본</div>
+            <div onClick={()=>{
+              clearCommonPlus();
+              ReactGA.event({
+                  category: "Button",
+                  action: "default button",
+                  label: "menu",
+              });
+              }}>기본</div>
           </Link>
         </TabBtn>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn2>
           <Link to='/billnut'>
-            <div onClick={()=>{clearCommonPlus()}}>빌넣</div>
+            <div onClick={()=>{
+              clearCommonPlus();
+              ReactGA.event({
+                category: "Button",
+                action: "billnut button",
+                label: "menu",
+            });
+              }}>빌넣</div>
           </Link>
         </TabBtn2>
         
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn2><Link to='/recommend'>
-            <div onClick={()=>{clearCommonPlus()}}>추천서</div>
+            <div onClick={()=>{
+              clearCommonPlus();
+              ReactGA.event({
+                category: "Button",
+                action: "recommend button",
+                label: "menu",
+            });
+            }}>추천서</div>
         </Link> </TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn2><Link to='/grade'>
-        <div onClick={()=>{clearCommonPlus()}}>성적문의</div>
+        <div onClick={()=>{
+          clearCommonPlus();
+          ReactGA.event({
+            category: "Button",
+            action: "grade button",
+            label: "menu",
+          });
+          }}>성적문의</div>
         </Link></TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn className="dropdown" onMouseOver={()=>{setShowDropdown(true)}}>기타
@@ -78,25 +107,60 @@ function Header(props: any) {
         {showDropdown &&
         <DivDropdown ref={el}>
           <Link to='/others'>
-          <div className='dropdown_selection'>대학원 진학 문의</div>
+          <div className='dropdown_selection' onClick={()=>{
+          clearCommonPlus();
+          ReactGA.event({
+            category: "Button",
+            action: "graduate school button",
+            label: "menu",
+          });
+          }}>대학원 진학 문의</div>
           </Link>
           <Link to='/others'>
           <hr className='dropdown-hr'/>
           </Link>
           <Link to='/others'>
-          <div className='dropdown_selection'>조교 신청 문의</div>
+          <div className='dropdown_selection'onClick={()=>{
+          clearCommonPlus();
+          ReactGA.event({
+            category: "Button",
+            action: "assistant button",
+            label: "menu",
+          });
+          }}>조교 신청 문의</div>
           </Link>
           <hr className='dropdown-hr'/>
           <Link to='/others'>
-          <div className='dropdown_selection'>진로 상담</div>
+          <div className='dropdown_selection' onClick={()=>{
+          clearCommonPlus();
+          ReactGA.event({
+            category: "Button",
+            action: "career button",
+            label: "menu",
+          });
+          }}>진로 상담</div>
           </Link>
           <hr className='dropdown-hr'/>
           <Link to='/others'>
-          <div className='dropdown_selection'>수업 내용 질문</div>
+          <div className='dropdown_selection' onClick={()=>{
+          clearCommonPlus();
+          ReactGA.event({
+            category: "Button",
+            action: "class button",
+            label: "menu",
+          });
+          }}>수업 내용 질문</div>
           </Link>
           <hr className='dropdown-hr'/>
           <Link to='/others'>
-          <div className='dropdown_selection'>과제 질문</div>
+          <div className='dropdown_selection' onClick={()=>{
+          clearCommonPlus();
+          ReactGA.event({
+            category: "Button",
+            action: "assignment button",
+            label: "menu",
+          });
+          }}>과제 질문</div>
           </Link>
         </DivDropdown>
         }
@@ -126,22 +190,50 @@ function Header(props: any) {
           <MenuTabBarMobile>
             <TabBtnMobile1>
               <Link to='/'>
-                <div onClick={()=>{setCurrentMenu(0); clearCommonPlus()}}>기본</div>
+                <div onClick={()=>{
+              clearCommonPlus();
+              ReactGA.event({
+                  category: "Button",
+                  action: "default button",
+                  label: "menu",
+              });
+              }}>기본</div>
               </Link>
             </TabBtnMobile1>
             <TabBtnMobile2>
               <Link to='/billnut'>
-                <div onClick={()=>{setCurrentMenu(1); clearCommonPlus()}}>빌넣</div>
+                <div onClick={()=>{
+              clearCommonPlus();
+              ReactGA.event({
+                category: "Button",
+                action: "billnut button",
+                label: "menu",
+            });
+              }}>빌넣</div>
               </Link>
             </TabBtnMobile2>
             <TabBtnMobile2>
               <Link to='/recommend'>
-                <div onClick={()=>{setCurrentMenu(2); clearCommonPlus()}}>추천서</div>
+                <div onClick={()=>{
+              clearCommonPlus();
+              ReactGA.event({
+                category: "Button",
+                action: "recommend button",
+                label: "menu",
+            });
+            }}>추천서</div>
               </Link>
             </TabBtnMobile2>
             <TabBtnMobile2>
               <Link to='/grade'>
-                <div onClick={()=>{setCurrentMenu(3); clearCommonPlus()}}>성적문의</div>
+                <div onClick={()=>{
+          clearCommonPlus();
+          ReactGA.event({
+            category: "Button",
+            action: "grade button",
+            label: "menu",
+          });
+          }}>성적문의</div>
               </Link>
             </TabBtnMobile2>
             <TabBtnMobile1>

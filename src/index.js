@@ -6,6 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
 import { createStore } from 'redux';
+import {BrowserRouter} from 'react-router-dom';
 
 let defaultInputValue = {
   currentMenu : 'default',
@@ -266,7 +267,9 @@ let store = createStore(inputChanger);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      <BrowserRouter>
       <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

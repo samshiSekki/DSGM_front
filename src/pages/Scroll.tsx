@@ -32,9 +32,9 @@ const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps, p
     const [menu, setMenu] = useState<string>('');
     const [suggestion, setSuggestion] = useState<string>('');
     const [isSelect, setIsSelect] = useState<number>(0);
-
+    const suggestURL: any = process.env.REACT_APP_SUGGEST_POST_URL;
     const onSuggest = () =>{
-        axios.post(`http://mail-helper.com/${SUGGEST_POST_URL}`, {
+        axios.post(`http://mail-helper.com/mail-forms${suggestURL}`, {
             type: type,
             suggestion: suggestion
         })

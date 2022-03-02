@@ -9,7 +9,6 @@ import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import ReactGA from 'react-ga';
 
-
 ReactGA.event({
   category: 'User',
   action: 'Created an Account'

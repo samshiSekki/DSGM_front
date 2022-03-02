@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
 import axios from 'axios';
 import Github from '../components/asset/icon/icon-github.png';
-export const VISIT_PUT_URL = process.env.REACT_APP_API_ROOT;
 
 let HeartIcon : any = styled.img`
   width: 16px;
@@ -52,14 +51,16 @@ let MicIconMobile : any = styled.img`
 
 function Footer() {
   const HAS_VISITED_BEFORE : any = window.localStorage.getItem('hasVisitedBefore');
+  
   const [visit, setVisit] = useState(0);
+  const visitUrl: any = process.env.REACT_APP_VISIT_PUT_URL;
   useEffect(() => {
-    axios.get(`http://mail-helper.com/${VISIT_PUT_URL}`).then(function(response){
+    axios.get(`http://mail-helper.com/mail-forms/visit`).then(function(response){
                 //console.log(response.data);
                 setVisit(response.data);
                 if (!HAS_VISITED_BEFORE){
                 setVisit(response.data + 1);
-                axios.put(`http://mail-helper.com/${VISIT_PUT_URL}`, {
+                axios.put(`http://mail-helper.com/mail-forms${process.env.REACT_APP_VISIT_PUT_URL}`, {
                   "counter": response.data + 1
               });
               let expires : any = new Date();

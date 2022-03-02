@@ -3,6 +3,8 @@ import 'css/footer.css';
 import styled from 'styled-components';
 import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
 import axios from 'axios';
+import Github from '../components/asset/icon/icon-github.png';
+export const VISIT_PUT_URL = process.env.REACT_APP_API_ROOT;
 
 let HeartIcon : any = styled.img`
   width: 16px;
@@ -52,12 +54,12 @@ function Footer() {
   const HAS_VISITED_BEFORE : any = window.localStorage.getItem('hasVisitedBefore');
   const [visit, setVisit] = useState(0);
   useEffect(() => {
-    axios.get('http://mail-helper.com/mail-forms/visit').then(function(response){
+    axios.get(`http://mail-helper.com/${VISIT_PUT_URL}`).then(function(response){
                 //console.log(response.data);
                 setVisit(response.data);
                 if (!HAS_VISITED_BEFORE){
                 setVisit(response.data + 1);
-                axios.put('http://mail-helper.com/mail-forms/visit', {
+                axios.put(`http://mail-helper.com/${VISIT_PUT_URL}`, {
                   "counter": response.data + 1
               });
               let expires : any = new Date();
@@ -86,6 +88,7 @@ function Footer() {
             <div className='proposalMobile'><a target="_blank" href="https://www.instagram.com/samshisaekki/">제안하기</a><MicIconMobile src='img/Mic.png'/></div>
             <br/>
             <CopyrightMobile>Copyright(c)2022 삼시세끼 All rights reserved.</CopyrightMobile>
+            <img src={Github} style={{height:'20px'}}></img>
           </FooterContainerMobile>
         </MobileView>
     </div>

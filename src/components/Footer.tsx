@@ -76,7 +76,7 @@ function Footer() {
         <BrowserView>
         <div className='footerContainer'>
             <div className='copyright'>Copyright(c)2022 삼시세끼 All rights reserved.</div>
-            <div className='accessCounter'><HeartIcon src='img/Heart.png'/>지금까지 {visit}명이 접속했어요!</div>
+            <div className='accessCounter'><HeartIcon src='img/Heart.png'/>지금까지 (점검중)명이 접속했어요!</div>
             <div className='proposalBtn'><MicIcon src='img/Mic.png'/><a target="_blank" href="https://www.instagram.com/samshisaekki/">제안하기</a></div>
         </div>
         </BrowserView>
@@ -84,11 +84,10 @@ function Footer() {
         <MobileView>
           <FooterContainerMobile>
             
-            <AccessCounterMobile><HeartIconMobile src='img/Heart.png'/>지금까지 {visit}명이 접속했어요!</AccessCounterMobile>
+            <AccessCounterMobile><HeartIconMobile src='img/Heart.png'/>지금까지 (점검중)명이 접속했어요!</AccessCounterMobile>
             <div className='proposalMobile'><a target="_blank" href="https://www.instagram.com/samshisaekki/">제안하기</a><MicIconMobile src='img/Mic.png'/></div>
             <br/>
             <CopyrightMobile>Copyright(c)2022 삼시세끼 All rights reserved.</CopyrightMobile>
-            <img src={Github} style={{height:'20px'}}></img>
           </FooterContainerMobile>
         </MobileView>
     </div>

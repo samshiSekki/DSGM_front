@@ -143,7 +143,6 @@ function Default(props: any) {
   return(
   <div style={{overflowX:'hidden'}}>
     <Header currentMenu = 'default'/>
-    
     <BrowserView>
     <CurrentNav src="img/Union.png"/>
     {
@@ -191,7 +190,6 @@ function Default(props: any) {
       }
     </div>
     </MobileView>
-      
     <BrowserView>
     <div className='buttonContainer'>
       {

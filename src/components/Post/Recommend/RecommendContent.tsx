@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import {connect, useDispatch} from 'react-redux';
-import { BrowserView, MobileView } from "react-device-detect";
+import { BrowserView, MobileView, isBrowser, isIPad13 } from "react-device-detect";
 
 type ContentProps = {
     content : string
@@ -91,7 +91,7 @@ const RecommendContent = ({num,setNum}:NumberProps) => {
 
     return (
         <>
-        <BrowserView>
+        {(isIPad13 || isBrowser)?
         <div>
         {num == 0 ?
             <>
@@ -111,7 +111,8 @@ const RecommendContent = ({num,setNum}:NumberProps) => {
             : <div></div>}
                    
         </div>
-        </BrowserView>
+        :null}
+        {(!isIPad13)&&(!isBrowser)?
         <MobileView>
         <div>
         {num == 0 ?
@@ -134,6 +135,7 @@ const RecommendContent = ({num,setNum}:NumberProps) => {
         </div>
 
         </MobileView>
+        :null}
         </>
 
     );

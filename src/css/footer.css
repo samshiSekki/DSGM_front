@@ -12,12 +12,16 @@ body{
     color: #6A6A6A;
     margin-right: 32%;
 }
+.ipadCopyRight{
+    float:left;
+    color: #6A6A6A;
+    margin-right: 20%;
+}
 
 .accessCounter{
     float:left;
     color: #191E24;
 }
-
 .proposalBtn{
     float: right;
     color: #191E24;

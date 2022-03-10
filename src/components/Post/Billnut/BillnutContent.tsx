@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import {connect, useDispatch} from 'react-redux';
-import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
+import {BrowserView, MobileView, isBrowser, isIPad13} from "react-device-detect";
 
 type ContentProps = {
     content : string
@@ -113,7 +113,8 @@ const BillnutContent = ({num,setNum}:NumberProps) => {
     return (
         <>
         
-        <BrowserView>
+        {(isIPad13 || isBrowser)?
+        <div>
         {num == 0 ?
         <>
         <div>연락드리게 된 이유는 다름이 아니라<InputDiv onChange={(e)=>changeInputValue(e, 'billnutContent0_1')}></InputDiv> 과목의 증원 가능성이 있는지 여쭙기 위함입니다. </div>
@@ -167,7 +168,9 @@ const BillnutContent = ({num,setNum}:NumberProps) => {
         {state4 == false ? <ButtonStyled onClick={()=>setState4(true)}>+</ButtonStyled> :
              <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'billnutContent2_plus4')}></TextArea></>}
         </>}
-        </BrowserView>
+        </div>
+        :null}
+        {(!isIPad13)&&(!isBrowser)?
                 <MobileView>
                 {num == 0 ?
         <>
@@ -223,7 +226,7 @@ const BillnutContent = ({num,setNum}:NumberProps) => {
              <><MobileButtonStyled onClick={()=>setState4(false)}>-</MobileButtonStyled> <MobileTextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'billnutContent2_plus4')}></MobileTextArea></>}
         </>}
         </MobileView>
-       
+       :null}
         </>
 
     );

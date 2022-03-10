@@ -6,7 +6,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import {connect, useDispatch} from 'react-redux';
 import parse from 'html-react-parser';
-import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
+import {MobileView, isBrowser, isIPad13} from "react-device-detect";
 import Header from '../components/Header';
 
 let MobileTitle: any = styled.img`
@@ -143,7 +143,8 @@ function Default(props: any) {
   return(
   <div style={{overflowX:'hidden'}}>
     <Header currentMenu = 'default'/>
-    <BrowserView>
+    {(isIPad13 || isBrowser)?
+    <div>
     <CurrentNav src="img/Union.png"/>
     {
         showChecker === true?
@@ -165,7 +166,10 @@ function Default(props: any) {
       : null
       }
     </div>
-    </BrowserView>
+    </div>
+    : null
+    }
+    {(!isIPad13)&&(!isBrowser)?
     <MobileView>
     <CurrentNavMobile src="img/Union.png"/>
 
@@ -190,7 +194,9 @@ function Default(props: any) {
       }
     </div>
     </MobileView>
-    <BrowserView>
+    :null
+    }
+    {(isIPad13 || isBrowser)?
     <div className='buttonContainer'>
       {
         showChecker === false?
@@ -200,7 +206,9 @@ function Default(props: any) {
       <div onClick={()=>{window.location.replace("/")}} className='functionBtn'>Clear</div>
       <div onClick={copyBtnClickHandler} id='copyBtn'>복사하기</div>
     </div>
-    </BrowserView>
+    : null
+    }
+    {(!isIPad13)&&(!isBrowser)?
     <MobileView>
       <ButtonContainerMobile>
         <MobileButtonFlex>
@@ -214,6 +222,8 @@ function Default(props: any) {
         </MobileButtonFlex>
       </ButtonContainerMobile>
     </MobileView>
+    :null
+        }
 
   </div>);
 }

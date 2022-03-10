@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import {connect, useDispatch} from 'react-redux';
-import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
+import {BrowserView, MobileView, isBrowser, isIPad13} from "react-device-detect";
 
 type ContentProps = {
     content : string
@@ -86,6 +86,7 @@ const GradeContent = ({num,setNum}:NumberProps) => {
 
     return (
         <>
+        {(!isIPad13)&&(!isBrowser)?
         <MobileView>
         <div>
         {num == 0?
@@ -121,7 +122,8 @@ const GradeContent = ({num,setNum}:NumberProps) => {
            
         </div>
         </MobileView>
-        <BrowserView>
+        :null}
+        {(isIPad13 || isBrowser)?
         <div>
         {num == 0?
             <>
@@ -156,7 +158,7 @@ const GradeContent = ({num,setNum}:NumberProps) => {
            
         </div>
         
-        </BrowserView>
+        :null}
         </>
 
     );

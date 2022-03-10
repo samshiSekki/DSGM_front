@@ -13,7 +13,7 @@ import ChangeIcon from '../components/asset/icon/icon-change.svg';
 import MessageIcon1 from '../components/asset/icon/icon-message1.svg';
 import MessageIcon2 from '../components/asset/icon/icon-message2.svg';
 import MessageIconDelete from '../components/asset/icon/icon-message-delete.svg';
-import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
+import {BrowserView, MobileView, isBrowser, isMobile, isIPad13} from "react-device-detect";
 
 interface PostListProps {
     tabType?: string,
@@ -202,7 +202,8 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
 
     return (
         <>
-        <BrowserView>
+        {(isIPad13 || isBrowser)?
+        <div>
         {tabType === '' ? <></>
             : tabType==='please' ?<TabBox><Tab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</Tab><Tab onClick={()=>{setNum(1); clearCommonPlus()}}>양식2</Tab><Tab onClick={()=>{setNum(2); clearCommonPlus()}}>양식3</Tab></TabBox>
             : tabType === 'recommend' ? <TabBox><Tab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</Tab></TabBox>
@@ -233,7 +234,11 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             {state2 && <Scroll isFirst={false} ment = {lastMent} state = {lastState} setState={setLastState} type= {type2} setType={setType2}/>}
                         </div>
                         </Container>
-        </BrowserView>
+                        </div>
+        : null
+        }
+
+        {(!isIPad13)&&(!isBrowser)?
         <MobileView>
         {tabType === '' ? <></>
             : tabType==='please' ?<MobileTabBox><MobileTab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</MobileTab><MobileTab onClick={()=>{setNum(1); clearCommonPlus()}}>양식2</MobileTab><MobileTab onClick={()=>{setNum(2); clearCommonPlus()}}>양식3</MobileTab></MobileTabBox>
@@ -267,6 +272,8 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
                         </MobileContainer>
 
         </MobileView>
+        :null
+        }
         </>
     );
 

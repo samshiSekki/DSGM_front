@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 import axios from 'axios';
 import parse from 'html-react-parser';
-import {BrowserView, MobileView} from "react-device-detect";
+import {MobileView, isBrowser, isIPad13} from "react-device-detect";
 import Header from '../components/Header';
 
 let CurrentNav : any = styled.img`
@@ -86,13 +86,16 @@ function Others(props: any) {
   <div>
     <Header currentMenu = 'others'/>
     
-      <BrowserView>
+    {(isIPad13 || isBrowser)?
+    <div>
       <CurrentNav src="img/Union.png"/>
     <div className='loadingContainer'>
 
         <img src='img/loading_screen.png'/>
     </div>
-    </BrowserView>
+    </div>
+    :null}
+    {(!isIPad13)&&(!isBrowser)?
     <MobileView>
     <CurrentNavMobile src="img/Union.png"/>
 
@@ -102,7 +105,8 @@ function Others(props: any) {
     </div>
 
       </MobileView>
-    <BrowserView>
+      :null}
+    {(isIPad13 || isBrowser)?
     <div className='buttonContainer'>
     {
         showChecker === false?
@@ -112,7 +116,8 @@ function Others(props: any) {
       <div onClick={()=>{window.location.replace("/others")}} className='functionBtn'>Clear</div>
       <div id='copyBtn'>복사하기</div>
     </div>
-    </BrowserView>
+    :null}
+    {(!isIPad13)&&(!isBrowser)?
     <MobileView>
       <ButtonContainerMobile>
         <MobileButtonFlex>
@@ -126,6 +131,7 @@ function Others(props: any) {
         </MobileButtonFlex>
       </ButtonContainerMobile>
     </MobileView>
+    :null}
   </div>
   );
 }

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import {connect, useDispatch} from 'react-redux';
 import ChangeIcon from '../components/asset/icon/icon-active.svg';
 import DefaultIcon from '../components/asset/icon/icon-inactive.svg';
-import {BrowserView, MobileView} from "react-device-detect";
+import {BrowserView, MobileView, isIPad13, isBrowser} from "react-device-detect";
 export const SUGGEST_POST_URL = process.env.REACT_APP_API_ROOT;
 
 interface ScrollProps {
@@ -66,7 +66,7 @@ const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps, p
 
     return (
         <>
-        <BrowserView>
+        {(isIPad13 || isBrowser)?
         <Container>
         <TabBox>
             {isFirst ?
@@ -98,7 +98,10 @@ const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps, p
             </div>
         </ScrollBox>
         </Container>
-        </BrowserView>
+        : null
+        }
+
+        {(!isIPad13)&&(!isBrowser)?
         <MobileView>
         <MobileContainer>
         <MobileTabBox>
@@ -133,6 +136,8 @@ const Scroll = ({isFirst, ment, state, setState, type, setType} : ScrollProps, p
         </MobileContainer>
 
         </MobileView>
+        :null
+        }
         </>
     )
 

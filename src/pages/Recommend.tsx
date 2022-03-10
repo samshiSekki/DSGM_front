@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 import axios from 'axios';
 import parse from 'html-react-parser';
-import {BrowserView, MobileView} from "react-device-detect";
+import {MobileView, isBrowser, isIPad13} from "react-device-detect";
 import Header from '../components/Header';
 
 let CurrentNav : any = styled.img`
@@ -147,7 +147,8 @@ function Recommend(props: any) {
   <div>
     <Header currentMenu = 'recommend'/>
     
-    <BrowserView>
+    {(isIPad13 || isBrowser)?
+    <div>
     <CurrentNav src="img/Union.png"/>
     {
         showChecker === true?
@@ -168,7 +169,9 @@ function Recommend(props: any) {
       : null
       }
     </div>
-    </BrowserView>
+    </div>
+    :null}
+    {(!isIPad13)&&(!isBrowser)?
     <MobileView>
     <CurrentNavMobile src="img/Union.png"/>
     {
@@ -191,7 +194,8 @@ function Recommend(props: any) {
       }
     </div>
     </MobileView>
-    <BrowserView>
+    :null}
+    {(isIPad13 || isBrowser)?
     <div className='buttonContainer'>
     {
         showChecker === false?
@@ -201,7 +205,8 @@ function Recommend(props: any) {
       <div onClick={()=>{window.location.replace("/recommend")}} className='functionBtn'>Clear</div>
       <div id='copyBtn' onClick={copyBtnClickHandler}>복사하기</div>
     </div>
-    </BrowserView>
+    :null}
+    {(!isIPad13)&&(!isBrowser)?
     <MobileView>
       <ButtonContainerMobile>
         <MobileButtonFlex>
@@ -215,6 +220,7 @@ function Recommend(props: any) {
         </MobileButtonFlex>
       </ButtonContainerMobile>
     </MobileView>
+    :null}
   </div>
   );
 }

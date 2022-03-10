@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import 'css/footer.css';
 import styled from 'styled-components';
-import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
+import {BrowserView, MobileView, isBrowser, isIPad13} from "react-device-detect";
 import axios from 'axios';
 import Github from '../components/asset/icon/icon-github.png';
 
@@ -74,14 +74,19 @@ function Footer() {
   
   return (
     <div>
-        <BrowserView>
+        {(isIPad13 || isBrowser)?
         <div className='footerContainer'>
-            <div className='copyright'>Copyright(c)2022 삼시세끼 All rights reserved.</div>
+          {isIPad13
+            ? <div className='ipadCopyRight'>Copyright(c)2022 삼시세끼 All rights reserved.</div>
+            : <div className='copyright'>Copyright(c)2022 삼시세끼 All rights reserved.</div>
+          }
             <div className='accessCounter'><HeartIcon src='img/Heart.png'/>지금까지 {visit}명이 접속했어요!</div>
             <div className='proposalBtn'><MicIcon src='img/Mic.png'/><a target="_blank" href="https://www.instagram.com/samshisaekki/">제안하기</a></div>
         </div>
-        </BrowserView>
+        : null
+        }
 
+        {(!isIPad13)&&(!isBrowser)?
         <MobileView>
           <FooterContainerMobile>
             
@@ -91,6 +96,8 @@ function Footer() {
             <CopyrightMobile>Copyright(c)2022 삼시세끼 All rights reserved.</CopyrightMobile>
           </FooterContainerMobile>
         </MobileView>
+        :null
+        }
     </div>
   );
 }

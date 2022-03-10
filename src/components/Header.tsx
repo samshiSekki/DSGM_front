@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../css/main.css';
 import styled from 'styled-components';
 import { connect, useDispatch } from 'react-redux';
-import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
+import {BrowserView, MobileView, isBrowser, isMobile, isIPad13} from "react-device-detect";
 import ReactGA from 'react-ga';
 
 
@@ -32,7 +32,8 @@ function Header(props: any) {
   return(
     
     <div>
-      <BrowserView>
+      {(isIPad13 || isBrowser)?
+      <div>
         <div className='title'>
           <img src="img/dsgm_title.png" className='dsgmTitleImg'/>
         </div>
@@ -165,9 +166,11 @@ function Header(props: any) {
         </DivDropdown>
         }
         </DropdownWrapper>
-
-      </BrowserView>
-      <MobileView>
+        </div>
+      :null
+      }
+      {(!isIPad13)&&(!isBrowser)?
+      (<MobileView>
         <MobileTitleContainer>
         <MobileTitle src="img/dsgm_title_mobile.png"/>
         </MobileTitleContainer>
@@ -242,7 +245,9 @@ function Header(props: any) {
             </TabBtnMobile1>
           </MenuTabBarMobile>
         </TabWrapMobile>
-      </MobileView>
+      </MobileView>)
+      : null
+      }
     </div>
 
   );

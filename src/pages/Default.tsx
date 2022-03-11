@@ -88,12 +88,6 @@ function Default(props: any) {
   let stringToCheck: string[];
   let dispatch : any = useDispatch();
 
-  /*
-  useEffect(() => {
-    dispatch({type: 'change', payload:{changeData:'default', variableType: 'currentMenu'}});
-  }, [])
-  */
-
   const getChecker = async() => {
     stringToCheck = [];
     let checking: any = async() => {

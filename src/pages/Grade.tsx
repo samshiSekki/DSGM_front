@@ -30,7 +30,7 @@ let CheckerInfo : any = styled.img`
 let ButtonContainerMobile : any = styled.div`
   display: inline-block;
   margin-top: 12px;
-  margin-bottom: 23px;
+  margin-bottom: 26px;
   width: 335px;
   height: 31px;
 `;

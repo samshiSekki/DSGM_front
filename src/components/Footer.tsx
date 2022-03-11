@@ -47,6 +47,11 @@ let MicIconMobile : any = styled.img`
   float: right;
 `;
 
+let MobileVisitCountContainer : any = styled.div`
+  margin-bottom: 47px;
+  font-size: 11px;
+`;
+
 
 
 function Footer() {
@@ -88,6 +93,7 @@ function Footer() {
 
         {(!isIPad13)&&(!isBrowser)?
         <MobileView>
+          {/*
           <FooterContainerMobile>
             
             <AccessCounterMobile><HeartIconMobile src='img/Heart.png'/>지금까지 {visit}명이 접속했어요!</AccessCounterMobile>
@@ -95,6 +101,10 @@ function Footer() {
             <br/>
             <CopyrightMobile>Copyright(c)2022 삼시세끼 All rights reserved.</CopyrightMobile>
           </FooterContainerMobile>
+        */}
+          <MobileVisitCountContainer>
+            지금까지 <span style={{color: '#14B390'}}>{visit}명</span>이 접속했어요!
+          </MobileVisitCountContainer>
         </MobileView>
         :null
         }

@@ -7,7 +7,7 @@ import parse from 'html-react-parser';
 import {MobileView, isBrowser, isIPad13} from "react-device-detect";
 import Header from '../../components/Header';
 
-function Attendance() {
+function Attendance1() {
   return (
     <div style={{overflowX:'hidden'}}>
         <Header currentMenu = 'others'/>
@@ -34,7 +34,7 @@ function Attendance() {
   )
 }
 
-export default Attendance
+export default Attendance1
 
 let MobileTitle: any = styled.img`
   margin-top: 38.95px;

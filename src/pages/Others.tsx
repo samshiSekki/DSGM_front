@@ -7,6 +7,85 @@ import parse from 'html-react-parser';
 import {MobileView, isBrowser, isIPad13} from "react-device-detect";
 import Header from '../components/Header';
 
+
+function Others(props: any) {
+
+  let [showChecker, setShowChecker] = useState(false);
+  let [checkerResult, setCheckerResult] = useState('');
+  let copiedForm: string = '';
+  let checkerResultDataString: string = '초기값';
+  let naverCheckerURL: string;
+  let stringToCheck: string[];
+  let checkFinal: string = '';
+
+  return (
+  <div>
+    <Header currentMenu = 'others'/>
+    
+    {(isIPad13 || isBrowser)?
+    <div>
+      <CurrentNav src="img/Union.png"/>
+    <div className='loadingContainer'>
+
+        <img src='img/loading_screen.png'/>
+    </div>
+    </div>
+    :null}
+    {(!isIPad13)&&(!isBrowser)?
+    <MobileView>
+    <CurrentNavMobile src="img/Union.png"/>
+      <MobileOthersTabContainer>
+        <MobileOthersTabBtnContainer>
+        <MobileOthersTabBtn>대학원 진학 문의</MobileOthersTabBtn>
+        <MobileOthersTabBtn>출석인정 (학교행사)</MobileOthersTabBtn>
+        <MobileOthersTabBtn>출석인정 (개인사정)</MobileOthersTabBtn>
+        <MobileOthersTabBtn>수업내용 질문</MobileOthersTabBtn>
+        </MobileOthersTabBtnContainer>
+      </MobileOthersTabContainer>
+    <div className='loadingContainerMobile'>
+        <LoadingMobile src='img/loading_screen.png'/>
+
+    </div>
+
+      </MobileView>
+      :null}
+    {(isIPad13 || isBrowser)?
+    <div className='buttonContainer'>
+    {
+        showChecker === false?
+        <div className='functionBtn'>맞춤법 검사하기</div>
+        :<div onClick={()=>{setShowChecker(!showChecker)}} className='functionBtn'>검사 종료하기</div>
+      }
+      <div onClick={()=>{window.location.replace("/others")}} className='functionBtn'>Clear</div>
+      <div id='copyBtn'>복사하기</div>
+    </div>
+    :null}
+    {(!isIPad13)&&(!isBrowser)?
+    <MobileView>
+      <ButtonContainerMobile>
+        <MobileButtonFlex>
+          {
+            showChecker === false?
+            <FunctionBtnMobile>맞춤법 검사하기</FunctionBtnMobile>
+            :<FunctionBtnMobile onClick={()=>{setShowChecker(!showChecker)}}>검사 종료하기</FunctionBtnMobile>
+          }
+          <FunctionBtnMobile onClick={()=>{window.location.replace("/others")}}>Clear</FunctionBtnMobile>
+          <CopyBtnMobile>복사하기</CopyBtnMobile>
+        </MobileButtonFlex>
+      </ButtonContainerMobile>
+    </MobileView>
+    :null}
+  </div>
+  );
+}
+
+function f1(inputValue: any){
+  return {
+    inputValue : inputValue
+  }
+}
+export default connect(f1)(Others);
+
 let CurrentNav : any = styled.img`
   position: absolute;
   width: 3%;
@@ -72,73 +151,26 @@ let LoadingMobile : any = styled.img`
     height: auto;
 `;
 
-function Others(props: any) {
-
-  let [showChecker, setShowChecker] = useState(false);
-  let [checkerResult, setCheckerResult] = useState('');
-  let copiedForm: string = '';
-  let checkerResultDataString: string = '초기값';
-  let naverCheckerURL: string;
-  let stringToCheck: string[];
-  let checkFinal: string = '';
-
-  return (
-  <div>
-    <Header currentMenu = 'others'/>
-    
-    {(isIPad13 || isBrowser)?
-    <div>
-      <CurrentNav src="img/Union.png"/>
-    <div className='loadingContainer'>
-
-        <img src='img/loading_screen.png'/>
-    </div>
-    </div>
-    :null}
-    {(!isIPad13)&&(!isBrowser)?
-    <MobileView>
-    <CurrentNavMobile src="img/Union.png"/>
-
-    <div className='loadingContainerMobile'>
-        <LoadingMobile src='img/loading_screen.png'/>
-
-    </div>
-
-      </MobileView>
-      :null}
-    {(isIPad13 || isBrowser)?
-    <div className='buttonContainer'>
-    {
-        showChecker === false?
-        <div className='functionBtn'>맞춤법 검사하기</div>
-        :<div onClick={()=>{setShowChecker(!showChecker)}} className='functionBtn'>검사 종료하기</div>
-      }
-      <div onClick={()=>{window.location.replace("/others")}} className='functionBtn'>Clear</div>
-      <div id='copyBtn'>복사하기</div>
-    </div>
-    :null}
-    {(!isIPad13)&&(!isBrowser)?
-    <MobileView>
-      <ButtonContainerMobile>
-        <MobileButtonFlex>
-          {
-            showChecker === false?
-            <FunctionBtnMobile>맞춤법 검사하기</FunctionBtnMobile>
-            :<FunctionBtnMobile onClick={()=>{setShowChecker(!showChecker)}}>검사 종료하기</FunctionBtnMobile>
-          }
-          <FunctionBtnMobile onClick={()=>{window.location.replace("/others")}}>Clear</FunctionBtnMobile>
-          <CopyBtnMobile>복사하기</CopyBtnMobile>
-        </MobileButtonFlex>
-      </ButtonContainerMobile>
-    </MobileView>
-    :null}
-  </div>
-  );
-}
-
-function f1(inputValue: any){
-  return {
-    inputValue : inputValue
-  }
-}
-export default connect(f1)(Others);
+let MobileOthersTabContainer : any = styled.div`
+  width: 335px;
+  padding-top: 15px;
+  padding-bottom: 13px;
+  display: inline-block;
+`;
+let MobileOthersTabBtnContainer : any = styled.div`
+  display:flex;
+  justify-content: space-around;
+`;
+let MobileOthersTabBtn : any = styled.div`
+  width: auto;
+  height: 19px;
+  background: #F0F0F0;
+  border-radius: 19.5px;
+  font-weight: 700;
+font-size: 7px;
+line-height: 19px;
+text-align: center;
+padding-left: 10px;
+padding-right: 10px;
+color: #6A6A6A;
+`;

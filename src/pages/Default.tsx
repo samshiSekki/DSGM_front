@@ -9,13 +9,6 @@ import parse from 'html-react-parser';
 import {MobileView, isBrowser, isIPad13} from "react-device-detect";
 import Header from '../components/Header';
 
-let MobileTitle: any = styled.img`
-  margin-top: 38.95px;
-  margin-bottom: 22.95px;
-`;
-let MobileTitleContainer: any = styled.div`
-  width: 100%;
-`;
 
 let CurrentNav : any = styled.img`
   position: absolute;
@@ -78,7 +71,7 @@ text-align: center;
 `;
 
 function Default(props: any) {
-
+  
   let [showChecker, setShowChecker] = useState(false);
   let [checkerResult1, setCheckerResult1] = useState('');//맞춤법 검사 결과 화면에 뿌리는 용도
   let checkFinal: string = '';

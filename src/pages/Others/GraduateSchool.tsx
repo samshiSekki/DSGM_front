@@ -15,6 +15,7 @@ function GraduateSchool() {
         <div>
         <CurrentNav src="img/Union.png"/>
             <div className='mailTextContainer'>
+            <PostList tabType={'graduateschool'}/>
             </div>
         </div>
         : null

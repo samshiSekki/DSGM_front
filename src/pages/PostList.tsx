@@ -14,6 +14,11 @@ import MessageIcon1 from '../components/asset/icon/icon-message1.svg';
 import MessageIcon2 from '../components/asset/icon/icon-message2.svg';
 import MessageIconDelete from '../components/asset/icon/icon-message-delete.svg';
 import {BrowserView, MobileView, isBrowser, isMobile, isIPad13} from "react-device-detect";
+import AttendanceSchool from "components/Post/AttendanceSchool/AttendanceSchool";
+import AttendancePersonal from "components/Post/AttendancePersonal/AttendancePersonal";
+import Questions from "components/Post/Questions/Questions";
+import GraduateSchool from "./Others/GraduateSchool";
+import Undergraduate from "components/Post/Undergraduate/Undergraduate";
 
 interface PostListProps {
     tabType?: string,
@@ -200,8 +205,8 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             : tabType==='please' ?<TabBox><Tab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</Tab><Tab onClick={()=>{setNum(1); clearCommonPlus()}}>양식2</Tab><Tab onClick={()=>{setNum(2); clearCommonPlus()}}>양식3</Tab></TabBox>
             : tabType === 'recommend' ? <TabBox><Tab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</Tab></TabBox>
             : tabType === 'grade' ? <TabBox><Tab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</Tab><Tab onClick={()=>{setNum(1); clearCommonPlus()}}>양식2</Tab></TabBox>
-            :
-            <div></div>}
+            : tabType === 'graduateschool' ? <TabBox><Tab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</Tab><Tab onClick={()=>{setNum(1); clearCommonPlus()}}>양식2</Tab></TabBox>
+            : <div></div>}
         <Container>
           
         <div>안녕하십니까 <InputDiv style={{width:'200px'}} placeholder='ex) 김철수' onChange={(e)=>changeInputValue(e, 'professorName')}></InputDiv> 교수님, </div>
@@ -219,6 +224,10 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             : tabType==='please' ?<BillnutContent num = {num} setNum={setNum}/> 
             : tabType === 'recommend' ? <RecommendContent num = {num} setNum={setNum}/>
             : tabType === 'grade' ? <GradeContent num = {num} setNum={setNum}/>
+            : tabType === 'attendanceschool' ? <AttendanceSchool num = {num} setNum={setNum}/>
+            : tabType === 'attendancepersonal' ? <AttendancePersonal num = {num} setNum={setNum}/>
+            : tabType === 'questions' ? <Questions num = {num} setNum={setNum}/>
+            : tabType === 'graduateschool' ? <Undergraduate num = {num} setNum={setNum}/>
             :
             <div></div>}
                         

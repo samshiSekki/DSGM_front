@@ -107,7 +107,7 @@ function Header(props: any) {
       <DropdownWrapper>
         {showDropdown &&
         <DivDropdown ref={el}>
-          <Link to='/others'>
+          <Link to='/graduateschool'>
           <div className='dropdown_selection' onClick={()=>{
           clearCommonPlus();
           ReactGA.event({
@@ -117,10 +117,8 @@ function Header(props: any) {
           });
           }}>대학원 진학 문의</div>
           </Link>
-          <Link to='/others'>
           <hr className='dropdown-hr'/>
-          </Link>
-          <Link to='/others'>
+          <Link to='/attendanceschool'>
           <div className='dropdown_selection'onClick={()=>{
           clearCommonPlus();
           ReactGA.event({
@@ -131,7 +129,7 @@ function Header(props: any) {
           }}>출석인정 (학교행사)</div>
           </Link>
           <hr className='dropdown-hr'/>
-          <Link to='/others'>
+          <Link to='/attendancepersonal'>
           <div className='dropdown_selection' onClick={()=>{
           clearCommonPlus();
           ReactGA.event({
@@ -142,7 +140,7 @@ function Header(props: any) {
           }}>출석인정 (개인사정)</div>
           </Link>
           <hr className='dropdown-hr'/>
-          <Link to='/others'>
+          <Link to='/questions'>
           <div className='dropdown_selection' onClick={()=>{
           clearCommonPlus();
           ReactGA.event({

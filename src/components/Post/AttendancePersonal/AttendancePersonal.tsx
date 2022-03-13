@@ -17,16 +17,10 @@ const AttendancePersonal = ({num,setNum}:NumberProps) => {
     const [state1, setState1]= useState<boolean>(false);
     const [state2, setState2]= useState<boolean>(false);
     const [state3, setState3]= useState<boolean>(false);
-    const [state4, setState4]= useState<boolean>(false);
-    const [state5, setState5]= useState<boolean>(false);
-    const [state6, setState6]= useState<boolean>(false);
 
     const textRef1 = useRef<any>(null);
     const textRef2 = useRef<any>(null);
     const textRef3 = useRef<any>(null);
-    const textRef4 = useRef<any>(null);
-    const textRef5 = useRef<any>(null);
-    const textRef6 = useRef<any>(null);
 
     let dispatch = useDispatch();
 
@@ -42,8 +36,6 @@ const AttendancePersonal = ({num,setNum}:NumberProps) => {
         setState1(false);
         setState2(false);
         setState3(false);
-        setState4(false);
-        setState5(false);
         /* axios.get('http://13.125.177.135:5000/mail-forms/contents',{params: {
                 category: 'please'
             }}).then(function(response){
@@ -78,30 +70,6 @@ const AttendancePersonal = ({num,setNum}:NumberProps) => {
                 }
                 textRef3.current.style.height = '30px';
                 textRef3.current.style.height = textRef3.current.scrollHeight +'px';
-            } else if (value == 4)
-            {
-                if (textRef4 == null || textRef4.current == null)
-                {
-                    return;
-                }
-                textRef4.current.style.height = '30px';
-                textRef4.current.style.height = textRef4.current.scrollHeight +'px';
-            } else if (value == 5)
-            {
-                if (textRef5 == null || textRef5.current == null)
-                {
-                    return;
-                }
-                textRef5.current.style.height = '30px';
-                textRef5.current.style.height = textRef5.current.scrollHeight +'px';
-            } else if (value == 6)
-            {
-                if (textRef6 == null || textRef6.current == null)
-                {
-                    return;
-                }
-                textRef6.current.style.height = '30px';
-                textRef6.current.style.height = textRef6.current.scrollHeight +'px';
             }
     },
         [],
@@ -116,30 +84,30 @@ const AttendancePersonal = ({num,setNum}:NumberProps) => {
         {(isIPad13 || isBrowser)?
         <div>
         <>
-        <div>다름이 아니라 <InputDiv onChange={(e)=>changeInputValue(e, 'billnutContent0_1')}></InputDiv>에 <InputDiv onChange={(e)=>changeInputValue(e, 'billnutContent0_1')}></InputDiv>로 인해 수업에 참석하지 못할 것 같습니다.</div>
+        <div>다름이 아니라 <InputDiv onChange={(e)=>changeInputValue(e, 'attendanceperson0_1')}></InputDiv>에 <InputDiv onChange={(e)=>changeInputValue(e, 'attendanceperson0_2')}></InputDiv>로 인해 수업에 참석하지 못할 것 같습니다.</div>
         {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus1')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'attendanceperson0_plus1')}></TextArea></>}
         <div>다른 날짜로 조정이 불가피한 상황이라, 출석 인정 받을 수 있는 다른 방법이 있을 지 문의 드립니다.</div>
         {state2 == false ? <ButtonStyled onClick={()=>setState2(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus2')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'attendanceperson0_plus2')}></TextArea></>}
         <div>출석인정이 가능하다면 관련 서류를 발급받을 수 있는지 확인해보고자 합니다.</div>
         {state3 == false ? <ButtonStyled onClick={()=>setState3(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus3')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'attendanceperson0_plus3')}></TextArea></>}
         </>
         </div>
         : null}
         {(!isIPad13)&&(!isBrowser)?
                 <MobileView>
         <>
-        <div>다름이 아니라 <InputDiv onChange={(e)=>changeInputValue(e, 'billnutContent0_1')}></InputDiv>에 <InputDiv onChange={(e)=>changeInputValue(e, 'billnutContent0_1')}></InputDiv>로 인해 수업에 참석하지 못할 것 같습니다.</div>
+        <div>다름이 아니라 <InputDiv onChange={(e)=>changeInputValue(e, 'attendanceperson0_1')}></InputDiv>에 <InputDiv onChange={(e)=>changeInputValue(e, 'attendanceperson0_2')}></InputDiv>로 인해 수업에 참석하지 못할 것 같습니다.</div>
         {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus1')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'attendanceperson0_plus1')}></TextArea></>}
         <div>다른 날짜로 조정이 불가피한 상황이라, 출석 인정 받을 수 있는 다른 방법이 있을 지 문의 드립니다.</div>
         {state2 == false ? <ButtonStyled onClick={()=>setState2(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus2')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'attendanceperson0_plus2')}></TextArea></>}
         <div>출석인정이 가능하다면 관련 서류를 발급받을 수 있는지 확인해보고자 합니다.</div>
         {state3 == false ? <ButtonStyled onClick={()=>setState3(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus3')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'attendanceperson0_plus3')}></TextArea></>}
         </>
         </MobileView>
        :null}

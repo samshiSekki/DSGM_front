@@ -128,7 +128,7 @@ function Header(props: any) {
             action: "assistant button",
             label: "menu",
           });
-          }}>조교 신청 문의</div>
+          }}>출석인정 (학교행사)</div>
           </Link>
           <hr className='dropdown-hr'/>
           <Link to='/others'>
@@ -139,7 +139,7 @@ function Header(props: any) {
             action: "career button",
             label: "menu",
           });
-          }}>진로 상담</div>
+          }}>출석인정 (개인사정)</div>
           </Link>
           <hr className='dropdown-hr'/>
           <Link to='/others'>
@@ -152,17 +152,7 @@ function Header(props: any) {
           });
           }}>수업 내용 질문</div>
           </Link>
-          <hr className='dropdown-hr'/>
-          <Link to='/others'>
-          <div className='dropdown_selection' onClick={()=>{
-          clearCommonPlus();
-          ReactGA.event({
-            category: "Button",
-            action: "assignment button",
-            label: "menu",
-          });
-          }}>과제 질문</div>
-          </Link>
+          
         </DivDropdown>
         }
         </DropdownWrapper>

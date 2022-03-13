@@ -9,7 +9,7 @@ import Question from 'pages/Others/Question';
 import GraduateSchool from 'pages/Others/GraduateSchool';
 import Attendance1 from 'pages/Others/Attendance1';
 import Attendance2 from 'pages/Others/Attendance2';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import ReactGA from 'react-ga';
 
@@ -34,7 +34,7 @@ function App() {
     ReactGA.set({ page: location.pathname }); // Update the user's current page
     ReactGA.pageview(location.pathname); // Record a pageview for the given page
   }, [location]);
-  
+
   return (
     <div className="App">
       <Routes>

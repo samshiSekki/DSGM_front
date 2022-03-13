@@ -54,7 +54,6 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
     };  
 
     let dispatch: any = useDispatch();
-    //console.log(inputValue.professorName);
 
     function changeInputValue(e: any, variableType: string){
         dispatch({type: 'change', payload:{changeData:e.target.value, variableType: variableType}});
@@ -69,13 +68,6 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             }}).then(function(response){
                 setFirstMent(response.data);
             })
-            /* axios.get('http://13.125.177.135:5000/mail-forms/contents',{params: {
-                category: tabType
-            }}).then(function(response){
-                setContent(response.data);
-                console.log(response.data);
-                setCurrentContent(content[0]);
-            }) */
                    
 
     },[type,tabType]);
@@ -349,7 +341,7 @@ const InputDiv = styled.input`
 `;
 
 const TextArea = styled.textarea`
-    width:800px;
+    width:80%;
     font-family: 'Roboto';
     border:none;
     background-image:

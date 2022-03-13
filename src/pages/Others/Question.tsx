@@ -15,6 +15,7 @@ function Question() {
     <div>
     <CurrentNav src="img/Union.png"/>
         <div className='mailTextContainer'>
+        <PostList tabType={'questions'}/>
         </div>
     </div>
     : null

@@ -15,6 +15,8 @@ function Attendance1() {
     <div>
     <CurrentNav src="img/Union.png"/>
         <div className='mailTextContainer'>
+        
+        <PostList tabType={'attendanceschool'}/>
         </div>
     </div>
     : null

@@ -8,6 +8,10 @@ import Others from 'pages/Others';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import ReactGA from 'react-ga';
+import GraduateSchool from 'pages/Others/GraduateSchool';
+import Attendance1 from 'pages/Others/Attendance1';
+import Attendance2 from 'pages/Others/Attendance2';
+import Question from 'pages/Others/Question';
 
 ReactGA.event({
   category: 'User',
@@ -38,7 +42,10 @@ function App() {
         <Route path="/billnut" element={<Billnut />} />
         <Route path="/recommend" element={<Recommend />} />
         <Route path="/grade" element={<Grade />} />
-        <Route path="/others" element={<Others />} />
+        <Route path="/graduateschool" element={<GraduateSchool />} />
+        <Route path="/attendanceschool" element={<Attendance1 />} />
+        <Route path="/attendancepersonal" element={<Attendance2 />} />
+        <Route path="/questions" element={<Question />} />
       </Routes>
       <Footer/>
     </div>

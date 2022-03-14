@@ -31,6 +31,7 @@ function App() {
     ReactGA.pageview(location.pathname); // Record a pageview for the given page
   }, [location]);
 
+  
   return (
     <div className="App">
       <Routes>

@@ -71,7 +71,64 @@ let defaultInputValue = {
   gradeContent1_plus1 : '',
   gradeContent1_plus2 : '',
   gradeContent1_plus3 : '',
-  gradeContent1_plus4 : ''
+  gradeContent1_plus4 : '',
+
+  graduateState: 0,
+  graduateContent0_1 : '',
+  graduateContent0_2 : '',
+  graduateContent0_3 : '',
+  graduateContent0_4 : '',
+
+  graduateContent0_plus1 : '',
+  graduateContent0_plus2 : '',
+  graduateContent0_plus3 : '',
+  graduateContent0_plus4 : '',
+  graduateContent0_plus5 : '',
+  graduateContent0_plus6 : '',
+
+  graduateContent1_1 : '',
+  graduateContent1_2 : '',
+  graduateContent1_3 : '',
+  graduateContent1_4 : '',
+  graduateContent1_5 : '',
+  graduateContent1_6 : '',
+  graduateContent1_7 : '',
+  graduateContent1_8 : '',
+  graduateContent1_9 : '',
+  graduateContent1_10 : '',
+  graduateContent1_11 : '',
+
+  graduateContent1_plus1 : '',
+  graduateContent1_plus2 : '',
+  graduateContent1_plus3 : '',
+  graduateContent1_plus4 : '',
+  graduateContent1_plus5 : '',
+
+  attSchoolState : 0,
+  attSchoolContent0_1 : '',
+  attSchoolContent0_2 : '',
+  attSchoolContent0_3 : '',
+
+  attSchoolContent0_plus1 : '',
+  attSchoolContent0_plus2 : '',
+  attSchoolContent0_plus3 : '',
+
+  attPersonalState : 0,
+  attPersonalContent0_1 : '',
+  attPersonalContent0_2 : '',
+
+  attPersonalContent0_plus1 : '',
+  attPersonalContent0_plus2 : '',
+  attPersonalContent0_plus3 : '',
+
+  questionState : 0,
+  questionContent0_1 : '',
+  questionContent0_2 : '',
+
+  questionContent0_plus1 : '',
+  questionContent0_plus2 : '',
+  questionContent0_plus3 : '',
+  questionContent0_plus4 : ''
 };
 
 function inputChanger(inputValue = defaultInputValue, action){
@@ -254,6 +311,152 @@ function inputChanger(inputValue = defaultInputValue, action){
       case 'gradeContent1_plus4' :
         copy.gradeContent1_plus4 = action.payload.changeData;
         break;
+
+      case 'graduateState':
+        copy.graduateState = action.payload.changeData;
+        break;
+      case 'graduateContent0_1' :
+        copy.graduateContent0_1 = action.payload.changeData;
+        break;
+      case 'graduateContent0_2' :
+        copy.graduateContent0_2 = action.payload.changeData;
+        break;
+      case 'graduateContent0_3' :
+        copy.graduateContent0_3 = action.payload.changeData;
+        break;
+      case 'graduateContent0_4' :
+        copy.graduateContent0_4 = action.payload.changeData;
+        break;
+      case 'graduateContent0_plus1' :
+        copy.graduateContent0_plus1 = action.payload.changeData;
+        break;
+      case 'graduateContent0_plus2' :
+        copy.graduateContent0_plus2 = action.payload.changeData;
+        break;
+      case 'graduateContent0_plus3' :
+        copy.graduateContent0_plus3 = action.payload.changeData;
+        break;
+      case 'graduateContent0_plus4' :
+        copy.graduateContent0_plus4 = action.payload.changeData;
+        break;
+      case 'graduateContent0_plus5' :
+        copy.graduateContent0_plus5 = action.payload.changeData;
+        break;
+      case 'graduateContent0_plus6' :
+        copy.graduateContent0_plus6 = action.payload.changeData;
+        break;
+
+        case 'graduateContent1_1' :
+          copy.graduateContent1_1 = action.payload.changeData;
+          break;
+        case 'graduateContent1_2' :
+          copy.graduateContent1_2 = action.payload.changeData;
+          break;
+        case 'graduateContent1_3' :
+          copy.graduateContent1_3 = action.payload.changeData;
+          break;
+        case 'graduateContent1_4' :
+          copy.graduateContent1_4 = action.payload.changeData;
+          break;
+        case 'graduateContent1_5' :
+          copy.graduateContent1_5 = action.payload.changeData;
+          break;
+        case 'graduateContent1_6' :
+          copy.graduateContent1_6 = action.payload.changeData;
+          break;
+        case 'graduateContent1_7' :
+          copy.graduateContent1_7 = action.payload.changeData;
+          break;
+        case 'graduateContent1_8' :
+          copy.graduateContent1_8 = action.payload.changeData;
+          break;
+        case 'graduateContent1_9' :
+          copy.graduateContent1_9 = action.payload.changeData;
+          break;
+        case 'graduateContent1_10' :
+          copy.graduateContent1_10 = action.payload.changeData;
+          break;
+        case 'graduateContent1_11' :
+          copy.graduateContent1_11 = action.payload.changeData;
+          break;
+        case 'graduateContent1_plus1' :
+          copy.graduateContent1_plus1 = action.payload.changeData;
+          break;
+        case 'graduateContent1_plus2' :
+          copy.graduateContent1_plus2 = action.payload.changeData;
+          break;
+        case 'graduateContent1_plus3' :
+          copy.graduateContent1_plus3 = action.payload.changeData;
+          break;
+        case 'graduateContent1_plus4' :
+          copy.graduateContent1_plus4 = action.payload.changeData;
+          break;
+        case 'graduateContent1_plus5' :
+          copy.graduateContent1_plus5 = action.payload.changeData;
+          break;
+
+       case 'attSchoolState':
+        copy.attSchoolState = action.payload.changeData;
+        break;
+      case 'attSchoolContent0_1' :
+        copy.attSchoolContent0_1 = action.payload.changeData;
+        break;
+      case 'attSchoolContent0_2' :
+        copy.attSchoolContent0_2 = action.payload.changeData;
+        break;
+      case 'attSchoolContent0_3' :
+        copy.attSchoolContent0_3 = action.payload.changeData;
+        break;
+      case 'attSchoolContent0_plus1' :
+        copy.attSchoolContent0_plus1 = action.payload.changeData;
+        break;
+      case 'attSchoolContent0_plus2' :
+        copy.attSchoolContent0_plus2 = action.payload.changeData;
+        break;
+      case 'attSchoolContent0_plus3' :
+        copy.attSchoolContent0_plus3 = action.payload.changeData;
+        break;
+
+      case 'attPersonalState':
+        copy.attPersonalState = action.payload.changeData;
+        break;
+      case 'attPersonalContent0_1' :
+        copy.attPersonalContent0_1 = action.payload.changeData;
+        break;
+      case 'attPersonalContent0_2' :
+        copy.attPersonalContent0_2 = action.payload.changeData;
+        break;
+      case 'attPersonalContent0_plus1' :
+        copy.attPersonalContent0_plus1 = action.payload.changeData;
+        break;
+      case 'attPersonalContent0_plus2' :
+        copy.attPersonalContent0_plus2 = action.payload.changeData;
+        break;
+      case 'attPersonalContent0_plus3' :
+        copy.attPersonalContent0_plus3 = action.payload.changeData;
+        break;
+      case 'questionState':
+        copy.questionState = action.payload.changeData;
+        break;
+      case 'questionContent0_1' :
+        copy.questionContent0_1 = action.payload.changeData;
+        break;
+      case 'questionContent0_2' :
+        copy.questionContent0_2 = action.payload.changeData;
+        break;
+      case 'questionContent0_plus1' :
+        copy.questionContent0_plus1 = action.payload.changeData;
+        break;
+      case 'questionContent0_plus2' :
+        copy.questionContent0_plus2 = action.payload.changeData;
+        break;
+      case 'questionContent0_plus3' :
+        copy.questionContent0_plus3 = action.payload.changeData;
+        break;
+      case 'questionContent0_plus4' :
+        copy.questionContent0_plus4 = action.payload.changeData;
+        break;
+        
   }
     
     return copy;

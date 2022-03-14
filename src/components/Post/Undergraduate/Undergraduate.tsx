@@ -51,7 +51,7 @@ const Undergraduate = ({num,setNum}:NumberProps) => {
                 setCurrent(response.data[num]);
                 console.log(response.data[num]);
             }) */
-        dispatch({type: 'change', payload:{changeData: num, variableType: 'billnutState'}});
+        dispatch({type: 'change', payload:{changeData: num, variableType: 'graduateState'}});
     },[num]);
     const handleResize = useCallback(
         (value:number) => {
@@ -118,42 +118,42 @@ const Undergraduate = ({num,setNum}:NumberProps) => {
         <div>
         {num == 0 ?
         <>
-        <div>졸업 후의 진로에 대해 고민하던 중 교수님의 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool0_1')}></InputDiv>부분에 특히 관심이 가서 해당 분야로의 진학이나 진로에 대한 교수님의 조언을 듣고 싶습니다.</div>
+        <div>졸업 후의 진로에 대해 고민하던 중 교수님의 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent0_1')}></InputDiv>부분에 특히 관심이 가서 해당 분야로의 진학이나 진로에 대한 교수님의 조언을 듣고 싶습니다.</div>
         {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus1')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'graduateContent0_plus1')}></TextArea></>}
         <div>연구와 강의로 많이 바쁘신 줄 잘 알고 있기에 면담을 요청드리기가 무척 송구스럽습니다. </div>
         {state2 == false ? <ButtonStyled onClick={()=>setState2(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus2')}></TextArea></>}
-        <div>하지만 잠깐이라도 시간을 내주신다면 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool0_2')}></InputDiv> 진학에 대한 말씀 뿐만 아니라 진로에 관한 어떤 조언이라도 감사하게 새겨듣도록 하겠습니다.</div>
+             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'graduateContent0_plus2')}></TextArea></>}
+        <div>하지만 잠깐이라도 시간을 내주신다면 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent0_2')}></InputDiv> 진학에 대한 말씀 뿐만 아니라 진로에 관한 어떤 조언이라도 감사하게 새겨듣도록 하겠습니다.</div>
         {state3 == false ? <ButtonStyled onClick={()=>setState3(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus3')}></TextArea></>}
-        <div>제 전화번호는 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool0_3')}></InputDiv>입니다.</div>
+             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'graduateContent0_plus3')}></TextArea></>}
+        <div>제 전화번호는 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent0_3')}></InputDiv>입니다.</div>
         {state4 == false ? <ButtonStyled onClick={()=>setState4(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus4')}></TextArea></>}
-        <div>저는 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool0_4')}></InputDiv>에 면담이 가능합니다.</div>
+             <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'graduateContent0_plus4')}></TextArea></>}
+        <div>저는 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent0_4')}></InputDiv>에 면담이 가능합니다.</div>
         {state5 == false ? <ButtonStyled onClick={()=>setState5(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState5(false)}>-</ButtonStyled> <TextArea ref={textRef5} onInput={()=>handleResize(5)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus5')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState5(false)}>-</ButtonStyled> <TextArea ref={textRef5} onInput={()=>handleResize(5)} onChange={(e)=>changeInputValue(e, 'graduateContent0_plus5')}></TextArea></>}
         <div>교수님께서 괜찮으신 시간을 전화나 문자, 이메일로 알려주시면 그 시각에 맞춰 찾아뵙겠습니다.</div>
         {state6 == false ? <ButtonStyled onClick={()=>setState6(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState6(false)}>-</ButtonStyled> <TextArea ref={textRef6} onInput={()=>handleResize(6)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus6')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState6(false)}>-</ButtonStyled> <TextArea ref={textRef6} onInput={()=>handleResize(6)} onChange={(e)=>changeInputValue(e, 'graduateContent0_plus6')}></TextArea></>}
         </>
         : 
         <>
-        <div>교수님의 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_1')}></InputDiv>에 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_2')}></InputDiv>과정으로 진학을 희망해 메일 드립니다.</div>
+        <div>교수님의 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_1')}></InputDiv>에 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_2')}></InputDiv>과정으로 진학을 희망해 메일 드립니다.</div>
         {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'billnutContent1_plus1')}></TextArea></>}
-        <div>저는 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_3')}></InputDiv>학과에 재학하며, <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_4')}></InputDiv>를 공부하던 도중 <InputDiv onChange={(e)=>changeInputValue(e, 'billnutContent1_1')}></InputDiv>를 추가로 더 배우며, <InputDiv onChange={(e)=>changeInputValue(e, 'billnutContent1_1')}></InputDiv>를 하고자하는 꿈이 생겼습니다.</div>
+             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'graduateContent1_plus1')}></TextArea></>}
+        <div>저는 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_3')}></InputDiv>학과에 재학하며, <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_4')}></InputDiv>를 공부하던 도중 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_5')}></InputDiv>를 추가로 더 배우며, <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_6')}></InputDiv>를 하고자하는 꿈이 생겼습니다.</div>
         {state2 == false ? <ButtonStyled onClick={()=>setState2(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'billnutContent1_plus2')}></TextArea></>}
-        <div>특히 제게 흥미를 주신 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_5')}></InputDiv>교수님께 더 배우고 싶었고, 이에 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_6')}></InputDiv>를 연구하고자 진학을 희망하게 되었습니다.</div>
+             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'graduateContent1_plus2')}></TextArea></>}
+        <div>특히 제게 흥미를 주신 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_7')}></InputDiv>교수님께 더 배우고 싶었고, 이에 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_8')}></InputDiv>를 연구하고자 진학을 희망하게 되었습니다.</div>
         {state3 == false ? <ButtonStyled onClick={()=>setState3(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'billnutContent1_plus3')}></TextArea></>}
-        <div><InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_7')}></InputDiv>년 <InputDiv onChange={(e)=>changeInputValue(e, 'billnutContent1_8')}></InputDiv> TO가 있는지 궁금합니다.</div>
+             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'graduateContent1_plus3')}></TextArea></>}
+        <div><InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_9')}></InputDiv>년 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_10')}></InputDiv> TO가 있는지 궁금합니다.</div>
         {state4 == false ? <ButtonStyled onClick={()=>setState4(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'billnutContent1_plus4')}></TextArea></>}
-        <div>또한 입학하기 전 제가 특히 부족한 부분들에 대해 조언을 받을 수 있다면 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_9')}></InputDiv> 과정에 지원하는 데 있어 많은 도움이 될거라는 생각에 이렇게 메일을 보내게 되었습니다.</div>
+             <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'graduateContent1_plus4')}></TextArea></>}
+        <div>또한 입학하기 전 제가 특히 부족한 부분들에 대해 조언을 받을 수 있다면 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_11')}></InputDiv> 과정에 지원하는 데 있어 많은 도움이 될거라는 생각에 이렇게 메일을 보내게 되었습니다.</div>
         {state5 == false ? <ButtonStyled onClick={()=>setState5(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState5(false)}>-</ButtonStyled> <TextArea ref={textRef5} onInput={()=>handleResize(5)} onChange={(e)=>changeInputValue(e, 'billnutContent1_plus5')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState5(false)}>-</ButtonStyled> <TextArea ref={textRef5} onInput={()=>handleResize(5)} onChange={(e)=>changeInputValue(e, 'graduateContent1_plus5')}></TextArea></>}
         </>}
         </div>
         :null}
@@ -161,42 +161,42 @@ const Undergraduate = ({num,setNum}:NumberProps) => {
                 <MobileView>
        {num == 0 ?
         <>
-        <div>졸업 후의 진로에 대해 고민하던 중 교수님의 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool0_1')}></InputDiv>부분에 특히 관심이 가서 해당 분야로의 진학이나 진로에 대한 교수님의 조언을 듣고 싶습니다.</div>
+        <div>졸업 후의 진로에 대해 고민하던 중 교수님의 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent0_1')}></InputDiv>부분에 특히 관심이 가서 해당 분야로의 진학이나 진로에 대한 교수님의 조언을 듣고 싶습니다.</div>
         {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus1')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'graduateContent0_plus1')}></TextArea></>}
         <div>연구와 강의로 많이 바쁘신 줄 잘 알고 있기에 면담을 요청드리기가 무척 송구스럽습니다. </div>
         {state2 == false ? <ButtonStyled onClick={()=>setState2(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus2')}></TextArea></>}
-        <div>하지만 잠깐이라도 시간을 내주신다면 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool0_2')}></InputDiv> 진학에 대한 말씀 뿐만 아니라 진로에 관한 어떤 조언이라도 감사하게 새겨듣도록 하겠습니다.</div>
+             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'graduateContent0_plus2')}></TextArea></>}
+        <div>하지만 잠깐이라도 시간을 내주신다면 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent0_2')}></InputDiv> 진학에 대한 말씀 뿐만 아니라 진로에 관한 어떤 조언이라도 감사하게 새겨듣도록 하겠습니다.</div>
         {state3 == false ? <ButtonStyled onClick={()=>setState3(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus3')}></TextArea></>}
-        <div>제 전화번호는 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool0_3')}></InputDiv>입니다.</div>
+             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'graduateContent0_plus3')}></TextArea></>}
+        <div>제 전화번호는 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent0_3')}></InputDiv>입니다.</div>
         {state4 == false ? <ButtonStyled onClick={()=>setState4(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus4')}></TextArea></>}
-        <div>저는 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool0_4')}></InputDiv>에 면담이 가능합니다.</div>
+             <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'graduateContent0_plus4')}></TextArea></>}
+        <div>저는 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent0_4')}></InputDiv>에 면담이 가능합니다.</div>
         {state5 == false ? <ButtonStyled onClick={()=>setState5(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState5(false)}>-</ButtonStyled> <TextArea ref={textRef5} onInput={()=>handleResize(5)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus5')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState5(false)}>-</ButtonStyled> <TextArea ref={textRef5} onInput={()=>handleResize(5)} onChange={(e)=>changeInputValue(e, 'graduateContent0_plus5')}></TextArea></>}
         <div>교수님께서 괜찮으신 시간을 전화나 문자, 이메일로 알려주시면 그 시각에 맞춰 찾아뵙겠습니다.</div>
         {state6 == false ? <ButtonStyled onClick={()=>setState6(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState6(false)}>-</ButtonStyled> <TextArea ref={textRef6} onInput={()=>handleResize(6)} onChange={(e)=>changeInputValue(e, 'billnutContent0_plus6')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState6(false)}>-</ButtonStyled> <TextArea ref={textRef6} onInput={()=>handleResize(6)} onChange={(e)=>changeInputValue(e, 'graduateContent0_plus6')}></TextArea></>}
         </>
         : 
         <>
-        <div>교수님의 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_1')}></InputDiv>에 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_2')}></InputDiv>과정으로 진학을 희망해 메일 드립니다.</div>
+        <div>교수님의 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_1')}></InputDiv>에 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_2')}></InputDiv>과정으로 진학을 희망해 메일 드립니다.</div>
         {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'billnutContent1_plus1')}></TextArea></>}
-        <div>저는 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_3')}></InputDiv>학과에 재학하며, <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_4')}></InputDiv>를 공부하던 도중 <InputDiv onChange={(e)=>changeInputValue(e, 'billnutContent1_1')}></InputDiv>를 추가로 더 배우며, <InputDiv onChange={(e)=>changeInputValue(e, 'billnutContent1_1')}></InputDiv>를 하고자하는 꿈이 생겼습니다.</div>
+             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'graduateContent1_plus1')}></TextArea></>}
+        <div>저는 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_3')}></InputDiv>학과에 재학하며, <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_4')}></InputDiv>를 공부하던 도중 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_5')}></InputDiv>를 추가로 더 배우며, <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_6')}></InputDiv>를 하고자하는 꿈이 생겼습니다.</div>
         {state2 == false ? <ButtonStyled onClick={()=>setState2(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'billnutContent1_plus2')}></TextArea></>}
-        <div>특히 제게 흥미를 주신 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_5')}></InputDiv>교수님께 더 배우고 싶었고, 이에 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_6')}></InputDiv>를 연구하고자 진학을 희망하게 되었습니다.</div>
+             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'graduateContent1_plus2')}></TextArea></>}
+        <div>특히 제게 흥미를 주신 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_7')}></InputDiv>교수님께 더 배우고 싶었고, 이에 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_8')}></InputDiv>를 연구하고자 진학을 희망하게 되었습니다.</div>
         {state3 == false ? <ButtonStyled onClick={()=>setState3(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'billnutContent1_plus3')}></TextArea></>}
-        <div><InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_7')}></InputDiv>년 <InputDiv onChange={(e)=>changeInputValue(e, 'billnutContent1_8')}></InputDiv> TO가 있는지 궁금합니다.</div>
+             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'graduateContent1_plus3')}></TextArea></>}
+        <div><InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_9')}></InputDiv>년 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_10')}></InputDiv> TO가 있는지 궁금합니다.</div>
         {state4 == false ? <ButtonStyled onClick={()=>setState4(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'billnutContent1_plus4')}></TextArea></>}
-        <div>또한 입학하기 전 제가 특히 부족한 부분들에 대해 조언을 받을 수 있다면 <InputDiv onChange={(e)=>changeInputValue(e, 'graduageschool1_9')}></InputDiv> 과정에 지원하는 데 있어 많은 도움이 될거라는 생각에 이렇게 메일을 보내게 되었습니다.</div>
+             <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'graduateContent1_plus4')}></TextArea></>}
+        <div>또한 입학하기 전 제가 특히 부족한 부분들에 대해 조언을 받을 수 있다면 <InputDiv onChange={(e)=>changeInputValue(e, 'graduateContent1_11')}></InputDiv> 과정에 지원하는 데 있어 많은 도움이 될거라는 생각에 이렇게 메일을 보내게 되었습니다.</div>
         {state5 == false ? <ButtonStyled onClick={()=>setState5(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState5(false)}>-</ButtonStyled> <TextArea ref={textRef5} onInput={()=>handleResize(5)} onChange={(e)=>changeInputValue(e, 'billnutContent1_plus5')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState5(false)}>-</ButtonStyled> <TextArea ref={textRef5} onInput={()=>handleResize(5)} onChange={(e)=>changeInputValue(e, 'graduateContent1_plus5')}></TextArea></>}
         </>}
         </MobileView>
        :null}

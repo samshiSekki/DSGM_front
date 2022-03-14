@@ -9,8 +9,8 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import ReactGA from 'react-ga';
 import GraduateSchool from 'pages/Others/GraduateSchool';
-import Attendance1 from 'pages/Others/Attendance1';
-import Attendance2 from 'pages/Others/Attendance2';
+import AttSchool from 'pages/Others/AttSchool';
+import AttPersonal from 'pages/Others/AttPersonal';
 import Question from 'pages/Others/Question';
 
 ReactGA.event({
@@ -44,8 +44,8 @@ function App() {
         <Route path="/recommend" element={<Recommend />} />
         <Route path="/grade" element={<Grade />} />
         <Route path="/graduateschool" element={<GraduateSchool />} />
-        <Route path="/attendanceschool" element={<Attendance1 />} />
-        <Route path="/attendancepersonal" element={<Attendance2 />} />
+        <Route path="/attendanceschool" element={<AttSchool />} />
+        <Route path="/attendancepersonal" element={<AttPersonal />} />
         <Route path="/questions" element={<Question />} />
       </Routes>
       <Footer/>

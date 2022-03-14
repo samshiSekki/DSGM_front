@@ -54,11 +54,6 @@ function Header(props: any) {
           <Link to='/'>
             <div onClick={()=>{
               clearCommonPlus();
-              ReactGA.event({
-                  category: "Button",
-                  action: "default button",
-                  label: "menu",
-              });
               }}>기본</div>
           </Link>
         </TabBtn>
@@ -67,11 +62,6 @@ function Header(props: any) {
           <Link to='/billnut'>
             <div onClick={()=>{
               clearCommonPlus();
-              ReactGA.event({
-                category: "Button",
-                action: "billnut button",
-                label: "menu",
-            });
               }}>빌넣</div>
           </Link>
         </TabBtn2>
@@ -80,22 +70,12 @@ function Header(props: any) {
         <TabBtn2><Link to='/recommend'>
             <div onClick={()=>{
               clearCommonPlus();
-              ReactGA.event({
-                category: "Button",
-                action: "recommend button",
-                label: "menu",
-            });
             }}>추천서</div>
         </Link> </TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
         <TabBtn2><Link to='/grade'>
         <div onClick={()=>{
           clearCommonPlus();
-          ReactGA.event({
-            category: "Button",
-            action: "grade button",
-            label: "menu",
-          });
           }}>성적문의</div>
         </Link></TabBtn2>
         <TabBorder src='img/Line 4.png'></TabBorder>
@@ -110,44 +90,24 @@ function Header(props: any) {
           <Link to='/graduateschool'>
           <div className='dropdown_selection' onClick={()=>{
           clearCommonPlus();
-          ReactGA.event({
-            category: "Button",
-            action: "graduate school button",
-            label: "menu",
-          });
           }}>대학원 진학 문의</div>
           </Link>
           <hr className='dropdown-hr'/>
           <Link to='/attendanceschool'>
           <div className='dropdown_selection'onClick={()=>{
           clearCommonPlus();
-          ReactGA.event({
-            category: "Button",
-            action: "assistant button",
-            label: "menu",
-          });
           }}>출석인정 (학교행사)</div>
           </Link>
           <hr className='dropdown-hr'/>
           <Link to='/attendancepersonal'>
           <div className='dropdown_selection' onClick={()=>{
           clearCommonPlus();
-          ReactGA.event({
-            category: "Button",
-            action: "career button",
-            label: "menu",
-          });
           }}>출석인정 (개인사정)</div>
           </Link>
           <hr className='dropdown-hr'/>
           <Link to='/questions'>
           <div className='dropdown_selection' onClick={()=>{
           clearCommonPlus();
-          ReactGA.event({
-            category: "Button",
-            action: "class button",
-            label: "menu",
-          });
           }}>수업 내용 질문</div>
           </Link>
           

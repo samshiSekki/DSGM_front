@@ -141,7 +141,7 @@ function Grade(props: any) {
     if (!document.queryCommandSupported("copy"))
       return alert("복사하기가 지원되지 않는 브라우저입니다");
 
-    if(props.inputValue.recommendState == 0){
+    if(props.inputValue.gradeState == 0){
       copiedForm = `안녕하십니까 ${props.inputValue.professorName}교수님,\r\n`
       +`저는 ${props.inputValue.myName}입니다.\r\n`
       +`${props.inputValue.greeting}\r\n`
@@ -156,7 +156,7 @@ function Grade(props: any) {
       +`${props.inputValue.gradeContent0_plus4}\r\n`
       +`${props.inputValue.ending}`;
     }
-    else if(props.inputValue.recommendState == 1){
+    else if(props.inputValue.gradeState == 1){
       copiedForm = `안녕하십니까 ${props.inputValue.professorName}교수님,\r\n`
       +`저는 ${props.inputValue.myName}입니다.\r\n`
       +`${props.inputValue.greeting}\r\n`

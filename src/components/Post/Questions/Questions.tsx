@@ -46,7 +46,7 @@ const Questions = ({num,setNum}:NumberProps) => {
                 setCurrent(response.data[num]);
                 console.log(response.data[num]);
             }) */
-        //dispatch({type: 'change', payload:{changeData: num, variableType: 'billnutState'}});
+        dispatch({type: 'change', payload:{changeData: num, variableType: 'questionState'}});
     },[num]);
     const handleResize = useCallback(
         (value:number) => {
@@ -112,36 +112,36 @@ const Questions = ({num,setNum}:NumberProps) => {
         {(isIPad13 || isBrowser)?
         <div>
         <>
-        <div><InputDiv onChange={(e)=>changeInputValue(e, 'questions0_1')}></InputDiv> 수업에서 이해가 어려운 부분이 있어 몇가지 질문 드리고 싶습니다.</div>
+        <div><InputDiv onChange={(e)=>changeInputValue(e, 'questionContent0_1')}></InputDiv> 수업에서 이해가 어려운 부분이 있어 몇가지 질문 드리고 싶습니다.</div>
         {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'questions0_plus1')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'questionContent0_plus1')}></TextArea></>}
         <div>질문드릴 내용은 아래와 같습니다.</div>
         {state2 == false ? <ButtonStyled onClick={()=>setState2(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'questions0_plus2')}></TextArea></>}
-        <div><InputDiv onChange={(e)=>changeInputValue(e, 'questions0_2')}></InputDiv></div>
+             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'questionContent0_plus2')}></TextArea></>}
+        <div><InputDiv onChange={(e)=>changeInputValue(e, 'questionContent0_2')}></InputDiv></div>
         {state3 == false ? <ButtonStyled onClick={()=>setState3(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'questions0_plus3')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'questionContent0_plus3')}></TextArea></>}
         <div>바쁘시겠지만 시간내주시면 감사하겠습니다.</div>
         {state4 == false ? <ButtonStyled onClick={()=>setState4(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'questions0_plus4')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'questionContent0_plus4')}></TextArea></>}
         </>
         </div>
         : null}
         {(!isIPad13)&&(!isBrowser)?
                 <MobileView>
         <>
-        <div><InputDiv onChange={(e)=>changeInputValue(e, 'questions0_1')}></InputDiv> 수업에서 이해가 어려운 부분이 있어 몇가지 질문 드리고 싶습니다.</div>
+        <div><InputDiv onChange={(e)=>changeInputValue(e, 'questionContent0_1')}></InputDiv> 수업에서 이해가 어려운 부분이 있어 몇가지 질문 드리고 싶습니다.</div>
         {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'questions0_plus1')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'questionContent0_plus1')}></TextArea></>}
         <div>질문드릴 내용은 아래와 같습니다.</div>
         {state2 == false ? <ButtonStyled onClick={()=>setState2(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'questions0_plus2')}></TextArea></>}
-        <div><InputDiv onChange={(e)=>changeInputValue(e, 'questions0_2')}></InputDiv></div>
+             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'questionContent0_plus2')}></TextArea></>}
+        <div><InputDiv onChange={(e)=>changeInputValue(e, 'questionContent0_2')}></InputDiv></div>
         {state3 == false ? <ButtonStyled onClick={()=>setState3(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'questions0_plus3')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'questionContent0_plus3')}></TextArea></>}
         <div>바쁘시겠지만 시간내주시면 감사하겠습니다.</div>
         {state4 == false ? <ButtonStyled onClick={()=>setState4(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'questions0_plus4')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'questionContent0_plus4')}></TextArea></>}
         </>
         </MobileView>
        :null}

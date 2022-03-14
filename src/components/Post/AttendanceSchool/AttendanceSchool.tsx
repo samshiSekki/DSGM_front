@@ -42,7 +42,7 @@ const AttendanceSchool = ({num,setNum}:NumberProps) => {
                 setCurrent(response.data[num]);
                 console.log(response.data[num]);
             }) */
-        dispatch({type: 'change', payload:{changeData: num, variableType: 'billnutState'}});
+        dispatch({type: 'change', payload:{changeData: num, variableType: 'attSchoolState'}});
     },[num]);
     const handleResize = useCallback(
         (value:number) => {
@@ -84,30 +84,30 @@ const AttendanceSchool = ({num,setNum}:NumberProps) => {
         {(isIPad13 || isBrowser)?
         <div>
         <>
-        <div><InputDiv onChange={(e)=>changeInputValue(e, 'attendanceschool0_1')}></InputDiv>에 <InputDiv onChange={(e)=>changeInputValue(e, 'attendanceschool0_2')}></InputDiv>행사가 있어 부득이하게 출석에 참석하지 못하였습니다.</div>
+        <div><InputDiv onChange={(e)=>changeInputValue(e, 'attSchoolContent0_1')}></InputDiv>에 <InputDiv onChange={(e)=>changeInputValue(e, 'attSchoolContent0_2')}></InputDiv>행사가 있어 부득이하게 출석에 참석하지 못하였습니다.</div>
         {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'attendanceschool00_plus1')}></TextArea></>}
-        <div><InputDiv onChange={(e)=>changeInputValue(e, 'attendanceschool0_3')}></InputDiv>에서 참석확인서를 발급해주었는데, 혹시 이럴 경우 출석인정이 가능할지 문의 드립니다.</div>
+             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'attSchoolContent0_plus1')}></TextArea></>}
+        <div><InputDiv onChange={(e)=>changeInputValue(e, 'attSchoolContent0_3')}></InputDiv>에서 참석확인서를 발급해주었는데, 혹시 이럴 경우 출석인정이 가능할지 문의 드립니다.</div>
         {state2 == false ? <ButtonStyled onClick={()=>setState2(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'attendanceschool0_plus2')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'attSchoolContent0_plus2')}></TextArea></>}
         <div>확인해주시면 조교님을 통해 제출하겠습니다.</div>
         {state3 == false ? <ButtonStyled onClick={()=>setState3(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'attendanceschool0_plus3')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'attSchoolContent0_plus3')}></TextArea></>}
         </>
         </div>
         : null}
         {(!isIPad13)&&(!isBrowser)?
                 <MobileView>
         <>
-        <div><InputDiv onChange={(e)=>changeInputValue(e, 'attendanceschool0_1')}></InputDiv>에 <InputDiv onChange={(e)=>changeInputValue(e, 'attendanceschool0_2')}></InputDiv>행사가 있어 부득이하게 출석에 참석하지 못하였습니다.</div>
+        <div><InputDiv onChange={(e)=>changeInputValue(e, 'attSchoolContent0_1')}></InputDiv>에 <InputDiv onChange={(e)=>changeInputValue(e, 'attSchoolContent0_2')}></InputDiv>행사가 있어 부득이하게 출석에 참석하지 못하였습니다.</div>
         {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'attendanceschool0_plus1')}></TextArea></>}
-        <div><InputDiv onChange={(e)=>changeInputValue(e, 'attendanceschool0_3')}></InputDiv>에서 참석확인서를 발급해주었는데, 혹시 이럴 경우 출석인정이 가능할지 문의 드립니다.</div>
+             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'attSchoolContent0_plus1')}></TextArea></>}
+        <div><InputDiv onChange={(e)=>changeInputValue(e, 'attSchoolContent0_3')}></InputDiv>에서 참석확인서를 발급해주었는데, 혹시 이럴 경우 출석인정이 가능할지 문의 드립니다.</div>
         {state2 == false ? <ButtonStyled onClick={()=>setState2(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'attendanceschool0_plus2')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'attSchoolContent0_plus2')}></TextArea></>}
         <div>확인해주시면 조교님을 통해 제출하겠습니다.</div>
         {state3 == false ? <ButtonStyled onClick={()=>setState3(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'attendanceschool0_plus3')}></TextArea></>}
+             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'attSchoolContent0_plus3')}></TextArea></>}
         </>
         </MobileView>
        :null}

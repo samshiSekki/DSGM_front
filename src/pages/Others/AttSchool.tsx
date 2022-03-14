@@ -8,8 +8,8 @@ import {MobileView, isBrowser, isIPad13} from "react-device-detect";
 import Header from '../../components/Header';
 import { Link } from 'react-router-dom';
 
-function Question(props: any) {
-  
+function AttSchool(props: any) {
+
   let [showChecker, setShowChecker] = useState(false);
   let [checkerResult, setCheckerResult] = useState('');
   let copiedForm: string = '';
@@ -26,14 +26,12 @@ function Question(props: any) {
         `저는 ${props.inputValue.myName}입니다.`,
         `${props.inputValue.greeting}`,
         `${props.inputValue.commonContent_plus}`,
-        `${props.inputValue.questionContent0_1} 수업에서 이해가 어려운 부분이 있어 몇가지 질문 드리고 싶습니다.`,
-        `${props.inputValue.questionContent0_plus1}`,
-        `질문드릴 내용은 아래와 같습니다.`,
-        `${props.inputValue.questionContent0_plus2}`,
-        `${props.inputValue.questionContent0_2}`,
-        `${props.inputValue.questionContent0_plus3}`,
-        `바쁘시겠지만 시간내주시면 감사하겠습니다.`,
-        `${props.inputValue.questionContent0_plus4}`,
+        `${props.inputValue.attSchoolContent0_1}에 ${props.inputValue.attSchoolContent0_2} 행사가 있어 부득이하게 출석에 참석하지 못하였습니다.`,
+        `${props.inputValue.attSchoolContent0_plus1}`,
+        `${props.inputValue.attSchoolContent0_3}에서 참석확인서를 발급해주었는데, 혹시 이럴 경우 출석인정이 가능할지 문의 드립니다.`,
+        `${props.inputValue.attSchoolContent0_plus2}`,
+        `확인해주시면 조교님을 통해 제출하겠습니다.`,
+        `${props.inputValue.attSchoolContent0_plus3}`,
         `${props.inputValue.ending}`
       ];
     }
@@ -74,14 +72,12 @@ function Question(props: any) {
       +`저는 ${props.inputValue.myName}입니다.\r\n`
       +`${props.inputValue.greeting}\r\n`
       +`${props.inputValue.commonContent_plus}\r\n`
-      +`${props.inputValue.questionContent0_1} 수업에서 이해가 어려운 부분이 있어 몇가지 질문 드리고 싶습니다.\r\n`
-      +`${props.inputValue.questionContent0_plus1}\r\n`
-      +`질문드릴 내용은 아래와 같습니다.\r\n`
-      +`${props.inputValue.questionContent0_plus2}\r\n`
-      +`${props.inputValue.questionContent0_2}\r\n`
-      +`${props.inputValue.questionContent0_plus3}\r\n`
-      +`바쁘시겠지만 시간내주시면 감사하겠습니다.\r\n`
-      +`${props.inputValue.questionContent0_plus4}\r\n`
+      +`${props.inputValue.attSchoolContent0_1}에 ${props.inputValue.attSchoolContent0_2} 행사가 있어 부득이하게 출석에 참석하지 못하였습니다.\r\n`
+      +`${props.inputValue.attSchoolContent0_plus1}\r\n`
+      +`${props.inputValue.attSchoolContent0_3}에서 참석확인서를 발급해주었는데, 혹시 이럴 경우 출석인정이 가능할지 문의 드립니다.\r\n`
+      +`${props.inputValue.attSchoolContent0_plus2}\r\n`
+      +`확인해주시면 조교님을 통해 제출하겠습니다.\r\n`
+      +`${props.inputValue.attSchoolContent0_plus3}\r\n`
       +`${props.inputValue.ending}`;
     }
     
@@ -105,7 +101,7 @@ function Question(props: any) {
 
         <div className='mailTextContainer'>
         <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
-        <PostList tabType={'questions'}/>
+        <PostList tabType={'attendanceschool'}/>
         </div>
 
         {
@@ -122,22 +118,20 @@ function Question(props: any) {
     {(!isIPad13)&&(!isBrowser)?
     <MobileView>
     <CurrentNavMobile src="img/Union.png"/>
-
     <div className='MobileOthersTabContainer'>
         <div className='MobileOthersTabBtnContainer'>
         <Link to='/graduateschool'>
         <div className='MobileOthersTabBtn'>대학원 진학 문의</div>
         </Link>
-        <Link to='/attendanceschool'>
-        <div className='MobileOthersTabBtn'>출석인정 (학교행사)</div>
-        </Link>
+        <div className='MobileOthersTabBtnSelected'>출석인정 (학교행사)</div>
         <Link to='/attendancepersonal'>
         <div className='MobileOthersTabBtn'>출석인정 (개인사정)</div>
         </Link>
-        <div className='MobileOthersTabBtnSelected'>수업내용 질문</div>
+        <Link to='/questions'>
+        <div className='MobileOthersTabBtn'>수업내용 질문</div>
+        </Link>
         </div>
       </div>
-
     <div className='mailTextContainerMobile'>
       
 
@@ -152,7 +146,7 @@ function Question(props: any) {
     <div onClick={getChecker} className='functionBtn'>맞춤법 검사하기</div>
     :<div onClick={()=>{setShowChecker(!showChecker)}} className='functionBtn'>검사 종료하기</div>
   }
-  <div onClick={()=>{window.location.replace("/questions")}} className='functionBtn'>Clear</div>
+  <div onClick={()=>{window.location.replace("/attendanceschool")}} className='functionBtn'>Clear</div>
   <div id='copyBtn' onClick={copyBtnClickHandler}>복사하기</div>
 </div>
 :null}
@@ -165,7 +159,7 @@ function Question(props: any) {
         <FunctionBtnMobile onClick={getChecker}>맞춤법 검사하기</FunctionBtnMobile>
         :<FunctionBtnMobile onClick={()=>{setShowChecker(!showChecker)}}>검사 종료하기</FunctionBtnMobile>
       }
-      <FunctionBtnMobile onClick={()=>{window.location.replace("/questions")}}>Clear</FunctionBtnMobile>
+      <FunctionBtnMobile onClick={()=>{window.location.replace("/attendanceschool")}}>Clear</FunctionBtnMobile>
       <CopyBtnMobile onClick={copyBtnClickHandler}>복사하기</CopyBtnMobile>
     </MobileButtonFlex>
   </ButtonContainerMobile>
@@ -174,13 +168,12 @@ function Question(props: any) {
     </div>
   )
 }
-
 function f1(inputValue: any){
   return {
     inputValue : inputValue
   }
 }
-export default connect(f1)(Question);
+export default connect(f1)(AttSchool);
 
 let MobileTitle: any = styled.img`
   margin-top: 38.95px;
@@ -189,6 +182,7 @@ let MobileTitle: any = styled.img`
 let MobileTitleContainer: any = styled.div`
   width: 100%;
 `;
+
 let CurrentNav : any = styled.img`
   position: absolute;
   width: 3%;

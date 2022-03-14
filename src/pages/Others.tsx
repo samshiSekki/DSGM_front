@@ -34,14 +34,14 @@ function Others(props: any) {
     {(!isIPad13)&&(!isBrowser)?
     <MobileView>
     <CurrentNavMobile src="img/Union.png"/>
-      <MobileOthersTabContainer>
-        <MobileOthersTabBtnContainer>
-        <MobileOthersTabBtn>대학원 진학 문의</MobileOthersTabBtn>
-        <MobileOthersTabBtn>출석인정 (학교행사)</MobileOthersTabBtn>
-        <MobileOthersTabBtn>출석인정 (개인사정)</MobileOthersTabBtn>
-        <MobileOthersTabBtn>수업내용 질문</MobileOthersTabBtn>
-        </MobileOthersTabBtnContainer>
-      </MobileOthersTabContainer>
+      <div className='MobileOthersTabContainer'>
+        <div className='MobileOthersTabBtnContainer'>
+        <div className='MobileOthersTabBtn'>대학원 진학 문의</div>
+        <div className='MobileOthersTabBtn'>출석인정 (학교행사)</div>
+        <div className='MobileOthersTabBtn'>출석인정 (개인사정)</div>
+        <div className='MobileOthersTabBtn'>수업내용 질문</div>
+        </div>
+      </div>
     <div className='loadingContainerMobile'>
         <LoadingMobile src='img/loading_screen.png'/>
 
@@ -149,28 +149,4 @@ text-align: center;
 let LoadingMobile : any = styled.img`
     width: 230px;
     height: auto;
-`;
-
-let MobileOthersTabContainer : any = styled.div`
-  width: 335px;
-  padding-top: 15px;
-  padding-bottom: 13px;
-  display: inline-block;
-`;
-let MobileOthersTabBtnContainer : any = styled.div`
-  display:flex;
-  justify-content: space-around;
-`;
-let MobileOthersTabBtn : any = styled.div`
-  width: auto;
-  height: 19px;
-  background: #F0F0F0;
-  border-radius: 19.5px;
-  font-weight: 700;
-font-size: 7px;
-line-height: 19px;
-text-align: center;
-padding-left: 10px;
-padding-right: 10px;
-color: #6A6A6A;
 `;

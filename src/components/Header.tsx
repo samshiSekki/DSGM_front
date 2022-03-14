@@ -188,7 +188,7 @@ function Header(props: any) {
               </Link>
             </TabBtnMobile2>
             <TabBtnMobile1>
-              <Link to='/others'>기타</Link>
+              <Link to='/graduateschool'>기타</Link>
 
             </TabBtnMobile1>
           </MenuTabBarMobile>

@@ -6,6 +6,7 @@ import axios from 'axios';
 import parse from 'html-react-parser';
 import {MobileView, isBrowser, isIPad13} from "react-device-detect";
 import Header from '../../components/Header';
+import { Link } from 'react-router-dom';
 
 function AttSchool(props: any) {
 
@@ -117,7 +118,20 @@ function AttSchool(props: any) {
     {(!isIPad13)&&(!isBrowser)?
     <MobileView>
     <CurrentNavMobile src="img/Union.png"/>
-
+    <div className='MobileOthersTabContainer'>
+        <div className='MobileOthersTabBtnContainer'>
+        <Link to='/graduateschool'>
+        <div className='MobileOthersTabBtn'>대학원 진학 문의</div>
+        </Link>
+        <div className='MobileOthersTabBtnSelected'>출석인정 (학교행사)</div>
+        <Link to='/attendancepersonal'>
+        <div className='MobileOthersTabBtn'>출석인정 (개인사정)</div>
+        </Link>
+        <Link to='/questions'>
+        <div className='MobileOthersTabBtn'>수업내용 질문</div>
+        </Link>
+        </div>
+      </div>
     <div className='mailTextContainerMobile'>
       
 

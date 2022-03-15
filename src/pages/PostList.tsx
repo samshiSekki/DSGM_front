@@ -9,7 +9,7 @@ import BillnutContent from '../components/Post/Billnut/BillnutContent';
 import GradeContent from '../components/Post/Grade/GradeContent';
 import RecommendContent from '../components/Post/Recommend/RecommendContent';
 import { connect, useDispatch } from 'react-redux';
-import ChangeIcon from '../components/asset/icon/icon-change.svg';
+import ChangeIcon from '../components/asset/icon/icon-vector.svg';
 import MessageIcon1 from '../components/asset/icon/icon-message1.svg';
 import MessageIcon2 from '../components/asset/icon/icon-message2.svg';
 import MessageIconDelete from '../components/asset/icon/icon-message-delete.svg';
@@ -214,7 +214,7 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             
             </div>
             <div ref={myRef} style={{position:'relative'}}>
-            <div style={{display:'flex', alignItems:'center'}}><div style={{fontWeight:'bold',color:'#14B390',marginRight:'10px'}}>{firstState}</div><img onClick={()=>setState(!state)} width='20px' height='20px' src={ChangeIcon}></img></div>
+            <div onClick={()=>setState(!state)} style={{cursor:'pointer', display:'flex', alignItems:'center',backgroundColor:'#14B3901A', width:'fit-content', paddingLeft:'3px', paddingRight:'5px'}}><div style={{fontWeight:'bold',color:'#14B390',marginRight:'10px'}}>{firstState}</div><img width='20px' height='20px' src={ChangeIcon}></img></div>
             {showImage2 && <div style={{position:'absolute',left:'610px',top:'-110px'}}><div style={{position:'relative'}}><img src={MessageIcon2}></img><img onClick = {()=>handleClose2()} style={{position:'absolute', right:'15px', top:'10px'}} src={MessageIconDelete}></img></div></div>}
             {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
              <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'commonContent_plus')}></TextArea></>}
@@ -231,7 +231,7 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             :
             <div></div>}
                         
-                        <div style={{display:'flex', alignItems:'center'}}><div style={{fontWeight:'bold',color:'#14B390',marginRight:'10px'}}>{lastState}</div><img onClick={()=>setState2(!state2)} width='20px' height='20px' src={ChangeIcon}></img></div>
+                        <div onClick={()=>setState2(!state2)} style={{cursor:'pointer', display:'flex', alignItems:'center', backgroundColor:'#14B3901A', width:'fit-content', paddingLeft:'3px', paddingRight:'5px'}}><div style={{fontWeight:'bold',color:'#14B390',marginRight:'10px'}}>{lastState}</div><img width='20px' height='20px' src={ChangeIcon}></img></div>
             {state2 && <Scroll isFirst={false} ment = {lastMent} state = {lastState} setState={setLastState} type= {type2} setType={setType2}/>}
                         </div>
                         </Container>
@@ -245,6 +245,7 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             : tabType==='please' ?<MobileTabBox><MobileTab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</MobileTab><MobileTab onClick={()=>{setNum(1); clearCommonPlus()}}>양식2</MobileTab><MobileTab onClick={()=>{setNum(2); clearCommonPlus()}}>양식3</MobileTab></MobileTabBox>
             : tabType === 'recommend' ? <MobileTabBox><MobileTab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</MobileTab></MobileTabBox>
             : tabType === 'grade' ? <MobileTabBox><MobileTab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</MobileTab><MobileTab onClick={()=>{setNum(1); clearCommonPlus()}}>양식2</MobileTab></MobileTabBox>
+            : tabType === 'graduateschool' ? <MobileTabBox><MobileTab onClick={()=>{setNum(0); clearCommonPlus()}}>양식1</MobileTab><MobileTab onClick={()=>{setNum(1); clearCommonPlus()}}>양식2</MobileTab></MobileTabBox>
             :
             <div></div>}
         <MobileContainer>
@@ -254,7 +255,7 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             
             </div>
             <div ref={myRef} style={{position:'relative'}}>
-            <div style={{display:'flex', alignItems:'center'}}><div style={{fontWeight:'bold',color:'#14B390',marginRight:'10px',width:'300px'}}>{firstState}<img onClick={()=>setState(!state)} style={{marginLeft:'3px'}} width='10px' height='10px' src={ChangeIcon}></img></div></div>
+            <div onClick={()=>setState(!state)} style={{display:'flex', alignItems:'center'}}><div style={{paddingLeft:'3px', paddingRight:'5px', fontWeight:'bold',color:'#14B390',marginRight:'10px',width:'300px', backgroundColor:'#14B3901A'}}>{firstState}<img style={{marginLeft:'3px'}} src={ChangeIcon}></img></div></div>
             {/* {showImage2 && <div style={{position:'absolute',left:'610px',top:'-110px'}}><div style={{position:'relative'}}><img src={MessageIcon2}></img><img onClick = {()=>handleClose2()} style={{position:'absolute', right:'15px', top:'10px'}} src={MessageIconDelete}></img></div></div>} */}
             {state1 == false ? <MobileButtonStyled onClick={()=>setState1(true)}>+</MobileButtonStyled> :
              <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <MobileTextArea style={{width:'250px'}} ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'commonContent_plus')}></MobileTextArea></>}
@@ -264,10 +265,14 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             : tabType==='please' ?<BillnutContent num = {num} setNum={setNum}/> 
             : tabType === 'recommend' ? <RecommendContent num = {num} setNum={setNum}/>
             : tabType === 'grade' ? <GradeContent num = {num} setNum={setNum}/>
+            : tabType === 'attendanceschool' ? <AttendanceSchool num = {num} setNum={setNum}/>
+            : tabType === 'attendancepersonal' ? <AttendancePersonal num = {num} setNum={setNum}/>
+            : tabType === 'questions' ? <Questions num = {num} setNum={setNum}/>
+            : tabType === 'graduateschool' ? <Undergraduate num = {num} setNum={setNum}/>
             :
             <div></div>}
                         
-                        <div style={{display:'flex', alignItems:'center'}}><div style={{fontWeight:'bold',color:'#14B390',marginRight:'10px'}}>{lastState}<img style={{width: '10px', height:'10px', marginLeft:'3px'}} onClick={()=>setState2(!state2)} src={ChangeIcon}></img></div></div>
+                        <div onClick={()=>setState2(!state2)} style={{display:'flex', alignItems:'center'}}><div style={{paddingLeft:'3px', paddingRight:'5px',fontWeight:'bold',color:'#14B390',width:'300px', marginRight:'10px', backgroundColor:'#14B3901A'}}>{lastState}<img style={{ marginLeft:'3px'}} src={ChangeIcon}></img></div></div>
             {state2 && <Scroll isFirst={false} ment = {lastMent} state = {lastState} setState={setLastState} type= {type2} setType={setType2}/>}
                         </div>
                         </MobileContainer>
@@ -372,6 +377,7 @@ const ButtonStyled = styled.button`
 background-color:#F7F8FA;
 border:none;
 cursor:pointer;
+color:#A3A3A3; 
     
 `;
 
@@ -450,6 +456,7 @@ const MobileButtonStyled = styled.button`
     top: 35px;
     left: -15px;
     background: transparent;
+    color:#A3A3A3; 
         
 `;
 

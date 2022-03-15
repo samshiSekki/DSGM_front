@@ -139,6 +139,17 @@ function Question(props: any) {
       </div>
 
     <div className='mailTextContainerMobile'>
+    <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
+        <PostList tabType={'questions'}/>
+        </div>
+
+        {
+    showChecker === true?
+    <div>
+      {parse(checkerResult)}
+    </div>
+  : null
+  }
       
 
     </div>

@@ -267,6 +267,7 @@ const ButtonStyled = styled.button`
 background-color:#F7F8FA;
 border:none;
 cursor:pointer;
+color:#A3A3A3; 
     
 `;
 const TextArea = styled.textarea`
@@ -353,6 +354,7 @@ cursor:pointer;
 position: absolute;
 background: transparent;
 left: -15px;
-margin-top: -10px;        
+margin-top: -10px;    
+color:#A3A3A3;     
 `;
 

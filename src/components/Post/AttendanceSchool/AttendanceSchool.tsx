@@ -99,15 +99,15 @@ const AttendanceSchool = ({num,setNum}:NumberProps) => {
         {(!isIPad13)&&(!isBrowser)?
                 <MobileView>
         <>
-        <div><InputDiv onChange={(e)=>changeInputValue(e, 'attSchoolContent0_1')}></InputDiv>에 <InputDiv onChange={(e)=>changeInputValue(e, 'attSchoolContent0_2')}></InputDiv>행사가 있어 부득이하게 출석에 참석하지 못하였습니다.</div>
-        {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'attSchoolContent0_plus1')}></TextArea></>}
-        <div><InputDiv onChange={(e)=>changeInputValue(e, 'attSchoolContent0_3')}></InputDiv>에서 참석확인서를 발급해주었는데, 혹시 이럴 경우 출석인정이 가능할지 문의 드립니다.</div>
-        {state2 == false ? <ButtonStyled onClick={()=>setState2(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'attSchoolContent0_plus2')}></TextArea></>}
+        <div style={{whiteSpace:'pre'}}><MobileInputDiv style={{width: '200px'}} onChange={(e)=>changeInputValue(e, 'attSchoolContent0_1')}></MobileInputDiv>{'에\n'} <MobileInputDiv style={{width:'200px'}} onChange={(e)=>changeInputValue(e, 'attSchoolContent0_2')}></MobileInputDiv>{'행사가 있어 \n부득이하게 출석에 참석하지 못하였습니다.'}</div>
+        {state1 == false ? <MobileButtonStyled onClick={()=>setState1(true)}>+</MobileButtonStyled> :
+             <><MobileButtonStyled onClick={()=>setState1(false)}>-</MobileButtonStyled> <MobileTextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'attSchoolContent0_plus1')}></MobileTextArea></>}
+        <div style={{whiteSpace:'pre'}}><MobileInputDiv style={{width:'200px'}} onChange={(e)=>changeInputValue(e, 'attSchoolContent0_3')}></MobileInputDiv>{'에서 참석확인서를 \n발급해주었는데, 혹시 이럴 경우 출석인정이 가능할지 문의 드립니다.'}</div>
+        {state2 == false ? <MobileButtonStyled onClick={()=>setState2(true)}>+</MobileButtonStyled> :
+             <><MobileButtonStyled onClick={()=>setState2(false)}>-</MobileButtonStyled> <MobileTextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'attSchoolContent0_plus2')}></MobileTextArea></>}
         <div>확인해주시면 조교님을 통해 제출하겠습니다.</div>
-        {state3 == false ? <ButtonStyled onClick={()=>setState3(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'attSchoolContent0_plus3')}></TextArea></>}
+        {state3 == false ? <MobileButtonStyled onClick={()=>setState3(true)}>+</MobileButtonStyled> :
+             <><MobileButtonStyled onClick={()=>setState3(false)}>-</MobileButtonStyled> <MobileTextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'attSchoolContent0_plus3')}></MobileTextArea></>}
         </>
         </MobileView>
        :null}
@@ -151,7 +151,7 @@ const ButtonStyled = styled.button`
 background-color:#F7F8FA;
 border:none;
 cursor:pointer;
-    
+color:#A3A3A3; 
 `;
 const TextArea = styled.textarea`
     width:800px;
@@ -237,6 +237,7 @@ cursor:pointer;
 position: absolute;
 background: transparent;
 left: -15px;
-margin-top: -10px;        
+margin-top: -10px; 
+color:#A3A3A3;        
 `;
 

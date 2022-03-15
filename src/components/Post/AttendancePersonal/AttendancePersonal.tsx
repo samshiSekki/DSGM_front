@@ -84,6 +84,7 @@ const AttendancePersonal = ({num,setNum}:NumberProps) => {
         {(isIPad13 || isBrowser)?
         <div>
         <>
+        
         <div>다름이 아니라 <InputDiv onChange={(e)=>changeInputValue(e, 'attPersonalContent0_1')}></InputDiv>에 <InputDiv onChange={(e)=>changeInputValue(e, 'attPersonalContent0_2')}></InputDiv>로 인해 수업에 참석하지 못할 것 같습니다.</div>
         {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
              <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'attPersonalContent0_plus1')}></TextArea></>}
@@ -99,15 +100,15 @@ const AttendancePersonal = ({num,setNum}:NumberProps) => {
         {(!isIPad13)&&(!isBrowser)?
                 <MobileView>
         <>
-        <div>다름이 아니라 <InputDiv onChange={(e)=>changeInputValue(e, 'attPersonalContent0_1')}></InputDiv>에 <InputDiv onChange={(e)=>changeInputValue(e, 'attPersonalContent0_2')}></InputDiv>로 인해 수업에 참석하지 못할 것 같습니다.</div>
-        {state1 == false ? <ButtonStyled onClick={()=>setState1(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <TextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'attPersonalContent0_plus1')}></TextArea></>}
-        <div>다른 날짜로 조정이 불가피한 상황이라, 출석 인정 받을 수 있는 다른 방법이 있을 지 문의 드립니다.</div>
-        {state2 == false ? <ButtonStyled onClick={()=>setState2(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState2(false)}>-</ButtonStyled> <TextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'attPersonalContent0_plus2')}></TextArea></>}
+        <div style={{whiteSpace:'pre'}}>다름이 아니라 <MobileInputDiv style={{width:'200px'}} onChange={(e)=>changeInputValue(e, 'attPersonalContent0_1')}></MobileInputDiv>{'에\n'} <MobileInputDiv style={{width:'220px'}} onChange={(e)=>changeInputValue(e, 'attPersonalContent0_2')}></MobileInputDiv>{'로 인해 \n수업에 참석하지 못할 것 같습니다.'}</div>
+        {state1 == false ? <MobileButtonStyled onClick={()=>setState1(true)}>+</MobileButtonStyled> :
+             <><MobileButtonStyled onClick={()=>setState1(false)}>-</MobileButtonStyled> <MobileTextArea ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'attPersonalContent0_plus1')}></MobileTextArea></>}
+        <div style={{whiteSpace:'pre'}}>{'다른 날짜로 조정이 불가피한 상황이라, 출석 인정 받을 수 있는 다른 \n방법이 있을 지 문의 드립니다.'}</div>
+        {state2 == false ? <MobileButtonStyled onClick={()=>setState2(true)}>+</MobileButtonStyled> :
+             <><MobileButtonStyled onClick={()=>setState2(false)}>-</MobileButtonStyled> <MobileTextArea ref={textRef2} onInput={()=>handleResize(2)} onChange={(e)=>changeInputValue(e, 'attPersonalContent0_plus2')}></MobileTextArea></>}
         <div>출석인정이 가능하다면 관련 서류를 발급받을 수 있는지 확인해보고자 합니다.</div>
-        {state3 == false ? <ButtonStyled onClick={()=>setState3(true)}>+</ButtonStyled> :
-             <><ButtonStyled onClick={()=>setState3(false)}>-</ButtonStyled> <TextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'attPersonalContent0_plus3')}></TextArea></>}
+        {state3 == false ? <MobileButtonStyled onClick={()=>setState3(true)}>+</MobileButtonStyled> :
+             <><MobileButtonStyled onClick={()=>setState3(false)}>-</MobileButtonStyled> <MobileTextArea ref={textRef3} onInput={()=>handleResize(3)} onChange={(e)=>changeInputValue(e, 'attPersonalContent0_plus3')}></MobileTextArea></>}
         </>
         </MobileView>
        :null}
@@ -151,6 +152,7 @@ const ButtonStyled = styled.button`
 background-color:#F7F8FA;
 border:none;
 cursor:pointer;
+color:#A3A3A3; 
     
 `;
 const TextArea = styled.textarea`
@@ -237,6 +239,7 @@ cursor:pointer;
 position: absolute;
 background: transparent;
 left: -15px;
-margin-top: -10px;        
+margin-top: -10px;    
+color:#A3A3A3; 
 `;
 

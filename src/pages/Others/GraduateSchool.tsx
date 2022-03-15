@@ -181,6 +181,17 @@ function GraduateSchool(props: any) {
         </div>
       </div>
         <div className='mailTextContainerMobile'>
+        <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
+            <PostList tabType={'graduateschool'}/>
+            </div>
+
+            {
+        showChecker === true?
+        <div>
+          {parse(checkerResult)}
+        </div>
+      : null
+      }
           
     
         </div>

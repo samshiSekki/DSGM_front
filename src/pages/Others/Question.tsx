@@ -138,6 +138,13 @@ function Question(props: any) {
         </div>
       </div>
 
+      {
+        showChecker === true?
+        <div className='checkerInfoContainerMobile'>
+        <img src="img/Group 75.png" className='checkerInfoMobile'/>
+        </div>
+      : null
+      }
     <div className='mailTextContainerMobile'>
     <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
         <PostList tabType={'questions'}/>

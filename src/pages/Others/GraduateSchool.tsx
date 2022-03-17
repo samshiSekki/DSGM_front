@@ -166,6 +166,7 @@ function GraduateSchool(props: any) {
         {(!isIPad13)&&(!isBrowser)?
         <MobileView>
         <CurrentNavMobile src="img/Union.png"/>
+        
         <div className='MobileOthersTabContainer'>
         <div className='MobileOthersTabBtnContainer'>
         <div className='MobileOthersTabBtnSelected'>대학원 진학 문의</div>
@@ -180,6 +181,13 @@ function GraduateSchool(props: any) {
         </Link>
         </div>
       </div>
+      {
+        showChecker === true?
+        <div className='checkerInfoContainerMobile'>
+        <img src="img/Group 75.png" className='checkerInfoMobile'/>
+        </div>
+      : null
+      }
         <div className='mailTextContainerMobile'>
         <div className={showChecker === true? 'hideCheckcer' : 'showChecker'}>
             <PostList tabType={'graduateschool'}/>

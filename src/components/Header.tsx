@@ -208,8 +208,10 @@ function f1(inputValue: any){
 };
 
 let MobileTitle: any = styled.img`
-  margin-top: 38.95px;
+  margin-top: 40px;
   margin-bottom: 5px;
+  width: 115.07px;
+  height: auto;
 `;
 let MobileTitleContainer: any = styled.div`
   width: 100%;

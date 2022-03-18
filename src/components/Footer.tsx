@@ -84,8 +84,8 @@ function Footer() {
 
                   <MobileMemberPosition style={{marginLeft: '12px'}}>Designer</MobileMemberPosition>
                   <MobileMemberName>구지현</MobileMemberName>
-
-                  <MobileMemberPosition style={{marginLeft: '12px'}}>Front-end Developer</MobileMemberPosition>
+                  <br/>
+                  <MobileMemberPosition style={{}}>Front-end Developer</MobileMemberPosition>
                   <MobileMemberName>송재민</MobileMemberName>
                   <MobileMemberName>황남주</MobileMemberName>
 
@@ -117,30 +117,6 @@ let MicIcon : any = styled.img`
   margin-right: 10px;
 `;
 
-let FooterContainerMobile : any = styled.div`
-  width: 335px;
-  height: 8px;
-  display: inline-block;
-`;
-
-
-let AccessCounterMobile : any = styled.div`
-  float: left;
-  color: #241E19;
-  font-size: 7px;
-  line-height: 8px;
-`;
-let HeartIconMobile : any = styled.img`
-  width: 8px;
-  height: auto;
-  margin-right: 4px;
-`;
-let MicIconMobile : any = styled.img`
-  width: 7px;
-  height: auto;
-  margin-right: 4px;
-  float: right;
-`;
 
 let MobileVisitCountContainer : any = styled.div`
   margin-bottom: 47px;
@@ -203,13 +179,13 @@ margin-bottom: 4px;
 
 let MobileMemberPosition : any = styled.span`
 font-weight: 700;
-font-size: 6px;
+font-size: 8px;
 line-height: 6px;
 color: #FFFFFF;
 `;
 let MobileMemberName : any = styled.span`
 font-weight: 400;
-font-size: 6px;
+font-size: 8px;
 line-height: 6px;
 color: #FFFFFF;
 margin-left: 4px;

@@ -276,8 +276,7 @@ const MobileInputDiv = styled.input`
     background: #F7F8FA;
     border:none;
     border-radius : 0;
-    border-bottom: 1px solid #14B390;
-    color: #14B390;
+    border-bottom: 1px solid #A3A3A3;
     text-align:center;
     margin-bottom: 4px;
     line-height: 36px;

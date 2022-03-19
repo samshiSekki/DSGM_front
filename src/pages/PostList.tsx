@@ -255,7 +255,7 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             
             </div>
             <div ref={myRef} style={{position:'relative'}}>
-            <div onClick={()=>setState(!state)} style={{display:'flex', alignItems:'center'}}><div style={{paddingLeft:'3px', paddingRight:'5px', fontWeight:'bold',color:'#14B390',marginRight:'10px',width:'300px', backgroundColor:'#14B3901A'}}>{firstState}<img style={{marginLeft:'3px'}} src={ChangeIcon}></img></div></div>
+            <div onClick={()=>setState(!state)} style={{display:'flex', alignItems:'center'}}><div style={{paddingLeft:'3px', paddingRight:'5px', fontWeight:'bold',color:'#14B390',marginRight:'10px',width:'290px'}}><div style={{background:'#14B3901A', width:'fit-content', padding:'0px 5px'}}>{firstState}<img style={{marginLeft:'3px'}} src={ChangeIcon}></img></div></div></div>
             {/* {showImage2 && <div style={{position:'absolute',left:'610px',top:'-110px'}}><div style={{position:'relative'}}><img src={MessageIcon2}></img><img onClick = {()=>handleClose2()} style={{position:'absolute', right:'15px', top:'10px'}} src={MessageIconDelete}></img></div></div>} */}
             {state1 == false ? <MobileButtonStyled onClick={()=>setState1(true)}>+</MobileButtonStyled> :
              <><ButtonStyled onClick={()=>setState1(false)}>-</ButtonStyled> <MobileTextArea style={{width:'250px'}} ref={textRef1} onInput={()=>handleResize(1)} onChange={(e)=>changeInputValue(e, 'commonContent_plus')}></MobileTextArea></>}
@@ -272,7 +272,7 @@ const PostList = ({tabType, inputValue}:PostListProps) => {
             :
             <div></div>}
                         
-                        <div onClick={()=>setState2(!state2)} style={{display:'flex', alignItems:'center'}}><div style={{paddingLeft:'3px', paddingRight:'5px',fontWeight:'bold',color:'#14B390',width:'300px', marginRight:'10px', backgroundColor:'#14B3901A'}}>{lastState}<img style={{ marginLeft:'3px'}} src={ChangeIcon}></img></div></div>
+                        <div onClick={()=>setState2(!state2)} style={{display:'flex', alignItems:'center'}}><div style={{paddingLeft:'3px', paddingRight:'5px',fontWeight:'bold',color:'#14B390',width:'290px', marginRight:'10px'}}><div style={{background:'#14B3901A', width:'fit-content', padding:'0px 5px'}}>{lastState}<img style={{ marginLeft:'3px'}} src={ChangeIcon}></img></div></div></div>
             {state2 && <Scroll isFirst={false} ment = {lastMent} state = {lastState} setState={setLastState} type= {type2} setType={setType2}/>}
                         </div>
                         </MobileContainer>
@@ -402,8 +402,7 @@ const MobileTabBox = styled.div`
 const MobileInputDiv = styled.input`
     background: #F7F8FA;
     border:none;
-    border-bottom: 1px solid #14B390;
-    color: #14B390;
+    border-bottom: 1px solid #A3A3A3;
     text-align:center;
     margin-bottom: 4px;
     line-height: 36px;

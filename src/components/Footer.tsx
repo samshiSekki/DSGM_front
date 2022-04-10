@@ -6,27 +6,6 @@ import axios from 'axios';
 import Github from '../components/asset/icon/icon-github.png';
 
 function Footer() {
-  const HAS_VISITED_BEFORE : any = window.localStorage.getItem('hasVisitedBefore');
-  
-  const [visit, setVisit] = useState(0);
-  const visitUrl: any = process.env.REACT_APP_VISIT_PUT_URL;
-  useEffect(() => {
-    axios.get(`http://mail-helper.com/mail-forms/visit`).then(function(response){
-                //console.log(response.data);
-                setVisit(response.data);
-                if (!HAS_VISITED_BEFORE){
-                setVisit(response.data + 1);
-                axios.put(`http://mail-helper.com/mail-forms${process.env.REACT_APP_VISIT_PUT_URL}`, {
-                  "counter": response.data + 1
-              });
-              let expires : any = new Date();
-              expires = expires.setTime(expires.getTime() + (30*24*60*60*1000));
-              window.localStorage.setItem('hasVisitedBefore', expires);
-            }
-            
-            })
-  }, []);
-  
   
   return (
     <div>
@@ -36,7 +15,6 @@ function Footer() {
             ? <div className='ipadCopyRight'>Copyright(c)2022 삼시세끼 All rights reserved.</div>
             : <div className='copyright'>Copyright(c)2022 삼시세끼 All rights reserved.</div>
           }
-            <div className='accessCounter'><HeartIcon src='img/Heart.png'/>지금까지 {visit}명이 접속했어요!</div>
             <div className='proposalBtn'><MicIcon src='img/Mic.png'/><a target="_blank" href="https://www.instagram.com/samshisaekki/">제안하기</a></div>
         </div>
         : null
@@ -44,18 +22,6 @@ function Footer() {
 
         {(!isIPad13)&&(!isBrowser)?
         <MobileView>
-          {/*
-          <FooterContainerMobile>
-            
-            <AccessCounterMobile><HeartIconMobile src='img/Heart.png'/>지금까지 {visit}명이 접속했어요!</AccessCounterMobile>
-            <div className='proposalMobile'><a target="_blank" href="https://www.instagram.com/samshisaekki/">제안하기</a><MicIconMobile src='img/Mic.png'/></div>
-            <br/>
-            <CopyrightMobile>Copyright(c)2022 삼시세끼 All rights reserved.</CopyrightMobile>
-          </FooterContainerMobile>
-        */}
-          <MobileVisitCountContainer>
-            지금까지 <span style={{color: '#14B390'}}>{visit}명</span>이 접속했어요!
-          </MobileVisitCountContainer>
 
           <MobileFooterContainer>
             <MobileFooterContents>

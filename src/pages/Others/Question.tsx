@@ -89,7 +89,7 @@ function Question(props: any) {
   }
 
   return (
-    <div>
+    <div style={{overflowX:'hidden'}}>
         <Header currentMenu = 'others'/>
       {(isIPad13 || isBrowser)?
     <div>

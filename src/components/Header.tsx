@@ -37,7 +37,7 @@ function Header(props: any) {
         <div className='title'>
           <img src="img/dsgm_title.png" className='dsgmTitleImg'/>
         </div>
-        <br/>
+        
         <IndicatorWrapper>
         {props.currentMenu === 'default'?<CurrentIndicator0 src="img/Group 8.png"/>
           : props.currentMenu === 'billnut'?<CurrentIndicator1 src="img/Group 8.png"/>

@@ -8,8 +8,9 @@ import Github from '../components/asset/icon/icon-github.png';
 function Footer() {
   
   return (
-    <div>
+    <div style={{overflowX:'hidden'}}>
         {(isIPad13 || isBrowser)?
+        /*
         <div className='footerContainer'>
           {isIPad13
             ? <div className='ipadCopyRight'>Copyright(c)2022 삼시세끼 All rights reserved.</div>
@@ -18,6 +19,47 @@ function Footer() {
             <div className='proposalBtn'><MicIcon src='img/Mic.png'/><a target="_blank" href="https://www.instagram.com/samshisaekki/">제안하기</a></div>
         </div>
         : null
+        */
+          <FooterContainer>
+            <FooterContents>
+              <FooterLogoImg src="img/gray_logo.png"/>
+              <FooterTitle>대설교메</FooterTitle>
+
+              <FollowUs>
+                <span style={{fontSize: '24px', fontWeight: '700'}}>Follow Us</span>
+
+                <Links>
+                  <a target="_blank" href='https://www.instagram.com/samshisaekki/'>
+                    <img src='img/instagram_logo.png' style={{width: '25px', height: '25px', float:'left'}}/>
+                    <span style={{marginLeft: '15px', fontSize: '24px', fontWeight: '400', float:'left'}}>samshisaekki</span>
+                  </a>
+
+                  <a target="_blank" href='https://github.com/samshiSekki'>
+                    <img src='img/github_logo.png' style={{width: '25px', height: '25px', float:'left', marginLeft: '45px'}}/>
+                    <span style={{marginLeft: '15px', fontSize: '24px', fontWeight: '400'}}>github</span>
+                  </a>
+                </Links>
+                <Copyright>
+                  Copyright(c)2022 삼시세끼 All rights reserved.
+                </Copyright>
+                <div>
+                  <MembersPoistion>Plan</MembersPoistion>
+                  <MembersName>이지영</MembersName>
+
+                  <MembersPoistion style={{marginLeft: '67px'}}>Design</MembersPoistion>
+                  <MembersName>구지현</MembersName>
+
+                  <MembersPoistion style={{marginLeft: '67px'}}>Front-end</MembersPoistion>
+                  <MembersName>송재민 황남주</MembersName>
+
+
+                  <MembersPoistion style={{marginLeft: '67px'}}>Back-end</MembersPoistion>
+                  <MembersName>송은주 오유정</MembersName>
+                </div>
+              </FollowUs>
+            </FooterContents>
+          </FooterContainer>
+          :null
         }
 
         {(!isIPad13)&&(!isBrowser)?
@@ -70,24 +112,6 @@ function Footer() {
 }
 
 export default Footer;
-
-let HeartIcon : any = styled.img`
-  width: 16px;
-  height: auto;
-  margin-right: 10px;
-`;
-
-let MicIcon : any = styled.img`
-  width: 13px;
-  height: auto;
-  margin-right: 10px;
-`;
-
-
-let MobileVisitCountContainer : any = styled.div`
-  margin-bottom: 47px;
-  font-size: 11px;
-`;
 
 let MobileFooterContainer : any = styled.div`
   width: 100%;
@@ -155,4 +179,76 @@ font-size: 8px;
 line-height: 6px;
 color: #FFFFFF;
 margin-left: 4px;
+`;
+
+let FooterContainer : any = styled.div`
+  width: 100vw;
+  height: 484px;
+  background: #241E19;
+  margin-top: 117px;
+  display: flex;
+  `;
+
+let FooterContents : any = styled.div`
+  padding-left: 12.5vw;
+  padding-top: 92px;
+`;
+
+let FooterLogoImg : any = styled.img`
+  float: left;
+  width: 35.21px;
+  height: 34px;
+`;
+
+let FooterTitle : any = styled.div`
+  float: left;
+
+  height: 34px;
+  font-style: normal;
+font-weight: 800;
+font-size: 30px;
+line-height: 34px;
+color: #FFFFFF;
+opacity: 0.8;
+margin-left: 14.55px;
+`;
+
+let FollowUs : any = styled.div`
+  margin-top: 74px;
+  color: #FFFFFF;
+  text-align: left;
+`;
+
+let Links : any = styled.div`
+  margin-top: 20px;
+`;
+
+let Copyright : any = styled.div`
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 27px;
+
+color: #C2C2C2;
+margin-top: 58px;
+margin-bottom: 20px;
+`;
+
+let MembersPoistion : any = styled.div`
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 23px;
+color: #FFFFFF;
+float: left;
+`;
+
+let MembersName : any = styled.div`
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 23px;
+color: #FFFFFF;
+float: left;
+margin-left: 10px;
 `;

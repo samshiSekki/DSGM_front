@@ -144,7 +144,7 @@ function Recommend(props: any) {
   }
 
   return (
-  <div>
+  <div style={{overflowX:'hidden'}}>
     <Header currentMenu = 'recommend'/>
     
     {(isIPad13 || isBrowser)?

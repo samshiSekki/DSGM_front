@@ -19,7 +19,7 @@ function Others(props: any) {
   let checkFinal: string = '';
 
   return (
-  <div>
+  <div style={{overflowX:'hidden'}}>
     <Header currentMenu = 'others'/>
     
     {(isIPad13 || isBrowser)?

@@ -175,7 +175,7 @@ function Grade(props: any) {
     copyInClipboard();
   }
   return (
-  <div>
+  <div style={{overflowX:'hidden'}}>
     <Header currentMenu = 'grade'/>
     
     {(isIPad13 || isBrowser)?

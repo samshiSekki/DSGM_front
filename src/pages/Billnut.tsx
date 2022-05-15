@@ -193,7 +193,7 @@ function Billnut(props: any) {
     copyInClipboard();
   }
   return (
-  <div>
+  <div style={{overflowX:'hidden'}}>
     <Header currentMenu = 'billnut'/>
     
     {(isIPad13 || isBrowser)?

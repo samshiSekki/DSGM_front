@@ -31,12 +31,12 @@ function Footer() {
                 <Links>
                   <a target="_blank" href='https://www.instagram.com/samshisaekki/'>
                     <img src='img/instagram_logo.png' style={{width: '25px', height: '25px', float:'left'}}/>
-                    <span style={{marginLeft: '15px', fontSize: '24px', fontWeight: '400', float:'left'}}>samshisaekki</span>
+                    <span style={{marginLeft: '15px', fontSize: '24px', fontWeight: '400', float:'left'}}>Instagram</span>
                   </a>
 
                   <a target="_blank" href='https://github.com/samshiSekki'>
                     <img src='img/github_logo.png' style={{width: '25px', height: '25px', float:'left', marginLeft: '45px'}}/>
-                    <span style={{marginLeft: '15px', fontSize: '24px', fontWeight: '400'}}>github</span>
+                    <span style={{marginLeft: '15px', fontSize: '24px', fontWeight: '400'}}>Github</span>
                   </a>
                 </Links>
                 <Copyright>
@@ -74,30 +74,30 @@ function Footer() {
                 <a target="_blank" href='https://www.instagram.com/samshisaekki/'>
                 <MobileFollowLink>
                   <img src='img/instagram_logo.png' style={{width: '10px', height: '10px', float:'left'}}/>
-                  <span style={{marginLeft: '4px'}}>samshisaekki</span>
+                  <span style={{marginLeft: '4px'}}>Instagram</span>
                 </MobileFollowLink>
                 </a>
                 <a target="_blank" href='https://github.com/samshiSekki'>
                 <MobileFollowLink>
                   <img src='img/github_logo.png' style={{width: '10px', height: '10px', float:'left'}}/>
-                  <span style={{marginLeft: '4px'}}>github</span>
+                  <span style={{marginLeft: '4px'}}>Github</span>
                 </MobileFollowLink>
                 </a>
                 <CopyrightMobile>
                   Copyright(c)2022 삼시세끼 All rights reserved.
                 </CopyrightMobile>
                 <div>
-                  <MobileMemberPosition>Planner</MobileMemberPosition>
+                  <MobileMemberPosition>Plan</MobileMemberPosition>
                   <MobileMemberName>이지영</MobileMemberName>
 
-                  <MobileMemberPosition style={{marginLeft: '12px'}}>Designer</MobileMemberPosition>
+                  <MobileMemberPosition style={{marginLeft: '12px'}}>Design</MobileMemberPosition>
                   <MobileMemberName>구지현</MobileMemberName>
                   <br/>
-                  <MobileMemberPosition style={{}}>Front-end Developer</MobileMemberPosition>
+                  <MobileMemberPosition style={{}}>Front-end</MobileMemberPosition>
                   <MobileMemberName>송재민</MobileMemberName>
                   <MobileMemberName>황남주</MobileMemberName>
 
-                  <MobileMemberPosition style={{marginLeft: '12px'}}>Back-end Developer</MobileMemberPosition>
+                  <MobileMemberPosition style={{marginLeft: '12px'}}>Back-end</MobileMemberPosition>
                   <MobileMemberName>송은주</MobileMemberName>
                   <MobileMemberName>오유정</MobileMemberName>
                 </div>

@@ -30,7 +30,7 @@ https://maily.so/contentsnews/posts/2c68f2cf
 # 👨‍👩‍👧‍👧 삼시세끼 소개
 
 👩‍💻 개발팀
-| [송재민](https://github.com/Song-EunJu) | [황남주](https://github.com/yunkyung-Hwang) | [송은주](https://github.com/Song-EunJu) | [오유정](https://github.com/dayowoo) |
+| [송재민](https://github.com/xongjaemin) | [황남주](https://github.com/NamNamju) | [송은주](https://github.com/Song-EunJu) | [오유정](https://github.com/ohyujeong) |
 | ------------------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------- |
 | <img src="https://github.com/xongjaemin.png" width="100"> | <img src="https://github.com/NamNamju.png" width="100"> | <img src="https://github.com/Song-EunJu.png" width="100"> | <img src="https://github.com/ohyujeong.png" width="100"> |
 

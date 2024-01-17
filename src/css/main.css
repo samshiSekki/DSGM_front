@@ -1,235 +1,356 @@
 @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
 
-
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; } /* HTML5 display-role reset for older browsers */ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } table { border-collapse: collapse; border-spacing: 0; }
-
-
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+} /* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 
 /**/
-body{
-    font-family: 나눔스퀘어, 'NanumSquare', sans-serif;
-    text-align: center;
+body {
+  font-family: 나눔스퀘어, "NanumSquare", sans-serif;
+  text-align: center;
 }
-a{
-    text-decoration: none;
-    color: white;
+a {
+  text-decoration: none;
+  color: white;
 }
-a:visited{
-    color: white;
-    text-decoration: none;
+a:visited {
+  color: white;
+  text-decoration: none;
 }
-.title{
-    margin-top: 5.4vh;
-    width : 100vw;
-    height : 100px;
-    display: block;
+.title {
+  margin-top: 5.4vh;
+  width: 100vw;
+  height: 100px;
+  display: block;
 }
-.dsgmTitleImg{
-    width : 52vw;
-    height : auto;
+.dsgmTitleImg {
+  width: 52vw;
+  height: auto;
 }
-.mobileHeaderContainer{
-    position: absolute;
-    display: inline-block;
+.mobileHeaderContainer {
+  position: absolute;
+  display: inline-block;
 }
-.mobileHeaderContainerClick{
-    position: absolute;
-    display: inline-block;
-    width: 335px;
-    height: 31px;
+.mobileHeaderContainerClick {
+  position: absolute;
+  display: inline-block;
+  width: 335px;
+  height: 31px;
 }
-.mobileHeaderImg{
-    width: 335px;
-    height: auto;
-}
-
-.dropdown{
-    width : 20vw;
-    float:left;
-}
-.dropButton{
-    width : 20vw;
-    height:87px;
+.mobileHeaderImg {
+  width: 335px;
+  height: auto;
 }
 
-.dropdown-hr{
-    border: 0.5px solid rgba(203, 203, 203, 0.7);
-    width: 90%;
+.dropdown {
+  width: 20vw;
+  float: left;
+}
+.dropButton {
+  width: 20vw;
+  height: 87px;
 }
 
-.dropdown_selection{
-    margin-left: 5%;
-    width: 90%;
-    height: 40px;
-    line-height: 40px;
-    border-radius: 6px;
-    color: black;
-}
-.dropdown_selection:hover{
-    background: rgba(36, 30, 25, 0.1);
+.dropdown-hr {
+  border: 0.5px solid rgba(203, 203, 203, 0.7);
+  width: 90%;
 }
 
-.checkerInfoContainer{
-    display: inline-block;
-    width: 75vw;
-    background-color: white;
+.dropdown_selection {
+  margin-left: 5%;
+  width: 90%;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 6px;
+  color: black;
 }
-.checkerInfoContainerMobile{
-    display: inline-block;
-    width: 335px;
-    background-color: white;
-}
-.checkerInfoMobile{
-    margin-top: 20px;
-    margin-bottom: 19px;
-    width: 195px;
-}
-.loadingContainer{
-    padding-top: 139px;
-    padding-bottom: 159px;
-    display: inline-block;
-    text-align: center;
-    width : 75vw;
-    height : auto;
-    background: #F7F8FA;
-}
-.loadingContainerMobile{
-    padding-top: 78px;
-    padding-bottom: 81.15px;
-    display: inline-block;
-    text-align: center;
-    width : 335px;
-    height : auto;
-    background: #F7F8FA;
-}
-.mailTextContainer{
-    display: inline-block;
-    text-align: left;
-    width : 65vw;
-    height : auto;
-    padding : 5vw 5vw 5vw 5vw;
-    background: #F7F8FA;
-    font-size: 18px;
-    line-height: 32px;
-/* identical to box height */
-    color: #191E24;
-}
-.checkerInfoAndTexts{
-    display: inline-block;
-    width: 335px;
-    margin-top: 30px;
-}
-.mailTextContainerMobile{
-    display: inline-block;
-    text-align: left;
-    width : 306px;
-    height : auto;
-    padding : 30px 14px 31px 15px;
-    background: #F7F8FA;
-    font-size: 10px;
-    line-height: 23px;
-/* identical to box height */
-    color: #191E24;
-}
-.hideCheckcer{
-    display: none;
-}
-.buttonContainer{
-    margin-top: 24px;
-    margin-left: 12vw;
-    display: flex;
-    justify-content: space-between;
-    width : 75%;
-    height : 6.9%;
-}
-.functionBtn{
-    width : 32%;
-    height : 100%;
-    line-height: 65px;
-    float : left;
-    background: #191E24;
-    border-radius: 25px;
-    color : white;
-    font-weight: 800;
-    font-size: 24px;
-}
-#copyBtn{
-    width : 32%;
-    height : 100%;
-    line-height: 65px;
-    float : left;
-    background: #14B390;
-    border-radius: 27px;
-    color : white;
-    font-weight: 800;
-    font-size: 24px;
-}
-#copyBtn:hover{
-    background: #BDFFBF;
+.dropdown_selection:hover {
+  background: rgba(36, 30, 25, 0.1);
 }
 
-.buttonContainer div:hover{
-    background: gray;
+.checkerInfoContainer {
+  display: inline-block;
+  width: 75vw;
+  background-color: white;
 }
-.copy_text{
-    position:absolute;
-    top:-9999em;
+.checkerInfoContainerMobile {
+  display: inline-block;
+  width: 335px;
+  background-color: white;
 }
-.hideTextArea{
-    display: none;
+.checkerInfoMobile {
+  margin-top: 20px;
+  margin-bottom: 19px;
+  width: 195px;
 }
-.showTextArea{
-    margin-top: 100px;
-    width: 500px;
-    height: 100px;
+.loadingContainer {
+  padding-top: 139px;
+  padding-bottom: 159px;
+  display: inline-block;
+  text-align: center;
+  width: 75vw;
+  height: auto;
+  background: #f7f8fa;
 }
-.green_text{
-    color: #FFC700;
+.loadingContainerMobile {
+  padding-top: 78px;
+  padding-bottom: 81.15px;
+  display: inline-block;
+  text-align: center;
+  width: 335px;
+  height: auto;
+  background: #f7f8fa;
 }
-.red_text{
-    color: #ED635E;
+.mailTextContainer {
+  display: inline-block;
+  text-align: left;
+  width: 65vw;
+  height: auto;
+  padding: 5vw 5vw 5vw 5vw;
+  background: #f7f8fa;
+  font-size: 18px;
+  line-height: 32px;
+  /* identical to box height */
+  color: #191e24;
 }
-.blue_text{
-    color: #55ABE4;
+.checkerInfoAndTexts {
+  display: inline-block;
+  width: 335px;
+  margin-top: 30px;
 }
-.violet_text{
-    color: #A341EF;
+.mailTextContainerMobile {
+  display: inline-block;
+  text-align: left;
+  width: 306px;
+  height: auto;
+  padding: 30px 14px 31px 15px;
+  background: #f7f8fa;
+  font-size: 10px;
+  line-height: 23px;
+  /* identical to box height */
+  color: #191e24;
+}
+.hideCheckcer {
+  display: none;
+}
+.buttonContainer {
+  margin-top: 24px;
+  margin-left: 12vw;
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+  height: 6.9%;
+}
+.functionBtn {
+  width: 32%;
+  height: 100%;
+  line-height: 65px;
+  float: left;
+  background: #191e24;
+  border-radius: 25px;
+  color: white;
+  font-weight: 800;
+  font-size: 24px;
+  cursor: pointer;
+}
+#copyBtn {
+  width: 32%;
+  height: 100%;
+  line-height: 65px;
+  float: left;
+  background: #14b390;
+  border-radius: 27px;
+  color: white;
+  font-weight: 800;
+  font-size: 24px;
+  cursor: pointer;
+}
+#copyBtn:hover {
+  background: #bdffbf;
 }
 
-.MobileOthersTabContainer{
-    width: 335px;
+.buttonContainer div:hover {
+  background: gray;
+}
+.copy_text {
+  position: absolute;
+  top: -9999em;
+}
+.hideTextArea {
+  display: none;
+}
+.showTextArea {
+  margin-top: 100px;
+  width: 500px;
+  height: 100px;
+}
+.green_text {
+  color: #ffc700;
+}
+.red_text {
+  color: #ed635e;
+}
+.blue_text {
+  color: #55abe4;
+}
+.violet_text {
+  color: #a341ef;
+}
+
+.MobileOthersTabContainer {
+  width: 335px;
   padding-top: 15px;
   padding-bottom: 13px;
   display: inline-block;
 }
-.MobileOthersTabBtnContainer{
-    display:flex;
+.MobileOthersTabBtnContainer {
+  display: flex;
   justify-content: space-around;
 }
-.MobileOthersTabBtn{
-    width: auto;
+.MobileOthersTabBtn {
+  width: auto;
   height: 19px;
-  background: #F0F0F0;
+  background: #f0f0f0;
   border-radius: 19.5px;
   font-weight: 700;
-font-size: 7px;
-line-height: 19px;
-text-align: center;
-padding-left: 10px;
-padding-right: 10px;
-color: #6A6A6A;
+  font-size: 7px;
+  line-height: 19px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #6a6a6a;
 }
 
-.MobileOthersTabBtnSelected{
-    width: auto;
+.MobileOthersTabBtnSelected {
+  width: auto;
   height: 19px;
-  background: #241E19;
+  background: #241e19;
   border-radius: 19.5px;
   font-weight: 700;
-font-size: 7px;
-line-height: 19px;
-text-align: center;
-padding-left: 10px;
-padding-right: 10px;
-color: white;
+  font-size: 7px;
+  line-height: 19px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
 }

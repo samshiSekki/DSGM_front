@@ -150,7 +150,7 @@ const BillnutContent = ({num,setNum}:NumberProps) => {
         <div>해당 수업들을 들으며 교수님의 강의를 다시 한 번 더 듣고 싶다는 생각을 하였습니다.</div>
         {state4 == false ? <ButtonStyled onClick={()=>setState4(true)}>+</ButtonStyled> :
              <><ButtonStyled onClick={()=>setState4(false)}>-</ButtonStyled> <TextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'billnutContent1_plus4')}></TextArea></>}
-        <div>이번에 꼭 교수님 수업을 듣고 싶은 학생으로써, 불편하시지 않으시다면 증원에 대해 생각해주시길 부탁드립니다.</div>
+        <div>이번에 꼭 교수님 수업을 듣고 싶은 학생으로서, 불편하시지 않으시다면 증원에 대해 생각해주시길 부탁드립니다.</div>
         {state5 == false ? <ButtonStyled onClick={()=>setState5(true)}>+</ButtonStyled> :
              <><ButtonStyled onClick={()=>setState5(false)}>-</ButtonStyled> <TextArea ref={textRef5} onInput={()=>handleResize(5)} onChange={(e)=>changeInputValue(e, 'billnutContent1_plus5')}></TextArea></>}
         </>
@@ -207,7 +207,7 @@ const BillnutContent = ({num,setNum}:NumberProps) => {
         <div style={{whiteSpace:'pre-line'}}>{'해당 수업들을 들으며 교수님의 강의를 다시 한 번 \n더 듣고 싶다는 생각을 하였습니다.'}</div>
         {state4 == false ? <MobileButtonStyled onClick={()=>setState4(true)}>+</MobileButtonStyled> :
              <><MobileButtonStyled onClick={()=>setState4(false)}>-</MobileButtonStyled> <MobileTextArea ref={textRef4} onInput={()=>handleResize(4)} onChange={(e)=>changeInputValue(e, 'billnutContent1_plus4')}></MobileTextArea></>}
-        <div style={{whiteSpace:'pre-line'}}>{'이번에 꼭 교수님 수업을 듣고 싶은 학생으로써, \n불편하시지 않으시다면 증원에 대해 생각해주시길 부탁드립니다.'}</div>
+        <div style={{whiteSpace:'pre-line'}}>{'이번에 꼭 교수님 수업을 듣고 싶은 학생으로서, \n불편하시지 않으시다면 증원에 대해 생각해주시길 부탁드립니다.'}</div>
         {state5 == false ? <MobileButtonStyled onClick={()=>setState5(true)}>+</MobileButtonStyled> :
              <><MobileButtonStyled onClick={()=>setState5(false)}>-</MobileButtonStyled> <MobileTextArea ref={textRef5} onInput={()=>handleResize(5)} onChange={(e)=>changeInputValue(e, 'billnutContent1_plus5')}></MobileTextArea></>}
         </>

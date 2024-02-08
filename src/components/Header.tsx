@@ -41,7 +41,7 @@ function Header(props: any) {
       {isIPad13 || isBrowser ? (
         <div>
           <div className="title">
-            <img src="img/dsgm_title.png" className="dsgmTitleImg" />
+            <img src="img/dsgm_title.svg" className="dsgmTitleImg" alt="" />
           </div>
 
           <IndicatorWrapper>

@@ -2,83 +2,20 @@ import React, { useState } from "react";
 import PostList from "./PostList";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import axios from "axios";
 import parse from "html-react-parser";
 import { MobileView, isBrowser, isIPad13 } from "react-device-detect";
 import Header from "../components/Header";
-
-let CurrentNav: any = styled.img`
-  position: absolute;
-  width: 3%;
-  height: auto;
-  margin-left: 51.5vw;
-`;
-let CurrentNavMobile: any = styled.img`
-  position: absolute;
-  width: 14.02px;
-  height: auto;
-  margin-left: 230px;
-`;
-
-let CheckerInfo: any = styled.img`
-  margin-top: 5vh;
-  margin-bottom: 3vh;
-  width: 25vw;
-  height: auto;
-`;
-
-let ButtonContainerMobile: any = styled.div`
-  display: inline-block;
-  margin-top: 12px;
-  margin-bottom: 26px;
-  width: 335px;
-  height: 31px;
-`;
-let MobileButtonFlex: any = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-let FunctionBtnMobile: any = styled.div`
-  float: left;
-  width: 105px;
-  height: 31px;
-  background: #241e19;
-  color: white;
-  border-radius: 7px;
-
-  font-style: normal;
-  font-weight: 800;
-  font-size: 11px;
-  line-height: 31px;
-  text-align: center;
-`;
-let CopyBtnMobile: any = styled.div`
-  float: left;
-  width: 105px;
-  height: 31px;
-  background: #14b390;
-  color: white;
-  border-radius: 7px;
-
-  font-style: normal;
-  font-weight: 800;
-  font-size: 11px;
-  line-height: 31px;
-  text-align: center;
-`;
+import { getParsedSpellCheckerResult } from "utils/spellChecker";
 
 function Grade(props: any) {
   let [showChecker, setShowChecker] = useState(false);
   let [checkerResult, setCheckerResult] = useState("");
   let copiedForm: string = "";
-  let checkerResultDataString: string = "초기값";
-  let naverCheckerURL: string;
-  let stringToCheck: string[];
-  let checkFinal: string = "";
 
   const getChecker = async () => {
+    let stringToCheck: string[] = [];
     let checking: any = async () => {
-      if (props.inputValue.gradeState == 0) {
+      if (props.inputValue.gradeState === 0) {
         stringToCheck = [
           `안녕하십니까 ${props.inputValue.professorName}교수님,`,
           `저는 ${props.inputValue.myName}입니다.`,
@@ -94,7 +31,7 @@ function Grade(props: any) {
           `${props.inputValue.gradeContent0_plus4}`,
           `${props.inputValue.ending}`,
         ];
-      } else if (props.inputValue.gradeState == 1) {
+      } else if (props.inputValue.gradeState === 1) {
         stringToCheck = [
           `안녕하십니까 ${props.inputValue.professorName}교수님,`,
           `저는 ${props.inputValue.myName}입니다.`,
@@ -112,29 +49,8 @@ function Grade(props: any) {
         ];
       }
 
-      for (let i = 0; i < stringToCheck.length; i++) {
-        if (stringToCheck[i] !== "") {
-          naverCheckerURL =
-            "https://m.search.naver.com/p/csearch/ocontent/util/SpellerProxy?_callback=mycallback&q=" +
-            stringToCheck[i] +
-            "&where=nexearch&color_blindness=0&_=1643811632694";
-          await axios
-            .get(naverCheckerURL)
-            .then((appData: any) => {
-              checkerResultDataString = appData.data;
-              checkerResultDataString = checkerResultDataString
-                .replace("mycallback(", "")
-                .replace(");", "");
-              checkerResultDataString =
-                JSON.parse(checkerResultDataString).message.result.html +
-                "<br>";
-              checkFinal = checkFinal + checkerResultDataString;
-            })
-            .then(() => {
-              setCheckerResult(checkFinal);
-            });
-        }
-      }
+      const result = await getParsedSpellCheckerResult(stringToCheck);
+      setCheckerResult(result);
     };
     checking().then(setShowChecker(true));
   };
@@ -154,7 +70,7 @@ function Grade(props: any) {
     if (!document.queryCommandSupported("copy"))
       return alert("복사하기가 지원되지 않는 브라우저입니다");
 
-    if (props.inputValue.gradeState == 0) {
+    if (props.inputValue.gradeState === 0) {
       copiedForm =
         `안녕하십니까 ${props.inputValue.professorName}교수님,\r\n` +
         `저는 ${props.inputValue.myName}입니다.\r\n` +
@@ -169,7 +85,7 @@ function Grade(props: any) {
         `교수님의 피드백을 바탕으로 이후 부족한 점을 보완하고자 하니, 바쁘시겠지만 꼭 한 번 다시 검토해주시면 감사하겠습니다.\r\n` +
         `${props.inputValue.gradeContent0_plus4}\r\n` +
         `${props.inputValue.ending}`;
-    } else if (props.inputValue.gradeState == 1) {
+    } else if (props.inputValue.gradeState === 1) {
       copiedForm =
         `안녕하십니까 ${props.inputValue.professorName}교수님,\r\n` +
         `저는 ${props.inputValue.myName}입니다.\r\n` +
@@ -300,3 +216,63 @@ function f1(inputValue: any) {
   };
 }
 export default connect(f1)(Grade);
+
+let CurrentNav: any = styled.img`
+  position: absolute;
+  width: 3%;
+  height: auto;
+  margin-left: 51.5vw;
+`;
+let CurrentNavMobile: any = styled.img`
+  position: absolute;
+  width: 14.02px;
+  height: auto;
+  margin-left: 230px;
+`;
+
+let CheckerInfo: any = styled.img`
+  margin-top: 5vh;
+  margin-bottom: 3vh;
+  width: 25vw;
+  height: auto;
+`;
+
+let ButtonContainerMobile: any = styled.div`
+  display: inline-block;
+  margin-top: 12px;
+  margin-bottom: 26px;
+  width: 335px;
+  height: 31px;
+`;
+let MobileButtonFlex: any = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+let FunctionBtnMobile: any = styled.div`
+  float: left;
+  width: 105px;
+  height: 31px;
+  background: #241e19;
+  color: white;
+  border-radius: 7px;
+
+  font-style: normal;
+  font-weight: 800;
+  font-size: 11px;
+  line-height: 31px;
+  text-align: center;
+`;
+let CopyBtnMobile: any = styled.div`
+  float: left;
+  width: 105px;
+  height: 31px;
+  background: #14b390;
+  color: white;
+  border-radius: 7px;
+
+  font-style: normal;
+  font-weight: 800;
+  font-size: 11px;
+  line-height: 31px;
+  text-align: center;
+`;

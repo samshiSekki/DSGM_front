@@ -1,86 +1,20 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import "../css/main.css";
 import PostList from "./PostList";
-import { Link } from "react-router-dom";
-import axios from "axios";
 import styled from "styled-components";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import parse from "html-react-parser";
 import { MobileView, isBrowser, isIPad13 } from "react-device-detect";
 import Header from "../components/Header";
-
-let CurrentNav: any = styled.img`
-  position: absolute;
-  width: 3%;
-  height: auto;
-  margin-left: 5.5vw;
-`;
-let CurrentNavMobile: any = styled.img`
-  position: absolute;
-  width: 14.02px;
-  height: auto;
-  margin-left: 24.98px;
-`;
-
-let CheckerInfo: any = styled.img`
-  margin-top: 5vh;
-  margin-bottom: 3vh;
-  width: 25vw;
-  height: auto;
-`;
-
-let ButtonContainerMobile: any = styled.div`
-  display: inline-block;
-  margin-top: 12px;
-  margin-bottom: 23px;
-  width: 335px;
-  height: 31px;
-`;
-let MobileButtonFlex: any = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-let FunctionBtnMobile: any = styled.div`
-  float: left;
-  width: 105px;
-  height: 31px;
-  background: #241e19;
-  color: white;
-  border-radius: 7px;
-
-  font-style: normal;
-  font-weight: 800;
-  font-size: 11px;
-  line-height: 31px;
-  text-align: center;
-`;
-let CopyBtnMobile: any = styled.div`
-  float: left;
-  width: 105px;
-  height: 31px;
-  background: #14b390;
-  color: white;
-  border-radius: 7px;
-
-  font-style: normal;
-  font-weight: 800;
-  font-size: 11px;
-  line-height: 31px;
-  text-align: center;
-`;
+import { getParsedSpellCheckerResult } from "utils/spellChecker";
 
 function Default(props: any) {
   let [showChecker, setShowChecker] = useState(false);
-  let [checkerResult1, setCheckerResult1] = useState(""); //맞춤법 검사 결과 화면에 뿌리는 용도
-  let checkFinal: string = "";
-  let checkerResultDataString: string = "초기값";
+  let [checkerResult, setCheckerResult] = useState(""); //맞춤법 검사 결과 화면에 뿌리는 용도
   let copiedForm: string = "";
-  let naverCheckerURL: string;
-  let stringToCheck: string[];
-  let dispatch: any = useDispatch();
 
   const getChecker = async () => {
-    stringToCheck = [];
+    let stringToCheck: string[] = [];
     let checking: any = async () => {
       stringToCheck = [
         `안녕하십니까 ${props.inputValue.professorName} 교수님,`,
@@ -92,29 +26,8 @@ function Default(props: any) {
         `${props.inputValue.ending}`,
       ];
 
-      for (let i = 0; i < stringToCheck.length; i++) {
-        if (stringToCheck[i] !== "") {
-          naverCheckerURL =
-            "https://m.search.naver.com/p/csearch/ocontent/util/SpellerProxy?_callback=mycallback&q=" +
-            stringToCheck[i] +
-            "&where=nexearch&color_blindness=0&_=1643811632694";
-          await axios
-            .get(naverCheckerURL)
-            .then((appData: any) => {
-              checkerResultDataString = appData.data;
-              checkerResultDataString = checkerResultDataString
-                .replace("mycallback(", "")
-                .replace(");", "");
-              checkerResultDataString =
-                JSON.parse(checkerResultDataString).message.result.html +
-                "<br>";
-              checkFinal = checkFinal + checkerResultDataString;
-            })
-            .then(() => {
-              setCheckerResult1(checkFinal);
-            });
-        }
-      }
+      const result = await getParsedSpellCheckerResult(stringToCheck);
+      setCheckerResult(result);
     };
     checking().then(setShowChecker(true));
   };
@@ -162,7 +75,7 @@ function Default(props: any) {
             >
               <PostList tabType={""} />
             </div>
-            {showChecker === true ? <div>{parse(checkerResult1)}</div> : null}
+            {showChecker === true ? <div>{parse(checkerResult)}</div> : null}
           </div>
         </div>
       ) : null}
@@ -181,7 +94,7 @@ function Default(props: any) {
             >
               <PostList tabType={""} />
             </div>
-            {showChecker === true ? <div>{parse(checkerResult1)}</div> : null}
+            {showChecker === true ? <div>{parse(checkerResult)}</div> : null}
           </div>
         </MobileView>
       ) : null}
@@ -255,3 +168,63 @@ function f1(inputValue: any) {
   };
 }
 export default connect(f1)(Default);
+
+let CurrentNav: any = styled.img`
+  position: absolute;
+  width: 3%;
+  height: auto;
+  margin-left: 5.5vw;
+`;
+let CurrentNavMobile: any = styled.img`
+  position: absolute;
+  width: 14.02px;
+  height: auto;
+  margin-left: 24.98px;
+`;
+
+let CheckerInfo: any = styled.img`
+  margin-top: 5vh;
+  margin-bottom: 3vh;
+  width: 25vw;
+  height: auto;
+`;
+
+let ButtonContainerMobile: any = styled.div`
+  display: inline-block;
+  margin-top: 12px;
+  margin-bottom: 23px;
+  width: 335px;
+  height: 31px;
+`;
+let MobileButtonFlex: any = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+let FunctionBtnMobile: any = styled.div`
+  float: left;
+  width: 105px;
+  height: 31px;
+  background: #241e19;
+  color: white;
+  border-radius: 7px;
+
+  font-style: normal;
+  font-weight: 800;
+  font-size: 11px;
+  line-height: 31px;
+  text-align: center;
+`;
+let CopyBtnMobile: any = styled.div`
+  float: left;
+  width: 105px;
+  height: 31px;
+  background: #14b390;
+  color: white;
+  border-radius: 7px;
+
+  font-style: normal;
+  font-weight: 800;
+  font-size: 11px;
+  line-height: 31px;
+  text-align: center;
+`;

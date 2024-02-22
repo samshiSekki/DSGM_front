@@ -13,7 +13,6 @@ import {
 import ReactGA from "react-ga";
 
 function Header(props: any) {
-  const [currentMenu, setCurrentMenu] = useState(0);
   const [showDropdown, setShowDropdown] = useState(false);
   let dispatch = useDispatch();
 

@@ -45,7 +45,7 @@ function App() {
         <Route path="/attendancepersonal" element={<AttPersonal />} />
         <Route path="/questions" element={<Question />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

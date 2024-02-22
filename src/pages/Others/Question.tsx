@@ -5,6 +5,7 @@ import styled from "styled-components";
 import parse from "html-react-parser";
 import { MobileView, isBrowser, isIPad13 } from "react-device-detect";
 import Header from "../../components/Header";
+import Footer from "components/Footer";
 import { Link } from "react-router-dom";
 import { getParsedSpellCheckerResult } from "utils/spellChecker";
 
@@ -194,6 +195,7 @@ function Question(props: any) {
           </ButtonContainerMobile>
         </MobileView>
       ) : null}
+      <Footer />
     </div>
   );
 }
@@ -205,13 +207,6 @@ function f1(inputValue: any) {
 }
 export default connect(f1)(Question);
 
-let MobileTitle: any = styled.img`
-  margin-top: 38.95px;
-  margin-bottom: 22.95px;
-`;
-let MobileTitleContainer: any = styled.div`
-  width: 100%;
-`;
 let CurrentNav: any = styled.img`
   position: absolute;
   width: 3%;

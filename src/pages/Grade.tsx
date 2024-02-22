@@ -5,6 +5,7 @@ import styled from "styled-components";
 import parse from "html-react-parser";
 import { MobileView, isBrowser, isIPad13 } from "react-device-detect";
 import Header from "../components/Header";
+import Footer from "components/Footer";
 import { getParsedSpellCheckerResult } from "utils/spellChecker";
 
 function Grade(props: any) {
@@ -206,6 +207,7 @@ function Grade(props: any) {
           </ButtonContainerMobile>
         </MobileView>
       ) : null}
+      <Footer />
     </div>
   );
 }

@@ -64,13 +64,6 @@ const GradeContent = ({ num, setNum }: NumberProps) => {
     setState2(false);
     setState3(false);
     setState4(false);
-    /* axios.get('http://13.125.177.135:5000/mail-forms/contents',{params: {
-                category: 'grade'
-            }}).then(function(response){
-                setCurrent(response.data[num]);
-                console.log(response.data[num]);
-            }) */
-
     dispatch({
       type: "change",
       payload: { changeData: num, variableType: "gradeState" },
